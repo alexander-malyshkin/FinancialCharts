@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Financial Data Receiver</title>
+</head>
+<body>
+<div id="conStart"></div>
+<div id="sseOutput"></div>
+<div id="conEnd"></div>
+<script>
+    var conStart = document.getElementById('conStart');
+    var sseOutput = document.getElementById('sseOutput');
+    var conEnd = document.getElementById('conEnd');
+
+    function appendInnerHtml(el,data) {
+        el.appendChild(document.createTextNode(data));
+        el.appendChild(document.createElement('br'));
+    };
+
+    function setInnerHtml(el,data) {
+        el.innerHTML = data;
+    };
+
+    var source = new EventSource("/sse-financial");
+    source.onopen = function () { setInnerHtml(conStart,'-- CONNECTION ESTABLISHED --'); };
+    source.onerror = function () { appendInnerHtml(conStart,'-- CONNECTION FAILED --'); };
+
+    source.onmessage = function(event) {
+
+        console.log('SSE EVENT: { id: "' + event.id + '", data: "' + event.data + '" }');
+        setInnerHtml(sseOutput, event.data);
+        
+
+        if (event.id === "CLOSE") {
+            source.close();
+        }
+    }
+</script>
+</body>
+</html>

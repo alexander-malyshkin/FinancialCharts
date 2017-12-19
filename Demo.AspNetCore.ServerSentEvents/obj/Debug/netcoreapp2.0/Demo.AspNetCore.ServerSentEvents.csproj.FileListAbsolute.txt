@@ -1,0 +1,11 @@
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.deps.json
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.runtimeconfig.json
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.runtimeconfig.dev.json
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.dll
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.pdb
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.csprojResolveAssemblyReference.cache
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.csproj.CoreCompileInputs.cache
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.AssemblyInfoInputs.cache
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.AssemblyInfo.cs
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.dll
+C:\C# projects\Demo.AspNetCore.ServerSentEvents\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\Demo.AspNetCore.ServerSentEvents.pdb
