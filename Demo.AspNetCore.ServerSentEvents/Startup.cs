@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
+using Demo.AspNetCore.ServerSentEvents.Services;
+using Lib.AspNetCore.ServerSentEvents;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Lib.AspNetCore.ServerSentEvents;
-using Demo.AspNetCore.ServerSentEvents.Services;
 
-namespace Demo.AspNetCore.ServerSentEvents
+namespace FinancialCharts
 {
     public class Startup
     {

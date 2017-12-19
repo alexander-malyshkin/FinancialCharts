@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using FinancialCharts;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Demo.AspNetCore.ServerSentEvents
