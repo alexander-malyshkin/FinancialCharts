@@ -26,8 +26,8 @@ source.onmessage = function (event) {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
+            plotShadow: false//,
+            //type: 'pie'
         },
         title: {
             text: 'Some distribution chart'
@@ -35,6 +35,7 @@ source.onmessage = function (event) {
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
         },
+        /*
         plotOptions: {
             pie: {
                 allowPointSelect: true,
@@ -47,7 +48,7 @@ source.onmessage = function (event) {
                     }
                 }
             }
-        },
+        },*/
         series: seriesInput
     });
 

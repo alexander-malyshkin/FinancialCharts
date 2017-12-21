@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model AssetModel
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -106,7 +107,11 @@
                                 </div>
                             </div>
                             <div class="box-body">
-
+                                <select asp-for="AssetName">
+                                    <option value="CA">Canada</option>
+                                    <option value="US">US</option>
+                                    <option value="--">Other</option>
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <!--<TargetFramework>net461</TargetFramework>-->
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>Demo.AspNetCore.ServerSentEvents</AssemblyName>
+    <AssemblyName>FinancialChartsSolution</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>Demo.AspNetCore.ServerSentEvents</PackageId>
   </PropertyGroup>
