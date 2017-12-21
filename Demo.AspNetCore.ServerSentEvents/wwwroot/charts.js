@@ -21,35 +21,54 @@ source.onmessage = function (event) {
     var seriesInput = JSON.parse(event.data);
 
 
-    
     Highcharts.chart('browserChart', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false//,
-            //type: 'pie'
-        },
+
         title: {
-            text: 'Some distribution chart'
+            text: 'Volatility Smile'
         },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+
+        subtitle: {
+            text: ''
         },
-        /*
+
+        yAxis: {
+            title: {
+                text: 'VOL'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        
         plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 100
+            }
+        },
+
+        series: seriesInput,
+
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
                     }
                 }
-            }
-        },*/
-        series: seriesInput
+            }]
+        }
+
     });
 
     

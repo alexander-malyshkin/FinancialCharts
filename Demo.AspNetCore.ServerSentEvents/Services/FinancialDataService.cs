@@ -4,16 +4,21 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using FinancialCharts.Model;
 using Lib.AspNetCore.ServerSentEvents;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace Demo.AspNetCore.ServerSentEvents.Services
 {
     internal class FinancialDataService : IHostedService
     {
         #region fields
-        private const int  _interval = 7;
-        private List<double> _finDataList;
+        private const int  _interval = 5;
+        private const int _seriesAmount = 4;
+        private const int _seriesLength = 10;
+
+        private List<DataSeries> _finDataList;
         private readonly IServerSentEventsService _serverSentEventsService;
         private Task _finDataTask;
         private CancellationTokenSource _cancellationTokenSource;
@@ -25,13 +30,13 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         public FinancialDataService(IServerSentEventsService service)
         {
             _serverSentEventsService = service;
-            _finDataList = new List<double>(){1.1, 2.4, 3.5, 6.7, 2.2, 1.7};
+            //_finDataList = DataSeriesHelper.GenerateDummySeries(_seriesAmount, _seriesLength);
         }
 
-        public FinancialDataService(IServerSentEventsService service, IList<double> data)
+        public FinancialDataService(IServerSentEventsService service, List<DataSeries> dataSeries)
         {
             _serverSentEventsService = service;
-            _finDataList = data.ToList();
+            _finDataList = dataSeries;
         }
         #endregion
 
@@ -61,58 +66,14 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                RandomizeDataSeries();
-                
-                //await _serverSentEventsService.SendEventAsync(finDataEvent);
-                string jsonDataString =
-                    "[{"
-                    + "    \"name\": \"Brands\","
-                    + "    \"colorByPoint\": true,"
-                    + "    \"data\":"
-                    + "        ["
-                    + "          {"
-                    + "              \"name\": \"tool 1\","
-                    + "              \"y\": " + _finDataList[0]
-                    + "          },"
-                    + "          {"
-                    + "              \"name\": \"tool 2\","
-                    + "              \"y\":" + _finDataList[1] + ","
-                    + "              \"sliced\": true,"
-                    + "              \"selected\": true"
-                    + "          },"
-                    + "          {"
-                    + "              \"name\": \"tool 3\","
-                    + "              \"y\": " + _finDataList[2]
-                    + "          },"
-                    + "          {"
-                    + "              \"name\": \"tool 4\","
-                    + "              \"y\": " + _finDataList[3]
-                    + "          },"
-                    + "          {"
-                    + "              \"name\": \"tool 5\","
-                    + "              \"y\": " + _finDataList[4]
-                    + "          },"
-                    + "          {"
-                    + "              \"name\": \"tool 6\","
-                    + "              \"y\": " + _finDataList[5]
-                    + "          }"
-                    + "     ]"
-                    + "}]";
-                //string jsonDataString2 = 
+                _finDataList = DataSeriesHelper.GenerateDummySeries(_seriesAmount, _seriesLength);
+                string jsonDataString = JsonConvert.SerializeObject(_finDataList);
                 await _serverSentEventsService.SendEventAsync(jsonDataString);
 
                 await Task.Delay(TimeSpan.FromSeconds(_interval), cancellationToken);
             }
         }
 
-        private void RandomizeDataSeries()
-        {
-            for (int i = 0; i < _finDataList.Count; i++)
-            {
-                var r = new Random();
-                _finDataList[i] = r.NextDouble();
-            }
-        }
         #endregion
     }
 }

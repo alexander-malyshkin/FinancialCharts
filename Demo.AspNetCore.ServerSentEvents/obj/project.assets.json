@@ -1755,34 +1755,14 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/10.0.1": {
+      "Newtonsoft.Json/10.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
-          "System.Collections": "4.3.0",
+          "NETStandard.Library": "1.6.1",
           "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Dynamic.Runtime": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Linq.Expressions": "4.3.0",
-          "System.ObjectModel": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Numerics": "4.3.0",
           "System.Runtime.Serialization.Formatters": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XDocument": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
@@ -4120,7 +4100,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor/2.0.0": {
-      "sha512": "5i4nmM7cu7iiri6EmDM/mR+mlTxC0Tmiqa5SW9zU9B8qEiNu4zo4NYcg491N5vBMSaZQr5M3rRhihjlRKH5/ow==",
+      "sha512": "U3G8KSdlV2q4v2yDHOUftv9+PfuNXVgJlKuIQtJ0KercQyGhBk5WF9ak9cRRR9JpMpWYPuwn/27DmqDQTphqfA==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor/2.0.0",
       "files": [
@@ -5544,11 +5524,12 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/10.0.1": {
-      "sha512": "ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
+    "Newtonsoft.Json/10.0.3": {
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
-      "path": "newtonsoft.json/10.0.1",
+      "path": "newtonsoft.json/10.0.3",
       "files": [
+        "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -5561,9 +5542,11 @@
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.xml",
-        "newtonsoft.json.10.0.1.nupkg.sha512",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.10.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
       ]
@@ -10237,11 +10220,12 @@
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1",
+      "Newtonsoft.Json >= 10.0.3",
       "StackExchange.Redis >= 1.2.6"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alex\\.nuget\\packages\\": {},
+    "C:\\Users\\amalyshk\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -10250,17 +10234,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\C# projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
-      "projectName": "Demo.AspNetCore.ServerSentEvents",
-      "projectPath": "C:\\C# projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
-      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\C# projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\obj\\",
+      "projectUniqueName": "C:\\projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
+      "projectName": "FinancialCharts",
+      "projectPath": "C:\\projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
+      "packagesPath": "C:\\Users\\amalyshk\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\amalyshk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10284,54 +10268,58 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Lib.AspNetCore.ServerSentEvents": {
-            "target": "Package",
-            "version": "[1.1.1, )"
-          },
           "Microsoft.AspNetCore": {
             "target": "Package",
-            "version": "[2.0.0, )"
+            "version": "2.0.0"
           },
-          "Microsoft.AspNetCore.Mvc": {
+          "Lib.AspNetCore.ServerSentEvents": {
             "target": "Package",
-            "version": "[2.0.0, )"
-          },
-          "Microsoft.AspNetCore.ResponseCompression": {
-            "target": "Package",
-            "version": "[2.0.0, )"
-          },
-          "Microsoft.AspNetCore.StaticFiles": {
-            "target": "Package",
-            "version": "[2.0.0, )"
-          },
-          "Microsoft.EntityFrameworkCore.Design": {
-            "target": "Package",
-            "version": "[2.0.1, )"
-          },
-          "Microsoft.EntityFrameworkCore.SqlServer": {
-            "target": "Package",
-            "version": "[2.0.1, )"
+            "version": "1.1.1"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
-            "version": "[2.0.1, )"
+            "version": "2.0.1"
+          },
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+            "target": "Package",
+            "version": "2.0.1"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "target": "Package",
+            "version": "2.0.1"
+          },
+          "StackExchange.Redis": {
+            "target": "Package",
+            "version": "1.2.6"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "2.0",
             "autoReferenced": true
           },
           "Microsoft.VisualStudio.Web.BrowserLink": {
             "target": "Package",
-            "version": "[2.0.1, )"
+            "version": "2.0.1"
           },
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+          "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
-            "version": "[2.0.1, )"
+            "version": "2.0.1"
           },
-          "StackExchange.Redis": {
+          "Microsoft.AspNetCore.ResponseCompression": {
             "target": "Package",
-            "version": "[1.2.6, )"
+            "version": "2.0.0"
+          },
+          "Microsoft.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Microsoft.AspNetCore.StaticFiles": {
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "10.0.3"
           }
         },
         "imports": [
