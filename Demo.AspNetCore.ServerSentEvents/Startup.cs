@@ -51,7 +51,7 @@ namespace FinancialCharts
             
             app.UseResponseCompression()
                 //.MapServerSentEvents("/see-heartbeat")
-                //.MapServerSentEvents("/sse-financial")
+                .MapServerSentEvents("/sse-financial")
                 //.MapServerSentEvents("/sse-notifications", serviceProvider.GetService<NotificationsServerSentEventsService>())
                 .UseStaticFiles()
                 .UseMvc(routes =>

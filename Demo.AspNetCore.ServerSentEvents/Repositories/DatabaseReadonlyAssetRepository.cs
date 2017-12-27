@@ -21,26 +21,39 @@ namespace FinancialCharts.Repositories
             _connString = (string)ConfigHelper.GetConfigValue("DatabaseConnectionString");
             _provider = (string)ConfigHelper.GetConfigValue("DatabaseProviderName");
 
-            using (var dbConnection = new SqlConnection(_connString))
-            {
-                try
-                {
-                    dbConnection.Open();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-            }
+            PopulateAssetList();
         }
 
         public DatabaseReadonlyAssetRepository(string connString, string provider)
         {
             _connString = connString;
             _provider = provider;
+            PopulateAssetList();
         }
 
+        private void PopulateAssetList()
+        {
+            using (var dbConnection = new SqlConnection(_connString))
+            {
+                dbConnection.Open();
+                using (var command = dbConnection.CreateCommand())
+                {
+                    command.CommandText = "select Id, Name" +
+                                          "from dbo.Asset;";
+                    var dataReader = command.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            int id = dataReader.GetInt32(0);
+                            string name = dataReader.GetString(1);
+                            var asset = new Asset(){Id=id, Name=name};
+                            Assets.Add(asset);
+                        }
+                    }
+                }
+            }
+        }
 
         public IEnumerable<Asset> GetAssets()
         {

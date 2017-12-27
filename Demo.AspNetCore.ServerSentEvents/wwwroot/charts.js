@@ -12,7 +12,7 @@ function setInnerHtml(el,data) {
 
 var source = new EventSource("/sse-financial");
 source.onopen = function () { chartTitleHandle.innerHTML = '-- CONNECTION ESTABLISHED --' };
-source.onerror = function () { appendInnerHtml(chartRef, '-- CONNECTION FAILED --'); };
+source.onerror = function () { appendInnerHtml(chartTitleHandle, '-- CONNECTION FAILED --'); };
 
 source.onmessage = function (event) {
 

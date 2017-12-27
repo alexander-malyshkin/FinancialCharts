@@ -17,13 +17,15 @@ namespace Demo.AspNetCore.ServerSentEvents.Controllers
             return View();
         }
 
+        //public IActionResult Chart()
+        //{
+        //    return View();
+        //}
+
+
         public IActionResult Chart()
         {
-            return View();
-        }
 
-        public IActionResult Chart(AssetModel assetModel)
-        {
             return View(assetModel);
         }
     }
