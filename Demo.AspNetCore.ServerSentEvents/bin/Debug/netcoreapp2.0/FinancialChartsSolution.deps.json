@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "438887ad08485221e2d4860ddf6d2716c5189857"
+    "signature": "5e3aaac3d2926c785d21bce09f10fc80e9ee2934"
   },
   "compilationOptions": {
     "defines": [
@@ -35,13 +35,28 @@
           "Microsoft.VisualStudio.Web.BrowserLink": "2.0.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.1",
           "Newtonsoft.Json": "11.0.1-beta1",
-          "StackExchange.Redis": "1.2.6"
+          "StackExchange.Redis": "1.2.6",
+          "jQWidgets.AspNetCore.Mvc.TagHelpers": "1.1.0"
         },
         "runtime": {
           "FinancialChartsSolution.dll": {}
         },
         "compile": {
           "FinancialChartsSolution.dll": {}
+        }
+      },
+      "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Razor": "2.0.1",
+          "Microsoft.Extensions.Caching.Memory": "2.0.0",
+          "Microsoft.Extensions.FileSystemGlobbing": "2.0.0",
+          "Microsoft.Extensions.Primitives": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/jQWidgets.AspNetCore.Mvc.TagHelpers.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/jQWidgets.AspNetCore.Mvc.TagHelpers.dll": {}
         }
       },
       "Lib.AspNetCore.ServerSentEvents/1.2.0": {
@@ -2947,6 +2962,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-751QCpJRHIAr2jIvcX8z8C0KVjhVaXvHlJ5vIXOSPEjgJaB5CWY4z07GzS4qDjG35tC9ALHUkxyf2vBNdwBQUA==",
+      "path": "jqwidgets.aspnetcore.mvc.taghelpers/1.1.0",
+      "hashPath": "jqwidgets.aspnetcore.mvc.taghelpers.1.1.0.nupkg.sha512"
     },
     "Lib.AspNetCore.ServerSentEvents/1.2.0": {
       "type": "package",

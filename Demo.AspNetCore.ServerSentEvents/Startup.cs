@@ -35,10 +35,10 @@ namespace FinancialCharts
             services.AddServerSentEvents();
             //services.AddSingleton<IHostedService, HeartbeatService>();
             services.AddSingleton<IHostedService, FinancialDataService>();
-
+            /*
             services.AddServerSentEvents<INotificationsServerSentEventsService, NotificationsServerSentEventsService>();
             services.AddNotificationsService(Configuration);
-
+            */
             services.AddMvc();
         }
 

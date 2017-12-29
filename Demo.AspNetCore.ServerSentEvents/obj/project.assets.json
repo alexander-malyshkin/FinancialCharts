@@ -2,6 +2,21 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Razor": "1.0.0",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0",
+          "Microsoft.Extensions.FileSystemGlobbing": "1.0.0",
+          "Microsoft.Extensions.Primitives": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/jQWidgets.AspNetCore.Mvc.TagHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/jQWidgets.AspNetCore.Mvc.TagHelpers.dll": {}
+        }
+      },
       "Lib.AspNetCore.ServerSentEvents/1.2.0": {
         "type": "package",
         "dependencies": {
@@ -3563,6 +3578,19 @@
     }
   },
   "libraries": {
+    "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
+      "sha512": "751QCpJRHIAr2jIvcX8z8C0KVjhVaXvHlJ5vIXOSPEjgJaB5CWY4z07GzS4qDjG35tC9ALHUkxyf2vBNdwBQUA==",
+      "type": "package",
+      "path": "jqwidgets.aspnetcore.mvc.taghelpers/1.1.0",
+      "files": [
+        "jqwidgets.aspnetcore.mvc.taghelpers.1.1.0.nupkg.sha512",
+        "jqwidgets.aspnetcore.mvc.taghelpers.nuspec",
+        "lib/net451/jQWidgets.AspNetCore.Mvc.TagHelpers.dll",
+        "lib/net451/jQWidgets.AspNetCore.Mvc.TagHelpers.xml",
+        "lib/netstandard1.6/jQWidgets.AspNetCore.Mvc.TagHelpers.dll",
+        "lib/netstandard1.6/jQWidgets.AspNetCore.Mvc.TagHelpers.xml"
+      ]
+    },
     "Lib.AspNetCore.ServerSentEvents/1.2.0": {
       "sha512": "3nkXab2czjD+ka/ptNEKDVoT0MVV8FboGFQxC/f95A5I/I22Tq2+OfAr/xCz6F+3PFlHMMd3SFfkWa/zffc0HQ==",
       "type": "package",
@@ -9836,7 +9864,8 @@
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1",
       "Newtonsoft.Json >= 11.0.1-beta1",
-      "StackExchange.Redis >= 1.2.6"
+      "StackExchange.Redis >= 1.2.6",
+      "jQWidgets.AspNetCore.Mvc.TagHelpers >= 1.1.0"
     ]
   },
   "packageFolders": {
@@ -9935,6 +9964,10 @@
           "StackExchange.Redis": {
             "target": "Package",
             "version": "[1.2.6, )"
+          },
+          "jQWidgets.AspNetCore.Mvc.TagHelpers": {
+            "target": "Package",
+            "version": "[1.1.0, )"
           }
         },
         "imports": [

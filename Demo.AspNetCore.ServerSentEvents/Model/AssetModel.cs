@@ -7,6 +7,7 @@ namespace FinancialCharts.Model
 {
     public class AssetModel
     {
+        public int AssetId { get; set; }
         public List<Asset> AssetList { get; set; }
     }
 

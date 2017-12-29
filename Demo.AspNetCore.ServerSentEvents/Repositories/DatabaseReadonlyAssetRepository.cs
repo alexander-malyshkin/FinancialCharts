@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using FinancialCharts.Model;
@@ -20,7 +21,7 @@ namespace FinancialCharts.Repositories
         {
             _connString = (string)ConfigHelper.GetConfigValue("DatabaseConnectionString");
             _provider = (string)ConfigHelper.GetConfigValue("DatabaseProviderName");
-
+            Assets = new List<Asset>();
             PopulateAssetList();
         }
 
@@ -28,6 +29,7 @@ namespace FinancialCharts.Repositories
         {
             _connString = connString;
             _provider = provider;
+            Assets = new List<Asset>();
             PopulateAssetList();
         }
 
@@ -36,19 +38,24 @@ namespace FinancialCharts.Repositories
             using (var dbConnection = new SqlConnection(_connString))
             {
                 dbConnection.Open();
-                using (var command = dbConnection.CreateCommand())
+                string query = "select Id, Name " +
+                               "from dbo.Asset ;";
+                using (var command = new SqlCommand(query,dbConnection))
                 {
-                    command.CommandText = "select Id, Name" +
-                                          "from dbo.Asset;";
-                    var dataReader = command.ExecuteReader();
-                    if (dataReader.HasRows)
+                    command.CommandType = CommandType.Text;
+                    //command.CommandText = "select Id, Name " +
+                    //                      "from dbo.Asset;";
+                    using (var dataReader = command.ExecuteReader())
                     {
-                        while (dataReader.Read())
+                        if (dataReader.HasRows)
                         {
-                            int id = dataReader.GetInt32(0);
-                            string name = dataReader.GetString(1);
-                            var asset = new Asset(){Id=id, Name=name};
-                            Assets.Add(asset);
+                            while (dataReader.Read())
+                            {
+                                int id = dataReader.GetInt32(0);
+                                string name = dataReader.GetValue(1).ToString();
+                                var asset = new Asset() {Id = id, Name = name};
+                                Assets.Add(asset);
+                            }
                         }
                     }
                 }
@@ -62,12 +69,12 @@ namespace FinancialCharts.Repositories
 
         public Asset GetAssetById(int id)
         {
-            throw new NotImplementedException();
+            return Assets.FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerator<Asset> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return Assets.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -75,11 +82,8 @@ namespace FinancialCharts.Repositories
             return GetEnumerator();
         }
 
-        public int Count { get; }
+        public int Count => Assets.Count;
 
-        public Asset this[int index]
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public Asset this[int index] => Assets[index];
     }
 }
