@@ -56,7 +56,7 @@ namespace FinancialCharts
                 .UseStaticFiles()
                 .UseMvc(routes =>
                 {
-                    routes.MapRoute(name: "default", template: "{controller=Financial}/{action=Chart}");
+                    routes.MapRoute(name: "default", template: "{controller=Financial}/{action=ChartTest}");
                     //routes.MapRoute(name: "normal", template: "{controller}/{action}");
                 });
         }

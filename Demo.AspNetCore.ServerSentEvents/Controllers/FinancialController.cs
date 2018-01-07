@@ -15,7 +15,10 @@ namespace Demo.AspNetCore.ServerSentEvents.Controllers
         // GET: /<controller>/
         public IActionResult ChartTest()
         {
-            return View();
+            var assetModel = new AssetModel();
+            var assetDbRepo = new DatabaseReadonlyAssetRepository();
+            assetModel.AssetList = assetDbRepo.Assets;
+            return View(assetModel);
         }
 
         public IActionResult Test()

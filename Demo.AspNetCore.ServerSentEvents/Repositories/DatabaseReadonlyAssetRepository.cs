@@ -37,27 +37,33 @@ namespace FinancialCharts.Repositories
         {
             using (var dbConnection = new SqlConnection(_connString))
             {
-                dbConnection.Open();
-                string query = "select Id, Name " +
-                               "from dbo.Asset ;";
-                using (var command = new SqlCommand(query,dbConnection))
+                try
                 {
-                    command.CommandType = CommandType.Text;
-                    //command.CommandText = "select Id, Name " +
-                    //                      "from dbo.Asset;";
-                    using (var dataReader = command.ExecuteReader())
+                    dbConnection.Open();
+                    string query = "select Id, Name " +
+                                   "from dbo.Asset ;";
+                    using (var command = new SqlCommand(query, dbConnection))
                     {
-                        if (dataReader.HasRows)
+                        command.CommandType = CommandType.Text;
+                        //command.CommandText = "select Id, Name " +
+                        //                      "from dbo.Asset;";
+                        using (var dataReader = command.ExecuteReader())
                         {
-                            while (dataReader.Read())
+                            if (dataReader.HasRows)
                             {
-                                int id = dataReader.GetInt32(0);
-                                string name = dataReader.GetValue(1).ToString();
-                                var asset = new Asset() {Id = id, Name = name};
-                                Assets.Add(asset);
+                                while (dataReader.Read())
+                                {
+                                    int id = dataReader.GetInt32(0);
+                                    string name = dataReader.GetValue(1).ToString();
+                                    var asset = new Asset() {Id = id, Name = name};
+                                    Assets.Add(asset);
+                                }
                             }
                         }
                     }
+                }
+                catch
+                {
                 }
             }
         }

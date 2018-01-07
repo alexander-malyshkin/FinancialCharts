@@ -1,11 +1,14 @@
-﻿<!doctype html>
+﻿@model AssetModel
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Tabs - Simple manipulation</title>
-    <link rel="stylesheet" href="common/css/jQueryUI/jquery-ui-1.10.3.custom.css">
-    <!--<link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <title>Personal Dashboard</title>
+
+
+
+    <link rel="stylesheet" href="common/css/jQueryUI/jquery-ui.css">
     <style>
         #dialog label, #dialog input {
             display: block;
@@ -23,113 +26,166 @@
             margin-top: 1em;
         }
 
-            #tabs li .ui-icon-close {
-                float: left;
-                margin: 0.4em 0.2em 0 0;
-                cursor: pointer;
-            }
+        #tabs li .ui-icon-close {
+            float: left;
+            margin: 0.4em 0.2em 0 0;
+            cursor: pointer;
+        }
 
         #add_tab {
             cursor: pointer;
         }
     </style>
+    
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            var tabTitle = $("#tab_title"),
-                tabContent = $("#tab_content"),
-                tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
-                tabCounter = 2;
+    
 
-            var tabs = $("#tabs").tabs();
 
-            // Modal dialog init: custom buttons and a "close" callback resetting the form inside
-            var dialog = $("#dialog").dialog({
-                autoOpen: false,
-                modal: true,
-                buttons: {
-                    Add: function () {
-                        addTab();
-                        $(this).dialog("close");
-                    },
-                    Cancel: function () {
-                        $(this).dialog("close");
-                    }
-                },
-                close: function () {
-                    form[0].reset();
-                }
-            });
 
-            // AddTab form: calls addTab function on submit and closes the dialog
-            var form = dialog.find("form").on("submit", function (event) {
-                addTab();
-                dialog.dialog("close");
-                event.preventDefault();
-            });
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- theme 3.0.2 -->
+    <link href="/common/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+    <!-- font Awesome -->
+    <link href="/common/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> 
+    <!-- Ionicons -->
+    <link href="/common/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="/common/css/AdminLTE.css" rel="stylesheet" type="text/css" /> 
 
-            // Actual addTab function: adds new tab using the input from the form above
-            function addTab() {
-                var label = tabTitle.val() || "Tab " + tabCounter,
-                    id = "tabs-" + tabCounter,
-                    li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label)),
-                    tabContentHtml = tabContent.val() || "Tab " + tabCounter + " content.";
 
-                tabs.find(".ui-tabs-nav").append(li);
-                tabs.append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
-                tabs.tabs("refresh");
-                tabCounter++;
-            }
 
-            // AddTab button: just opens the dialog
-            $("#add_tab")
-                .button()
-                .on("click", function () {
-                    dialog.dialog("open");
-                });
 
-            // Close icon: removing the tab on click
-            tabs.on("click", "span.ui-icon-close", function () {
-                var panelId = $(this).closest("li").remove().attr("aria-controls");
-                $("#" + panelId).remove();
-                tabs.tabs("refresh");
-            });
 
-            tabs.on("keyup", function (event) {
-                if (event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE) {
-                    var panelId = tabs.find(".ui-tabs-active").remove().attr("aria-controls");
-                    $("#" + panelId).remove();
-                    tabs.tabs("refresh");
-                }
-            });
-        });
-    </script>
+
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery 2.0.2 -->
+    <script src="common/js/jquery/jquery.min.js"></script>
+    <script src="HighCharts/js/highcharts.js"></script>
+    <!--<script src="MyScripts/PageFunctions.js"></script> -->
 </head>
-<body>
-    
-    <div id="dialog" title="Tab data">
-        <form>
-            <fieldset class="ui-helper-reset">
-                <label for="tab_title">Title</label>
-                <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
-                <label for="tab_content">Content</label>
-                <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
-            </fieldset>
-        </form>
-    </div>
-    
-    <button id="add_tab">Add Tab</button>
+<body class="skin-black">
 
-    <div id="tabs">
-        <ul>
-            <li><a href="#tabs-1">Nunc tincidunt</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
-        </ul>
-        <div id="tabs-1">
-            <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+
+<!-- header logo: style can be found in header.less -->
+<header class="header">
+    <a href="/" class="logo">
+        <!-- Add the class icon to your logo image or logo icon to add the margining -->
+        Financial Charts
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>Sign Out</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+</header>
 
 
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="left-side sidebar-offcanvas">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li>
+
+                    <a>
+                        <i class="fa fa-bar-chart-o"></i> <span>Assets</span>
+                    </a>
+
+
+                    <select id="AssetsMenu" asp-for="AssetList" class="sidebar-menu"
+                            asp-items="@(new SelectList(Model.AssetList, "Id", "Name"))"
+                            onclick="OnAssetSelected"></select>
+
+
+
+
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-dollar"></i> <span>My Stocks</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <aside class="right-side">
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                My Web Statistics
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">
+                    My Web Statistics
+                </li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div id="dialog" title="Tab data">
+                <form>
+                    <fieldset class="ui-helper-reset">
+                        <label for="tab_title">Title</label>
+                        <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+                        <label for="tab_content">Content</label>
+                        <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
+                    </fieldset>
+                </form>
+            </div>
+ 
+            <button id="add_tab">Add Tab</button>
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">tab 1</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
+                </ul>
+                <div id="tabs-1">
+                    <div id="browserChart">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </aside>
+    <!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
+<!-- Bootstrap -->
+<script src="/common/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- AdminLTE App -->
+<script src="/common/js/AdminLTE/app.js" type="text/javascript"></script>
+<script src="MyScripts/charts.js"></script>
+<script src="MyScripts/tabs.js"></script>
 </body>
 </html>
