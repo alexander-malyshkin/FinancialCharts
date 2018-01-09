@@ -31,17 +31,21 @@ var form = dialog.find("form").on("submit", function (event) {
 });
 
 // Actual addTab function: adds new tab using the input from the form above
-function addTab() {
-    var label = tabTitle.val() || "Tab " + tabCounter,
-        id = "tabs-" + tabCounter,
-        li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label)),
-        tabContentHtml = tabContent.val() || "Tab " + tabCounter + " content.";
+function addTab(assetId, assetName ) {
+    var label = assetName,
+        id = "tabs-" + assetId,
+        li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
 
     tabs.find(".ui-tabs-nav").append(li);
-    tabs.append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
+    tabs.append("<div id='" + id + "'></div>");
     tabs.tabs("refresh");
-    tabCounter++;
+    //tabCounter++;
 }
+
+function OnAssetSelected(assetId, assetName) {
+    addTab(assetId, assetName);
+}
+
 
 // AddTab button: just opens the dialog
 $("#add_tab")

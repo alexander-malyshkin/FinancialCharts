@@ -2,38 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using FinancialCharts.Model;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
 
 namespace FinancialCharts.Repositories
 {
-    public class DatabaseReadonlyAssetRepository : IReadonlyAssetRepository, IReadOnlyList<Asset>
+    public class DatabaseReadonlyExpDatesRepository : IReadonlyExpDatesRepository, IReadOnlyList<ExpirationDate>
     {
         private string _connString;
         private string _provider;
-        
-        public List<Asset> Assets { get; }
 
-        public DatabaseReadonlyAssetRepository()
+        public List<ExpirationDate> DatesList { get; }
+
+        public DatabaseReadonlyExpDatesRepository()
         {
             _connString = (string)ConfigHelper.GetConfigValue("DatabaseConnectionString");
             _provider = (string)ConfigHelper.GetConfigValue("DatabaseProviderName");
-            Assets = new List<Asset>();
-            PopulateAssetList();
+            DatesList = new List<ExpirationDate>();
+            PopulateDatesList();
         }
 
-        public DatabaseReadonlyAssetRepository(string connString, string provider)
-        {
-            _connString = connString;
-            _provider = provider;
-            Assets = new List<Asset>();
-            PopulateAssetList();
-        }
-
-        private void PopulateAssetList()
+        private void PopulateDatesList()
         {
             using (var dbConnection = new SqlConnection(_connString))
             {
@@ -55,8 +46,8 @@ namespace FinancialCharts.Repositories
                                 {
                                     int id = dataReader.GetInt32(0);
                                     string name = dataReader.GetValue(1).ToString();
-                                    var asset = new Asset() {Id = id, Name = name};
-                                    Assets.Add(asset);
+                                    var asset = new Asset() { Id = id, Name = name };
+                                    DatesList.Add(asset);
                                 }
                             }
                         }
@@ -68,19 +59,20 @@ namespace FinancialCharts.Repositories
             }
         }
 
-        public IEnumerable<Asset> GetAssets()
+
+        public IEnumerable<ExpirationDate> GetSeries()
         {
-            return Assets;
+            throw new NotImplementedException();
         }
 
-        public Asset GetAssetById(int id)
+        public ExpirationDate GetExpDateById(int id)
         {
-            return Assets.FirstOrDefault(x => x.Id == id);
+            throw new NotImplementedException();
         }
 
-        public IEnumerator<Asset> GetEnumerator()
+        public IEnumerator<ExpirationDate> GetEnumerator()
         {
-            return Assets.GetEnumerator();
+            throw new NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -88,8 +80,11 @@ namespace FinancialCharts.Repositories
             return GetEnumerator();
         }
 
-        public int Count => Assets.Count;
+        public int Count { get; }
 
-        public Asset this[int index] => Assets[index];
+        public ExpirationDate this[int index]
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }
