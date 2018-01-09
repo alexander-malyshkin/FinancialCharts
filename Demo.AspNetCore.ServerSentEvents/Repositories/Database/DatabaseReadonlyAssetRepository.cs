@@ -18,57 +18,17 @@ namespace FinancialCharts.Repositories
         
         public List<Asset> Assets { get; }
 
-        public DatabaseReadonlyAssetRepository()
-        {
-            _connString = (string)ConfigHelper.GetConfigValue("DatabaseConnectionString");
-            _provider = (string)ConfigHelper.GetConfigValue("DatabaseProviderName");
-            Assets = new List<Asset>();
-            PopulateAssetList();
-        }
+        
 
-        public DatabaseReadonlyAssetRepository(string connString, string provider)
+        public DatabaseReadonlyAssetRepository()
         {
             _connString = DatabaseHelper.GetConnStringAndProvider()["connString"];
             _provider = DatabaseHelper.GetConnStringAndProvider()["provider"];
 
-            Assets = new List<Asset>();
-            Assets = (List<Asset>)DatabaseHelper.GetDatabaseEntities();
+            Assets = (List<Asset>)DatabaseHelper.GetDatabaseEntities(_connString, Entity.Asset);
         }
 
-        private void PopulateAssetList()
-        {
-            using (var dbConnection = new SqlConnection(_connString))
-            {
-                try
-                {
-                    dbConnection.Open();
-                    string query = "select Id, Name " +
-                                   "from dbo.Asset ;";
-                    using (var command = new SqlCommand(query, dbConnection))
-                    {
-                        command.CommandType = CommandType.Text;
-                        //command.CommandText = "select Id, Name " +
-                        //                      "from dbo.Asset;";
-                        using (var dataReader = command.ExecuteReader())
-                        {
-                            if (dataReader.HasRows)
-                            {
-                                while (dataReader.Read())
-                                {
-                                    int id = dataReader.GetInt32(0);
-                                    string name = dataReader.GetValue(1).ToString();
-                                    var asset = new Asset() {Id = id, Name = name};
-                                    Assets.Add(asset);
-                                }
-                            }
-                        }
-                    }
-                }
-                catch
-                {
-                }
-            }
-        }
+        
 
         public IEnumerable<Asset> GetAssets()
         {

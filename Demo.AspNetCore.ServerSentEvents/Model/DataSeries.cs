@@ -7,9 +7,13 @@ namespace FinancialCharts.Model
 {
     public class DataSeries
     {
-        public string name { get; set; }
-        public float[] data { get; set; }
-
+        public int Id { get; }
+        public int AssetId { get; }
+        public int ExpirationDateId { get; }
+        public int IndividualSeriesId { get; }
+        public decimal[] Strike { get; set; }
+        public decimal[] Volatility { get; set; }
+        public string Name { get; set; }
     }
 
     public static class DataSeriesHelper
@@ -20,13 +24,13 @@ namespace FinancialCharts.Model
             for (int i = 0; i < seriesAmount; i++)
             {
                 string name = "Series " + i;
-                float[] data = new float[seriesLength];
+                decimal[] volatility = new decimal[seriesLength];
                 for (int j = 0; j < seriesLength; j++)
                 {
-                    data[j] = (float)(new Random()).NextDouble();
+                    volatility[j] = (decimal)(new Random()).NextDouble();
                 }
 
-                DataSeries dt = new DataSeries(){name=name,data=data};
+                DataSeries dt = new DataSeries(){Name=name,Volatility=volatility};
                 res.Add(dt);
             }
             return res;

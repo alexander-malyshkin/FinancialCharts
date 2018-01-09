@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using FinancialCharts.Model;
+using FinancialCharts.Repositories.Database;
 
 namespace FinancialCharts.Repositories
 {
@@ -18,61 +19,26 @@ namespace FinancialCharts.Repositories
 
         public DatabaseReadonlyExpDatesRepository()
         {
-            _connString = (string)ConfigHelper.GetConfigValue("DatabaseConnectionString");
-            _provider = (string)ConfigHelper.GetConfigValue("DatabaseProviderName");
-            DatesList = new List<ExpirationDate>();
-            PopulateDatesList();
-        }
+            _connString = DatabaseHelper.GetConnStringAndProvider()["connString"];
+            _provider = DatabaseHelper.GetConnStringAndProvider()["provider"];
 
-        private void PopulateDatesList()
-        {
-            using (var dbConnection = new SqlConnection(_connString))
-            {
-                try
-                {
-                    dbConnection.Open();
-                    string query = "select Id, Name " +
-                                   "from dbo.Asset ;";
-                    using (var command = new SqlCommand(query, dbConnection))
-                    {
-                        command.CommandType = CommandType.Text;
-                        //command.CommandText = "select Id, Name " +
-                        //                      "from dbo.Asset;";
-                        using (var dataReader = command.ExecuteReader())
-                        {
-                            if (dataReader.HasRows)
-                            {
-                                while (dataReader.Read())
-                                {
-                                    int id = dataReader.GetInt32(0);
-                                    string name = dataReader.GetValue(1).ToString();
-                                    var asset = new Asset() { Id = id, Name = name };
-                                    DatesList.Add(asset);
-                                }
-                            }
-                        }
-                    }
-                }
-                catch
-                {
-                }
-            }
+            DatesList = (List<ExpirationDate>)DatabaseHelper.GetDatabaseEntities(_connString, Entity.ExpirationDate);
         }
 
 
-        public IEnumerable<ExpirationDate> GetSeries()
+        public IEnumerable<ExpirationDate> GetDates()
         {
-            throw new NotImplementedException();
+            return DatesList;
         }
 
-        public ExpirationDate GetExpDateById(int id)
+        public ExpirationDate GetDateById(int id)
         {
-            throw new NotImplementedException();
+            return DatesList.FirstOrDefault(d => d.Id == id);
         }
 
         public IEnumerator<ExpirationDate> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return DatesList.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -80,11 +46,8 @@ namespace FinancialCharts.Repositories
             return GetEnumerator();
         }
 
-        public int Count { get; }
+        public int Count => DatesList.Count;
 
-        public ExpirationDate this[int index]
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public ExpirationDate this[int index] => DatesList[index];
     }
 }
