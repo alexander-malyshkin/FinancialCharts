@@ -42,7 +42,10 @@ function addTab(assetId, assetName ) {
     //tabCounter++;
 }
 
-function OnAssetSelected(assetId, assetName) {
+function OnAssetSelected() {
+    var assetsMenu = document.getElementById("AssetsMenu");
+    var assetId = assetsMenu.options[assetsMenu.selectedIndex].value;
+    var assetName = assetsMenu.options[assetsMenu.selectedIndex].text;
     addTab(assetId, assetName);
 }
 
