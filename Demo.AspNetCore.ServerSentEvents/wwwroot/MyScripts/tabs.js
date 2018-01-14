@@ -31,24 +31,79 @@ var form = dialog.find("form").on("submit", function (event) {
 });
 
 // Actual addTab function: adds new tab using the input from the form above
-function addTab(assetId, assetName ) {
+function addTab(assetId, assetName, ExpDatesList) {
     var label = assetName,
         id = "tabs-" + assetId,
         li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
 
     tabs.find(".ui-tabs-nav").append(li);
-    tabs.append("<div id='" + id + "'></div>");
+    var tabPanelContentHtml = constructTabPanel(assetId, ExpDatesList);
+    tabs.append("<div id='" + id + "'>" + tabPanelContentHtml + "</div>");
     tabs.tabs("refresh");
     //tabCounter++;
 }
 
-function OnAssetSelected() {
+function constructTabPanel(assetId, ExpDatesList) {
+    var tabPanelHtml = '';
+    [].forEach.call(ExpDatesList, function (singleDate) {
+        if (singleDate.AssetId == assetId) {
+            tabPanelHtml += '<input type="checkbox" id="test" value="val"> test value</input> <br/>';
+        }
+    });
+    return 
+}
+
+function OnAssetSelected(ExpDatesList) {
     var assetsMenu = document.getElementById("AssetsMenu");
     var assetId = assetsMenu.options[assetsMenu.selectedIndex].value;
     var assetName = assetsMenu.options[assetsMenu.selectedIndex].text;
-    addTab(assetId, assetName);
+
+    // check if this tab is already open
+    var tabPanel = document.getElementById("tabs");
+    var tabId = "tabs-" + assetId;
+    var tab = tabPanel.querySelector('li[aria-controls="'
+        + tabId + '"]');
+    if (tab == null) {
+        addTab(assetId, assetName, ExpDatesList);
+        var tab = tabPanel.querySelector('li[aria-controls="'
+            + tabId + '"]');
+    }
+
+    // put focus on tab corresponding to selected asset
+    PutFocusOnTab(tabId, tab, tabPanel);
 }
 
+function PutFocusOnTab(tabId, tab, tabPanel) {
+    tab.setAttribute("aria-selected", "true");
+    tab.setAttribute("aria-expanded", "true");
+    tab.setAttribute("aria-hidden", "false");
+    tab.classList.add("ui-tabs-active");
+    tab.classList.add("ui-state-active");
+
+    // in the panel there is a separate div with id equal to tabId
+    var tabBlock = document.getElementById(tabId);
+    tabBlock.setAttribute("style", "display: block");
+    tabBlock.setAttribute("aria-hidden", "false");
+
+    var otherTabs = tabPanel.querySelectorAll('li:not([aria-controls="' + tabId + '"])');
+    [].forEach.call(otherTabs, function(otherTab) {
+        RemoveFocusFromTab(otherTab, tabPanel);
+    });
+    
+}
+
+function RemoveFocusFromTab(tab, tabPanel) {
+    tab.setAttribute("aria-selected", "false");
+    tab.setAttribute("aria-expanded", "false");
+    tab.setAttribute("aria-hidden", "true");
+    tab.classList.remove("ui-tabs-active");
+    tab.classList.remove("ui-state-active");
+
+    var tabId = tab.getAttribute("aria-controls");
+    var tabBlock = document.getElementById(tabId);
+    tabBlock.setAttribute("style", "display: none");
+    tabBlock.setAttribute("aria-hidden", "true");
+}
 
 // AddTab button: just opens the dialog
 $("#add_tab")

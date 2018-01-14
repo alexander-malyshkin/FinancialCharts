@@ -1,4 +1,6 @@
-﻿@model AssetModel
+﻿@model Tuple<AssetModel,ExpDatesModel>
+@*@model AssetModel*@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,9 +120,9 @@
                         </a>
 
 
-                        <select id="AssetsMenu" asp-for="AssetList" class="sidebar-menu"
-                                asp-items="@(new SelectList(Model.AssetList, "Id", "Name"))"
-                                onclick="OnAssetSelected()"></select>
+                        <select id="AssetsMenu" asp-for="Item1.AssetList" class="sidebar-menu"
+                                asp-items="@(new SelectList(Model.Item1.AssetList, "Id", "Name"))"
+                                onclick="OnAssetSelected(@Model.Item2.ExpDatesList)"></select>
 
 
 
@@ -169,10 +171,7 @@
                         <!--<li><a href="#tabs-1">tab 1</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
                         -->
                     </ul>
-                    <div id="tabs-1">
-                        <div id="browserChart">
-                        </div>
-                    </div>
+                    
                 </div>
 
             </section>

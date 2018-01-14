@@ -16,60 +16,64 @@ source.onerror = function () { appendInnerHtml(chartTitleHandle, '-- CONNECTION 
 
 source.onmessage = function (event) {
 
-    console.log('SSE EVENT: { id: "' + event.id + '", data: "' + event.data + '" }');
+    //console.log('SSE EVENT: { id: "' + event.id + '", data: "' + event.data + '" }');
 
-    var seriesInput = JSON.parse(event.data);
+    //var seriesInput = JSON.parse(event.data);
 
-
-    Highcharts.chart('browserChart', {
-
-        title: {
-            text: 'Volatility Smile'
-        },
-
-        subtitle: {
-            text: ''
-        },
-
-        yAxis: {
-            title: {
-                text: 'VOL'
-            }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
+    //var tabsArray = document.getElementById("tabs").querySelectorAll('div[role="tabpanel"]');
+    //[].forEach.call(tabsArray, function (tabPanel) {
         
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 100
-            }
-        },
+    //});
 
-        series: seriesInput,
+    //Highcharts.chart('browserChart', {
+
+    //    title: {
+    //        text: 'Volatility Smile'
+    //    },
+
+    //    subtitle: {
+    //        text: ''
+    //    },
+
+    //    yAxis: {
+    //        title: {
+    //            text: 'VOL'
+    //        }
+    //    },
+    //    legend: {
+    //        layout: 'vertical',
+    //        align: 'right',
+    //        verticalAlign: 'middle'
+    //    },
+        
+    //    plotOptions: {
+    //        series: {
+    //            label: {
+    //                connectorAllowed: false
+    //            },
+    //            pointStart: 100
+    //        }
+    //    },
+
+    //    series: seriesInput,
 
 
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
-                }
-            }]
-        }
+    //    responsive: {
+    //        rules: [{
+    //            condition: {
+    //                maxWidth: 500
+    //            },
+    //            chartOptions: {
+    //                legend: {
+    //                    layout: 'horizontal',
+    //                    align: 'center',
+    //                    verticalAlign: 'bottom'
+    //                }
+    //            }
+    //        }]
+    //    }
 
-    });
+    //});
 
     
 
@@ -78,10 +82,10 @@ source.onmessage = function (event) {
 
 
         
-        //setInnerHtml(chartRef, event.data);
+    //    //setInnerHtml(chartRef, event.data);
 
 
-        if (event.id === "CLOSE") {
-            source.close();
-        }
+    //    if (event.id === "CLOSE") {
+    //        source.close();
+    //    }
     }

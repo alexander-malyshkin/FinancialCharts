@@ -11,4 +11,9 @@ namespace FinancialCharts.Model
         public DateTime ExpDate { get; set; }
         public int AssetId { get; set; }
     }
+
+    public class ExpDatesModel
+    {
+        public List<ExpirationDate> ExpDatesList { get; set; }
+    }
 }
