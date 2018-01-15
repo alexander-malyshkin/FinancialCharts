@@ -122,7 +122,9 @@
 
                         <select id="AssetsMenu" asp-for="Item1.AssetList" class="sidebar-menu"
                                 asp-items="@(new SelectList(Model.Item1.AssetList, "Id", "Name"))"
-                                onclick="OnAssetSelected(@Model.Item2.ExpDatesList)"></select>
+                                onclick="OnAssetSelected(
+                                    @Html.Raw(Json.Serialize(Model.Item2.ExpDatesList ) ) 
+                                )"></select>
 
 
 

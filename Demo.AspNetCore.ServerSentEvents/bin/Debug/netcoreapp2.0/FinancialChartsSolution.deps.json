@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "5e3aaac3d2926c785d21bce09f10fc80e9ee2934"
+    "signature": "cb9185b8047312836b32aa12aade22a10665b67c"
   },
   "compilationOptions": {
     "defines": [
@@ -36,6 +36,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.1",
           "Newtonsoft.Json": "11.0.1-beta1",
           "StackExchange.Redis": "1.2.6",
+          "fluorinefx": "1.2.4",
           "jQWidgets.AspNetCore.Mvc.TagHelpers": "1.1.0"
         },
         "runtime": {
@@ -43,6 +44,21 @@
         },
         "compile": {
           "FinancialChartsSolution.dll": {}
+        }
+      },
+      "fluorinefx/1.2.4": {
+        "dependencies": {
+          "log4net": "1.2.10"
+        },
+        "runtime": {
+          "lib/net40/FluorineFx.ServiceBrowser.dll": {},
+          "lib/net40/FluorineFx.dll": {},
+          "lib/net40/antlr.runtime.dll": {}
+        },
+        "compile": {
+          "lib/net40/FluorineFx.ServiceBrowser.dll": {},
+          "lib/net40/FluorineFx.dll": {},
+          "lib/net40/antlr.runtime.dll": {}
         }
       },
       "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
@@ -109,6 +125,14 @@
             "rid": "win-x86",
             "assetType": "native"
           }
+        }
+      },
+      "log4net/1.2.10": {
+        "runtime": {
+          "lib/2.0/log4net.dll": {}
+        },
+        "compile": {
+          "lib/2.0/log4net.dll": {}
         }
       },
       "Microsoft.AspNetCore/2.0.1": {
@@ -2963,6 +2987,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "fluorinefx/1.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6v64MqI0qlx1C0OIe+i2QByZ/WhvzIXXlokZp5l1Y4ig9HZyHc3cvygs2ZIYLkunip2hFuwU96A12nddKYKung==",
+      "path": "fluorinefx/1.2.4",
+      "hashPath": "fluorinefx.1.2.4.nupkg.sha512"
+    },
     "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -2983,6 +3014,13 @@
       "sha512": "sha512-GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "path": "libuv/1.10.0",
       "hashPath": "libuv.1.10.0.nupkg.sha512"
+    },
+    "log4net/1.2.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yP7PCpxPt5cB9yiRAvCwyW5YRqXV4jM4tpVLnm/ls2nJt786l5srbSdm5xIEVMXz/kOYqLKP177Gyqey1wdP/A==",
+      "path": "log4net/1.2.10",
+      "hashPath": "log4net.1.2.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.0.1": {
       "type": "package",

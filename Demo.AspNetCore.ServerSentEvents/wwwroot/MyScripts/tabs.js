@@ -43,14 +43,15 @@ function addTab(assetId, assetName, ExpDatesList) {
     //tabCounter++;
 }
 
-function constructTabPanel(assetId, ExpDatesList) {
+function constructTabPanel(assetId, expDatesList) {
     var tabPanelHtml = '';
-    [].forEach.call(ExpDatesList, function (singleDate) {
-        if (singleDate.AssetId == assetId) {
-            tabPanelHtml += '<input type="checkbox" id="test" value="val"> test value</input> <br/>';
+    [].forEach.call(expDatesList, function (singleDate) {
+        if (singleDate.AssetId === assetId) {
+            tabPanelHtml += '<input type="checkbox" id="chk-' + singleDate.Id
+                + '"> ' + singleDate.ExpDate + '</input> <br/>';
         }
     });
-    return 
+    return tabPanelHtml;
 }
 
 function OnAssetSelected(ExpDatesList) {

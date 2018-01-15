@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "fluorinefx/1.2.4": {
+        "type": "package",
+        "dependencies": {
+          "log4net": "[1.2.10]"
+        },
+        "compile": {
+          "lib/net40/FluorineFx.ServiceBrowser.dll": {},
+          "lib/net40/FluorineFx.dll": {},
+          "lib/net40/antlr.runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FluorineFx.ServiceBrowser.dll": {},
+          "lib/net40/FluorineFx.dll": {},
+          "lib/net40/antlr.runtime.dll": {}
+        }
+      },
       "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
         "type": "package",
         "dependencies": {
@@ -69,6 +85,15 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "log4net/1.2.10": {
+        "type": "package",
+        "compile": {
+          "lib/2.0/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/2.0/log4net.dll": {}
         }
       },
       "Microsoft.AspNetCore/2.0.1": {
@@ -3578,6 +3603,26 @@
     }
   },
   "libraries": {
+    "fluorinefx/1.2.4": {
+      "sha512": "6v64MqI0qlx1C0OIe+i2QByZ/WhvzIXXlokZp5l1Y4ig9HZyHc3cvygs2ZIYLkunip2hFuwU96A12nddKYKung==",
+      "type": "package",
+      "path": "fluorinefx/1.2.4",
+      "files": [
+        "content/Gateway.aspx.cs.pp",
+        "content/Gateway.aspx.designer.cs.pp",
+        "content/Gateway.aspx.pp",
+        "content/app.config.transform",
+        "content/web.config.transform",
+        "fluorinefx.1.2.4.nupkg.sha512",
+        "fluorinefx.nuspec",
+        "lib/net35/FluorineFx.ServiceBrowser.dll",
+        "lib/net35/FluorineFx.dll",
+        "lib/net35/antlr.runtime.dll",
+        "lib/net40/FluorineFx.ServiceBrowser.dll",
+        "lib/net40/FluorineFx.dll",
+        "lib/net40/antlr.runtime.dll"
+      ]
+    },
     "jQWidgets.AspNetCore.Mvc.TagHelpers/1.1.0": {
       "sha512": "751QCpJRHIAr2jIvcX8z8C0KVjhVaXvHlJ5vIXOSPEjgJaB5CWY4z07GzS4qDjG35tC9ALHUkxyf2vBNdwBQUA==",
       "type": "package",
@@ -3620,6 +3665,21 @@
         "runtimes/win-arm/native/libuv.dll",
         "runtimes/win-x64/native/libuv.dll",
         "runtimes/win-x86/native/libuv.dll"
+      ]
+    },
+    "log4net/1.2.10": {
+      "sha512": "yP7PCpxPt5cB9yiRAvCwyW5YRqXV4jM4tpVLnm/ls2nJt786l5srbSdm5xIEVMXz/kOYqLKP177Gyqey1wdP/A==",
+      "type": "package",
+      "path": "log4net/1.2.10",
+      "files": [
+        "lib/1.0/log4net.dll",
+        "lib/1.0/log4net.xml",
+        "lib/1.1/log4net.dll",
+        "lib/1.1/log4net.xml",
+        "lib/2.0/log4net.dll",
+        "lib/2.0/log4net.xml",
+        "log4net.1.2.10.nupkg.sha512",
+        "log4net.nuspec"
       ]
     },
     "Microsoft.AspNetCore/2.0.1": {
@@ -9865,6 +9925,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1",
       "Newtonsoft.Json >= 11.0.1-beta1",
       "StackExchange.Redis >= 1.2.6",
+      "fluorinefx >= 1.2.4",
       "jQWidgets.AspNetCore.Mvc.TagHelpers >= 1.1.0"
     ]
   },
@@ -9965,6 +10026,10 @@
             "target": "Package",
             "version": "[1.2.6, )"
           },
+          "fluorinefx": {
+            "target": "Package",
+            "version": "[1.2.4, )"
+          },
           "jQWidgets.AspNetCore.Mvc.TagHelpers": {
             "target": "Package",
             "version": "[1.1.0, )"
@@ -9977,5 +10042,27 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'fluorinefx 1.2.4' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "fluorinefx",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'log4net 1.2.10' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "log4net",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }
