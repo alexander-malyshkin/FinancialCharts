@@ -1,14 +1,3 @@
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.csprojResolveAssemblyReference.cache
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.csproj.CoreCompileInputs.cache
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.AssemblyInfoInputs.cache
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.AssemblyInfo.cs
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.deps.json
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.runtimeconfig.json
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.runtimeconfig.dev.json
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.dll
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.pdb
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialChartsSolution.dll
-C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialChartsSolution.pdb
 C:\projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.deps.json
 C:\projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.runtimeconfig.json
 C:\projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.runtimeconfig.dev.json
@@ -20,3 +9,14 @@ C:\projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreap
 C:\projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialChartsSolution.dll
 C:\projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialChartsSolution.pdb
 C:\projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.csprojResolveAssemblyReference.cache
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.deps.json
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.runtimeconfig.json
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.runtimeconfig.dev.json
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.dll
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\bin\Debug\netcoreapp2.0\FinancialChartsSolution.pdb
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.csproj.CoreCompileInputs.cache
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.AssemblyInfoInputs.cache
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.AssemblyInfo.cs
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialChartsSolution.dll
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialChartsSolution.pdb
+C:\C# projects\FinancialCharts\Demo.AspNetCore.ServerSentEvents\obj\Debug\netcoreapp2.0\FinancialCharts.csprojResolveAssemblyReference.cache

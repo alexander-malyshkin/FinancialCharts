@@ -31,13 +31,13 @@ var form = dialog.find("form").on("submit", function (event) {
 });
 
 // Actual addTab function: adds new tab using the input from the form above
-function addTab(assetId, assetName, ExpDatesList) {
+function addTab(assetId, assetName, datesList) {
     var label = assetName,
         id = "tabs-" + assetId,
         li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
 
     tabs.find(".ui-tabs-nav").append(li);
-    var tabPanelContentHtml = constructTabPanel(assetId, ExpDatesList);
+    var tabPanelContentHtml = constructTabPanel(assetId, datesList);
     tabs.append("<div id='" + id + "'>" + tabPanelContentHtml + "</div>");
     tabs.tabs("refresh");
     //tabCounter++;
@@ -51,10 +51,16 @@ function constructTabPanel(assetId, expDatesList) {
                 + '"> ' + singleDate.ExpDate + '</input> <br/>';
         }
     });
-    return tabPanelHtml;
+    return '<input type="checkbox" id="chk-' + assetId + '"> ' + '</input>';
 }
 
-function OnAssetSelected(ExpDatesList) {
+function OnAssetSelected() {
+    var datesList = '[{'
+        + '"id": 1,'
+        + '"expDate": "2017-12-01T00:00:00",'
+        + '"assetId": 1'
+        +'}]';
+
     var assetsMenu = document.getElementById("AssetsMenu");
     var assetId = assetsMenu.options[assetsMenu.selectedIndex].value;
     var assetName = assetsMenu.options[assetsMenu.selectedIndex].text;
@@ -64,9 +70,9 @@ function OnAssetSelected(ExpDatesList) {
     var tabId = "tabs-" + assetId;
     var tab = tabPanel.querySelector('li[aria-controls="'
         + tabId + '"]');
-    if (tab == null) {
-        addTab(assetId, assetName, ExpDatesList);
-        var tab = tabPanel.querySelector('li[aria-controls="'
+    if (tab === null) {
+        addTab(assetId, assetName, datesList);
+        tab = tabPanel.querySelector('li[aria-controls="'
             + tabId + '"]');
     }
 

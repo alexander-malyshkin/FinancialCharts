@@ -69,7 +69,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
+    
     <script src="HighCharts/js/highcharts.js"></script>
     <!--<script src="MyScripts/PageFunctions.js"></script> -->
 </head>
@@ -122,10 +122,8 @@
 
                         <select id="AssetsMenu" asp-for="Item1.AssetList" class="sidebar-menu"
                                 asp-items="@(new SelectList(Model.Item1.AssetList, "Id", "Name"))"
-                                onclick="OnAssetSelected(
-                                    @Html.Raw(Json.Serialize(Model.Item2.ExpDatesList ) ) 
-                                )"></select>
-
+                                onclick="OnAssetSelected()"></select>
+                        
 
 
 
@@ -175,7 +173,9 @@
                     </ul>
                     
                 </div>
-
+                <div>
+                    @Json.Serialize(@Model.Item2.ExpDatesList)
+                </div>
             </section>
             <!-- /.content -->
         </aside>

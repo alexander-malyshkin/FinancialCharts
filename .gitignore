@@ -4,3 +4,7 @@
 
 /.vs
 /Demo.AspNetCore.ServerSentEvents/Db
+/Demo.AspNetCore.ServerSentEvents/bin/Any CPU/Release/netcoreapp2.0
+/Demo.AspNetCore.ServerSentEvents/obj/Any CPU/Release/netcoreapp2.0
+/Demo.AspNetCore.ServerSentEvents/obj/Release/netcoreapp2.0/PubTmp/Out
+/Demo.AspNetCore.ServerSentEvents/Properties/PublishProfiles
