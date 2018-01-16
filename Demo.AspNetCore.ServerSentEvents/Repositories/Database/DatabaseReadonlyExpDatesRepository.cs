@@ -15,30 +15,31 @@ namespace FinancialCharts.Repositories
         private string _connString;
         private string _provider;
 
-        public List<ExpirationDate> DatesList { get; }
+        private List<ExpirationDate> datesList;
 
         public DatabaseReadonlyExpDatesRepository()
         {
             _connString = DatabaseHelper.GetConnStringAndProvider()["connString"];
             _provider = DatabaseHelper.GetConnStringAndProvider()["provider"];
 
-            DatesList = (List<ExpirationDate>)DatabaseHelper.GetDatabaseEntities(_connString, Entity.ExpirationDate);
+            datesList = (List<ExpirationDate>)DatabaseHelper.GetDatabaseEntities(_connString, Entity.ExpirationDate);
+            datesList.Sort();
         }
 
 
         public IEnumerable<ExpirationDate> GetDates()
         {
-            return DatesList;
+            return datesList;
         }
 
         public ExpirationDate GetDateById(int id)
         {
-            return DatesList.FirstOrDefault(d => d.Id == id);
+            return datesList.FirstOrDefault(d => d.Id == id);
         }
 
         public IEnumerator<ExpirationDate> GetEnumerator()
         {
-            return DatesList.GetEnumerator();
+            return datesList.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -46,8 +47,8 @@ namespace FinancialCharts.Repositories
             return GetEnumerator();
         }
 
-        public int Count => DatesList.Count;
+        public int Count => datesList.Count;
 
-        public ExpirationDate this[int index] => DatesList[index];
+        public ExpirationDate this[int index] => datesList[index];
     }
 }

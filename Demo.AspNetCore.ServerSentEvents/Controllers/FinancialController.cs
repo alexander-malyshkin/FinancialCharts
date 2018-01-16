@@ -2,6 +2,7 @@
 using FinancialCharts.Model;
 using FinancialCharts.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,8 +17,9 @@ namespace FinancialCharts.Controllers
             var datesModel = new ExpDatesModel();
             var assetDbRepo = new DatabaseReadonlyAssetRepository();
             var datesDbRepo = new DatabaseReadonlyExpDatesRepository();
+            var dates = datesDbRepo.GetDates();
             assetModel.AssetList = assetDbRepo.Assets;
-            datesModel.ExpDatesList = datesDbRepo.DatesList;
+            datesModel.ExpDatesList = JsonConvert.SerializeObject(dates);
 
             var compositeModel = new Tuple<AssetModel, ExpDatesModel>(assetModel, datesModel);
 

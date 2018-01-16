@@ -46,20 +46,23 @@ function addTab(assetId, assetName, datesList) {
 function constructTabPanel(assetId, expDatesList) {
     var tabPanelHtml = '';
     [].forEach.call(expDatesList, function (singleDate) {
-        if (singleDate.AssetId === assetId) {
+        
+        if ( parseInt(singleDate.AssetId) == assetId) {
             tabPanelHtml += '<input type="checkbox" id="chk-' + singleDate.Id
-                + '"> ' + singleDate.ExpDate + '</input> <br/>';
+                + '"> ' + singleDate.DateString + '</input> <br/>';
         }
     });
-    return '<input type="checkbox" id="chk-' + assetId + '"> ' + '</input>';
+    //return '<input type="checkbox" id="chk-' + assetId + '"> ' + '</input>';
+    return tabPanelHtml;
 }
 
-function OnAssetSelected() {
-    var datesList = '[{'
-        + '"id": 1,'
-        + '"expDate": "2017-12-01T00:00:00",'
-        + '"assetId": 1'
-        +'}]';
+function OnAssetSelected(datesList) {
+    //var datesList = JSON.parse( '[{'
+    //        + '"id": 1,'
+    //        + '"expDate": "2017-12-01T00:00:00",'
+    //        + '"assetId": 1'
+    //        + '}]'
+    //    );
 
     var assetsMenu = document.getElementById("AssetsMenu");
     var assetId = assetsMenu.options[assetsMenu.selectedIndex].value;
@@ -77,7 +80,7 @@ function OnAssetSelected() {
     }
 
     // put focus on tab corresponding to selected asset
-    PutFocusOnTab(tabId, tab, tabPanel);
+    //PutFocusOnTab(tabId, tab, tabPanel);
 }
 
 function PutFocusOnTab(tabId, tab, tabPanel) {
