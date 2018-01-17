@@ -49,11 +49,27 @@ function constructTabPanel(assetId, expDatesList) {
         
         if ( parseInt(singleDate.AssetId) == assetId) {
             tabPanelHtml += '<input type="checkbox" id="chk-' + singleDate.Id
-                + '"> ' + singleDate.DateString + '</input> <br/>';
+                + '" onchange="toggleChart(this, ' + singleDate.Id + ')"> ' + singleDate.DateString + '</input> <br/>';
         }
     });
     //return '<input type="checkbox" id="chk-' + assetId + '"> ' + '</input>';
     return tabPanelHtml;
+}
+
+function toggleChart(checkBox, dateId) {
+    var chartId = 'chart-' + dateId;
+    var chart = document.querySelector('#' + chartId);
+    if (checkBox.checked == true) {
+        if (chart == null) {}
+            createChart(dateId);
+        else
+        {
+            
+        }
+    }
+    else {
+        changeChartVisibility(dateId, false);
+    }
 }
 
 function OnAssetSelected(datesList) {
