@@ -154,9 +154,9 @@ Optional extensions on the jquery.inputmask base
                                 return true;
                             else {
                                 var year = parseInt(chrs, 10);//detect leap year
-                                if (year % 4 === 0)
-                                    if (year % 100 === 0)
-                                        if (year % 400 === 0)
+                                if (year % 4 == 0)
+                                    if (year % 100 == 0)
+                                        if (year % 400 == 0)
                                             return true;
                                         else return false;
                                     else return true;
@@ -209,9 +209,9 @@ Optional extensions on the jquery.inputmask base
                                     isValid = true;
                                 else {
                                     var year = parseInt(chrs, 10);//detect leap year
-                                    if (year % 4 === 0)
-                                        if (year % 100 === 0)
-                                            if (year % 400 === 0)
+                                    if (year % 4 == 0)
+                                        if (year % 100 == 0)
+                                            if (year % 400 == 0)
                                                 isValid = true;
                                             else isValid = false;
                                         else isValid = true;
@@ -292,9 +292,9 @@ Optional extensions on the jquery.inputmask base
                                 return true;
                             else {
                                 var year = parseInt(buffer.join('').substr(0, 4), 10);  //detect leap year
-                                if (year % 4 === 0)
-                                    if (year % 100 === 0)
-                                        if (year % 400 === 0)
+                                if (year % 4 == 0)
+                                    if (year % 100 == 0)
+                                        if (year % 400 == 0)
                                             return true;
                                         else return false;
                                     else return true;

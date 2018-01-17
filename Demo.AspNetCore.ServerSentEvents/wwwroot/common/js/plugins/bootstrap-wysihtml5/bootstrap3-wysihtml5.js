@@ -59,25 +59,25 @@
         var value = false;
 
         if(options[key] !== undefined) {
-          if(options[key] === true) {
+          if(options[key] == true) {
             value = true;
           }
         } else {
           value = defaultOptions[key];
         }
 
-        if(value === true) {
+        if(value == true) {
           toolbar.append(templates(key, locale[culture], options));
 
-          if(key === 'html') {
+          if(key == 'html') {
             this.initHtml(toolbar);
           }
 
-          if(key === 'link') {
+          if(key == 'link') {
             this.initInsertLink(toolbar);
           }
 
-          if(key === 'image') {
+          if(key == 'image') {
             this.initInsertImage(toolbar);
           }
         }
@@ -260,7 +260,7 @@
   $.fn.wysihtml5 = function ( method ) {
     if ( methods[method] ) {
       return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
-    } else if ( typeof method === 'object' || ! method ) {
+    } else if ( typeof method == 'object' || ! method ) {
       return methods.init.apply( this, arguments );
     } else {
       $.error( 'Method ' +  method + ' does not exist on jQuery.wysihtml5' );
@@ -342,7 +342,7 @@
     locale: 'en'
   };
 
-  if (typeof $.fn.wysihtml5.defaultOptionsCache === 'undefined') {
+  if (typeof $.fn.wysihtml5.defaultOptionsCache == 'undefined') {
     $.fn.wysihtml5.defaultOptionsCache = $.extend(true, {}, $.fn.wysihtml5.defaultOptions);
   }
 

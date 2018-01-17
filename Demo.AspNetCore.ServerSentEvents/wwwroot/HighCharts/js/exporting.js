@@ -7,7 +7,7 @@ Exporting module
 License: www.highcharts.com/license
  */
 (function (k) {
-	"object" === typeof module && module.exports ? module.exports = k : k(Highcharts)
+	"object" == typeof module && module.exports ? module.exports = k : k(Highcharts)
 })(function (k) {
 	(function (f) {
 		var k = f.defaultOptions,
@@ -218,12 +218,12 @@ License: www.highcharts.com/license
 				});
 				h(this.axes, function (a) {
 					var c = f.find(b.axes, function (b) {
-							return b.options.internalKey === a.userOptions.internalKey
+							return b.options.internalKey == a.userOptions.internalKey
 						}),
 					d = a.getExtremes(),
 					e = d.userMin,
 					d = d.userMax;
-					!c || void 0 === e && void 0 === d || c.setExtremes(e, d, !0, !1)
+					!c || void 0 == e && void 0 == d || c.setExtremes(e, d, !0, !1)
 				});
 				c = b.getChartHTML();
 				c = this.sanitizeSVG(c, g);
@@ -274,7 +274,7 @@ License: www.highcharts.com/license
 					if (t = g && a.chartWidth > g)
 						d = [a.options.chart.width, void 0, !1], a.setSize(g, void 0, !1);
 					h(m, function (a, b) {
-						1 === a.nodeType && (e[b] = a.style.display, a.style.display = "none")
+						1 == a.nodeType && (e[b] = a.style.display, a.style.display = "none")
 					});
 					f.appendChild(b);
 					E.focus();
@@ -282,7 +282,7 @@ License: www.highcharts.com/license
 					setTimeout(function () {
 						c.appendChild(b);
 						h(m, function (a, b) {
-							1 === a.nodeType && (a.style.display = e[b])
+							1 == a.nodeType && (a.style.display = e[b])
 						});
 						a.isPrinting = !1;
 						t && a.setSize.apply(a, d);
@@ -326,7 +326,7 @@ License: www.highcharts.com/license
 						}), w(z, "mouseup", function (b) {
 							d.pointer.inClass(b.target, a) || A()
 						})), h(b, function (a) {
-						"string" === typeof a && (a = d.options.exporting.menuItemDefinitions[a]);
+						"string" == typeof a && (a = d.options.exporting.menuItemDefinitions[a]);
 						if (f.isObject(a, !0)) {
 							var b;
 							a.separator ? b = p("hr", null, null, y) : (b = p("div", {
@@ -405,7 +405,7 @@ License: www.highcharts.com/license
 							width: d.width,
 							x: D(c.x, b.buttonOffset)
 						}), !0, "spacingBox");
-					b.buttonOffset += (d.width + c.buttonSpacing) * ("right" === c.align ? -1 : 1);
+					b.buttonOffset += (d.width + c.buttonSpacing) * ("right" == c.align ? -1 : 1);
 					b.exportSVGElements.push(d, g)
 				}
 			},

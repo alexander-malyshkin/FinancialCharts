@@ -33,7 +33,8 @@ var form = dialog.find("form").on("submit", function (event) {
 // Actual addTab function: adds new tab using the input from the form above
 function addTab(assetId, assetName, datesList) {
     var label = assetName,
-        id = "tabs-" + assetId,
+        //id = "tabs-" + assetId,
+        id = getTabId(assetId);
         li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
 
     tabs.find(".ui-tabs-nav").append(li);
@@ -48,37 +49,51 @@ function constructTabPanel(assetId, expDatesList) {
     [].forEach.call(expDatesList, function (singleDate) {
         
         if ( parseInt(singleDate.AssetId) == assetId) {
-            tabPanelHtml += '<input type="checkbox" id="chk-' + singleDate.Id
-                + '" onchange="toggleChart(this, ' + singleDate.Id + ')"> ' + singleDate.DateString + '</input> <br/>';
+            tabPanelHtml += '  <input type="checkbox" id="' + getDateCheckboxId(singleDate.Id)
+                + '" assetId="' + assetId
+                + '" dateId="' + singleDate.Id
+                + '" onchange="toggleChart(this, ' + singleDate.Id + ',' + assetId + ')"> ' + singleDate.DateString + '  </input>';
         }
     });
-    //return '<input type="checkbox" id="chk-' + assetId + '"> ' + '</input>';
     return tabPanelHtml;
 }
 
-function toggleChart(checkBox, dateId) {
-    var chartId = 'chart-' + dateId;
+function toggleChart(checkBox, dateId, assetId) {
+    var chartId = getChartId(assetId, dateId);
     var chart = document.querySelector('#' + chartId);
     if (checkBox.checked == true) {
-        if (chart == null) {}
-            createChart(dateId);
-        else
-        {
-            
+        if (chart == null) {
+            var chartId = createChart(dateId, assetId);
+            fillChartWithData(chartId);
+        } else {
+            chart.style.visibility = 'visible';
         }
     }
     else {
-        changeChartVisibility(dateId, false);
+        if (chart != null) {
+            chart.style.visibility = 'hidden';
+        }
     }
 }
 
+function createChart(dateId, assetId) {
+    var chartId = getChartId(assetId, dateId);
+    var tabId = getTabId(assetId);
+    var tabPanel = document.querySelector('#' + tabId);
+    //var chartDivHtml = '<div id="' + chartId + '">' + '</div>';
+    var chartDiv = document.createElement("div");
+    chartDiv.setAttribute("id", chartId);
+    chartDiv.setAttribute("role", "chart");
+    chartDiv.setAttribute("assetId", assetId);
+    chartDiv.setAttribute("dateId", dateId);
+    tabPanel.appendChild(chartDiv);
+    return chartId;
+}
+
+
+
 function OnAssetSelected(datesList) {
-    //var datesList = JSON.parse( '[{'
-    //        + '"id": 1,'
-    //        + '"expDate": "2017-12-01T00:00:00",'
-    //        + '"assetId": 1'
-    //        + '}]'
-    //    );
+
 
     var assetsMenu = document.getElementById("AssetsMenu");
     var assetId = assetsMenu.options[assetsMenu.selectedIndex].value;
@@ -86,37 +101,37 @@ function OnAssetSelected(datesList) {
 
     // check if this tab is already open
     var tabPanel = document.getElementById("tabs");
-    var tabId = "tabs-" + assetId;
+    var tabId = getTabId(assetId);
     var tab = tabPanel.querySelector('li[aria-controls="'
         + tabId + '"]');
-    if (tab === null) {
+    if (tab == null) {
         addTab(assetId, assetName, datesList);
-        tab = tabPanel.querySelector('li[aria-controls="'
-            + tabId + '"]');
+        //tab = tabPanel.querySelector('li[aria-controls="'
+        //    + tabId + '"]');
     }
 
     // put focus on tab corresponding to selected asset
     //PutFocusOnTab(tabId, tab, tabPanel);
 }
 
-function PutFocusOnTab(tabId, tab, tabPanel) {
-    tab.setAttribute("aria-selected", "true");
-    tab.setAttribute("aria-expanded", "true");
-    tab.setAttribute("aria-hidden", "false");
-    tab.classList.add("ui-tabs-active");
-    tab.classList.add("ui-state-active");
+//function PutFocusOnTab(tabId, tab, tabPanel) {
+//    tab.setAttribute("aria-selected", "true");
+//    tab.setAttribute("aria-expanded", "true");
+//    tab.setAttribute("aria-hidden", "false");
+//    tab.classList.add("ui-tabs-active");
+//    tab.classList.add("ui-state-active");
 
-    // in the panel there is a separate div with id equal to tabId
-    var tabBlock = document.getElementById(tabId);
-    tabBlock.setAttribute("style", "display: block");
-    tabBlock.setAttribute("aria-hidden", "false");
+//    // in the panel there is a separate div with id equal to tabId
+//    var tabBlock = document.getElementById(tabId);
+//    tabBlock.setAttribute("style", "display: block");
+//    tabBlock.setAttribute("aria-hidden", "false");
 
-    var otherTabs = tabPanel.querySelectorAll('li:not([aria-controls="' + tabId + '"])');
-    [].forEach.call(otherTabs, function(otherTab) {
-        RemoveFocusFromTab(otherTab, tabPanel);
-    });
+//    var otherTabs = tabPanel.querySelectorAll('li:not([aria-controls="' + tabId + '"])');
+//    [].forEach.call(otherTabs, function(otherTab) {
+//        RemoveFocusFromTab(otherTab, tabPanel);
+//    });
     
-}
+//}
 
 function RemoveFocusFromTab(tab, tabPanel) {
     tab.setAttribute("aria-selected", "false");
@@ -146,7 +161,7 @@ tabs.on("click", "span.ui-icon-close", function () {
 });
 
 tabs.on("keyup", function (event) {
-    if (event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE) {
+    if (event.altKey && event.keyCode == $.ui.keyCode.BACKSPACE) {
         var panelId = tabs.find(".ui-tabs-active").remove().attr("aria-controls");
         $("#" + panelId).remove();
         tabs.tabs("refresh");

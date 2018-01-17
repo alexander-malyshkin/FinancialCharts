@@ -130,7 +130,7 @@ $.fn.fullCalendar = function(options) {
 			var calendar = $.data(this, 'fullCalendar');
 			if (calendar && $.isFunction(calendar[options])) {
 				var r = calendar[options].apply(calendar, args);
-				if (res === undefined) {
+				if (res == undefined) {
 					res = r;
 				}
 				if (options == 'destroy') {
@@ -157,7 +157,7 @@ $.fn.fullCalendar = function(options) {
 
 	options = $.extend(true, {},
 		defaults,
-		(options.isRTL || options.isRTL===undefined && defaults.isRTL) ? rtlDefaults : {},
+		(options.isRTL || options.isRTL==undefined && defaults.isRTL) ? rtlDefaults : {},
 		options
 	);
 	
@@ -437,7 +437,7 @@ function Calendar(element, options, eventSources) {
 	
 	function setSize() { // assumes elementVisible
 
-		if (suggestedViewHeight === undefined) {
+		if (suggestedViewHeight == undefined) {
 			calcSize(); // for first time
 				// NOTE: we don't want to recalculate on every renderView because
 				// it could result in oscillating heights due to scrollbars.
@@ -565,7 +565,7 @@ function Calendar(element, options, eventSources) {
 	
 
 	function select(start, end, allDay) {
-		currentView.select(start, end, allDay===undefined ? true : allDay);
+		currentView.select(start, end, allDay==undefined ? true : allDay);
 	}
 	
 
@@ -672,7 +672,7 @@ function Calendar(element, options, eventSources) {
 	
 	
 	function option(name, value) {
-		if (value === undefined) {
+		if (value == undefined) {
 			return options[name];
 		}
 		if (name == 'height' || name == 'contentHeight' || name == 'aspectRatio') {
@@ -988,7 +988,7 @@ function EventManager(options, _sources) {
 		var res;
 		for (i=0; i<fetchers.length; i++) {
 			res = fetchers[i](source, rangeStart, rangeEnd, callback);
-			if (res === true) {
+			if (res == true) {
 				// the fetcher is in charge. made its own async request
 				return;
 			}
@@ -1236,7 +1236,7 @@ function EventManager(options, _sources) {
 	function normalizeEvent(event) {
 		var source = event.source || {};
 		var ignoreTimezone = firstDefined(source.ignoreTimezone, options.ignoreTimezone);
-		event._id = event._id || (event.id === undefined ? '_fc' + eventGUID++ : event.id + '');
+		event._id = event._id || (event.id == undefined ? '_fc' + eventGUID++ : event.id + '');
 		if (event.date) {
 			if (!event.start) {
 				event.start = event.date;
@@ -1249,7 +1249,7 @@ function EventManager(options, _sources) {
 			event.end = null;
 		}
 		event._end = event.end ? cloneDate(event.end) : null;
-		if (event.allDay === undefined) {
+		if (event.allDay == undefined) {
 			event.allDay = firstDefined(source.allDayDefault, options.allDayDefault);
 		}
 		if (event.className) {
@@ -1439,7 +1439,7 @@ function parseDate(s, ignoreTimezone) { // ignoreTimezone defaults to true
 		if (s.match(/^\d+(\.\d+)?$/)) { // a UNIX timestamp
 			return new Date(parseFloat(s) * 1000);
 		}
-		if (ignoreTimezone === undefined) {
+		if (ignoreTimezone == undefined) {
 			ignoreTimezone = true;
 		}
 		return parseISO8601(s, ignoreTimezone) || (s ? new Date(s) : null);
@@ -3177,7 +3177,7 @@ function AgendaView(element, calendar, viewName) {
 
 	
 	function setHeight(height) {
-		if (height === undefined) {
+		if (height == undefined) {
 			height = viewHeight;
 		}
 		viewHeight = height;
@@ -3464,7 +3464,7 @@ function AgendaView(element, calendar, viewName) {
 			minutes = time.getHours()*60 + time.getMinutes() - minMinute,
 			slotI = Math.floor(minutes / slotMinutes),
 			slotTop = slotTopCache[slotI];
-		if (slotTop === undefined) {
+		if (slotTop == undefined) {
 			slotTop = slotTopCache[slotI] =
 				slotTable.find('tr').eq(slotI).find('td div')[0].offsetTop;
 				// .eq() is faster than ":eq()" selector
@@ -3895,7 +3895,7 @@ function AgendaEventRenderer() {
 			event = seg.event;
 			eventElement = $(eventElements[i]); // faster than eq()
 			triggerRes = trigger('eventRender', event, event, eventElement);
-			if (triggerRes === false) {
+			if (triggerRes == false) {
 				eventElement.remove();
 			}else{
 				if (triggerRes && triggerRes !== true) {
@@ -3909,7 +3909,7 @@ function AgendaEventRenderer() {
 						.appendTo(slotSegmentContainer);
 				}
 				seg.element = eventElement;
-				if (event._id === modifiedEventId) {
+				if (event._id == modifiedEventId) {
 					bindSlotSeg(event, eventElement, seg);
 				}else{
 					eventElement[0]._fci = i; // for lazySegBind
@@ -4410,7 +4410,7 @@ function computeSlotSegPressures(seg) {
 	var forwardPressure = 0;
 	var i, forwardSeg;
 
-	if (seg.forwardPressure === undefined) { // not already computed
+	if (seg.forwardPressure == undefined) { // not already computed
 
 		for (i=0; i<forwardSegs.length; i++) {
 			forwardSeg = forwardSegs[i];
@@ -4443,7 +4443,7 @@ function computeSlotSegCoords(seg, seriesBackwardPressure, seriesBackwardCoord) 
 	var forwardSegs = seg.forwardSegs;
 	var i;
 
-	if (seg.forwardCoord === undefined) { // not already computed
+	if (seg.forwardCoord == undefined) { // not already computed
 
 		if (!forwardSegs.length) {
 
@@ -4809,14 +4809,14 @@ function View(element, calendar, viewName) {
 
 
 
-	// ====================================================================================================
+	// ===================================================================
 	// Utilities for day "cells"
-	// ====================================================================================================
+	// ===================================================================
 	// The "basic" views are completely made up of day cells.
 	// The "agenda" views have day cells at the top "all day" slot.
 	// This was the obvious common place to put these utilities, but they should be abstracted out into
 	// a more meaningful class (like DayEventRenderer).
-	// ====================================================================================================
+	// ===================================================================
 
 
 	// For determining how a given "cell" translates into a "date":
@@ -4858,7 +4858,7 @@ function View(element, calendar, viewName) {
 	// initialize important internal variables
 	(function() {
 
-		if (opt('weekends') === false) {
+		if (opt('weekends') == false) {
 			hiddenDays.push(0, 6); // 0=sunday, 6=saturday
 		}
 
@@ -5169,7 +5169,7 @@ function DayEventRenderer() {
 
 		// Adjust certain elements' top coordinates
 		segmentElementEach(segments, function(segment, element) {
-			if (segment.row === adjustRow) {
+			if (segment.row == adjustRow) {
 				element.css('top', adjustTop);
 			}
 			elements.push(element[0]); // accumulate DOM nodes
@@ -5394,7 +5394,7 @@ function DayEventRenderer() {
 			// call the trigger with the original element
 			var triggerRes = trigger('eventRender', event, event, element);
 
-			if (triggerRes === false) {
+			if (triggerRes == false) {
 				// if `false`, remove the event from the DOM and don't assign it to `segment.event`
 				element.remove();
 			}
@@ -5615,7 +5615,7 @@ function DayEventRenderer() {
 
 		segmentElementEach(segments, function(segment, element, i) {
 			var event = segment.event;
-			if (event._id === modifiedEventId) {
+			if (event._id == modifiedEventId) {
 				bindDaySeg(event, element, segment);
 			}else{
 				element[0]._fci = i; // for lazySegBind
@@ -6071,7 +6071,7 @@ function HoverListener(coordinateGrid) {
 // and maybe remove it down the line
 
 function _fixUIEvent(event) { // for issue 1168
-	if (event.pageX === undefined) {
+	if (event.pageX == undefined) {
 		event.pageX = event.originalEvent.pageX;
 		event.pageY = event.originalEvent.pageY;
 	}
@@ -6090,11 +6090,11 @@ function HorizontalPositionCache(getElement) {
 	}
 	
 	t.left = function(i) {
-		return lefts[i] = lefts[i] === undefined ? e(i).position().left : lefts[i];
+		return lefts[i] = lefts[i] == undefined ? e(i).position().left : lefts[i];
 	};
 	
 	t.right = function(i) {
-		return rights[i] = rights[i] === undefined ? t.left(i) + e(i).width() : rights[i];
+		return rights[i] = rights[i] == undefined ? t.left(i) + e(i).width() : rights[i];
 	};
 	
 	t.clear = function() {

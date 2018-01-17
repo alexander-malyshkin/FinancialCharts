@@ -6,10 +6,10 @@ Highcharts JS v6.0.4 (2017-12-15)
 License: www.highcharts.com/license
  */
 (function (S, M) {
-	"object" === typeof module && module.exports ? module.exports = S.document ? M(S) : M : S.Highcharts = M(S)
+	"object" == typeof module && module.exports ? module.exports = S.document ? M(S) : M : S.Highcharts = M(S)
 })("undefined" !== typeof window ? window : this, function (S) {
 	var M = function () {
-		var a = "undefined" === typeof S ? window : S,
+		var a = "undefined" == typeof S ? window : S,
 		E = a.document,
 		D = a.navigator && a.navigator.userAgent || "",
 		H = E && E.createElementNS && !!E.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect,
@@ -65,9 +65,9 @@ License: www.highcharts.com/license
 				r = this.now,
 				n = a.length,
 				w;
-				if (1 === r)
+				if (1 == r)
 					l = this.toD;
-				else if (n === f.length && 1 > r)
+				else if (n == f.length && 1 > r)
 					for (; n--; )
 						w = parseFloat(a[n]), l[n] = isNaN(w) ? f[n] : r * parseFloat(f[n] - w) + w;
 				else
@@ -100,8 +100,8 @@ License: www.highcharts.com/license
 						a.timers[h]() || a.timers.splice(h--, 1);
 					a.timers.length && u(e)
 				};
-				p === f ? (delete n.curAnim[this.prop], n.complete && 0 === a.keys(n.curAnim).length && n.complete.call(this.elem)) :
-				(this.startTime = +new Date, this.start = p, this.end = f, this.unit = l, this.now = this.start, this.pos = 0, w.elem = this.elem, w.prop = this.prop, w() && 1 === a.timers.push(w) && u(e))
+				p == f ? (delete n.curAnim[this.prop], n.complete && 0 == a.keys(n.curAnim).length && n.complete.call(this.elem)) :
+				(this.startTime = +new Date, this.start = p, this.end = f, this.unit = l, this.now = this.start, this.pos = 0, w.elem = this.elem, w.prop = this.prop, w() && 1 == a.timers.push(w) && u(e))
 			},
 			step: function (p) {
 				var f = +new Date,
@@ -122,7 +122,7 @@ License: www.highcharts.com/license
 					var b,
 					c;
 					for (k = a.length; k--; )
-						b = "M" === a[k] || "L" === a[k], c = /[a-zA-Z]/.test(a[k + 3]), b && c && a.splice(k + 1, 0, a[k + 1], a[k + 2], a[k + 1], a[k + 2])
+						b = "M" == a[k] || "L" == a[k], c = /[a-zA-Z]/.test(a[k + 3]), b && c && a.splice(k + 1, 0, a[k + 1], a[k + 2], a[k + 1], a[k + 2])
 				}
 				function n(a, b) {
 					for (; a.length < c; ) {
@@ -155,15 +155,15 @@ License: www.highcharts.com/license
 				m && (r(f), r(l));
 				if (e && h) {
 					for (k = 0; k < e.length; k++)
-						if (e[k] === h[0]) {
+						if (e[k] == h[0]) {
 							u = k;
 							break
-						} else if (e[0] === h[h.length - e.length + k]) {
+						} else if (e[0] == h[h.length - e.length + k]) {
 							u = k;
 							I = !0;
 							break
 						}
-					void 0 === u && (f = [])
+					void 0 == u && (f = [])
 				}
 				f.length && a.isNumber(u) && (c = l.length + u * B * d, I ? (n(f, l), w(l, f)) : (n(l, f), w(f, l)));
 				return [f, l]
@@ -192,7 +192,7 @@ License: www.highcharts.com/license
 				});
 				return l
 			};
-			!0 === f[0] && (r = f[1], f = Array.prototype.slice.call(f, 2));
+			!0 == f[0] && (r = f[1], f = Array.prototype.slice.call(f, 2));
 			l = f.length;
 			for (p = 0; p < l; p++)
 				r = n(r, f[p]);
@@ -203,29 +203,29 @@ License: www.highcharts.com/license
 			return parseInt(a, f || 10)
 		};
 		a.isString = function (a) {
-			return "string" === typeof a
+			return "string" == typeof a
 		};
 		a.isArray = function (a) {
 			a = Object.prototype.toString.call(a);
-			return "[object Array]" === a || "[object Array Iterator]" === a
+			return "[object Array]" == a || "[object Array Iterator]" == a
 		};
 		a.isObject = function (p, f) {
-			return !!p && "object" === typeof p && (!f || !a.isArray(p))
+			return !!p && "object" == typeof p && (!f || !a.isArray(p))
 		};
 		a.isDOMElement = function (p) {
-			return a.isObject(p) && "number" === typeof p.nodeType
+			return a.isObject(p) && "number" == typeof p.nodeType
 		};
 		a.isClass = function (p) {
 			var f = p && p.constructor;
-			return !(!a.isObject(p, !0) || a.isDOMElement(p) || !f || !f.name || "Object" === f.name)
+			return !(!a.isObject(p, !0) || a.isDOMElement(p) || !f || !f.name || "Object" == f.name)
 		};
 		a.isNumber = function (a) {
-			return "number" ===
+			return "number" ==
 			typeof a && !isNaN(a) && Infinity > a && -Infinity < a
 		};
 		a.erase = function (a, f) {
 			for (var l = a.length; l--; )
-				if (a[l] === f) {
+				if (a[l] == f) {
 					a.splice(l, 1);
 					break
 				}
@@ -345,7 +345,7 @@ License: www.highcharts.com/license
 				}, a.dateFormats);
 			a.objectEach(r, function (a, b) {
 				for (; -1 !== p.indexOf("%" + b); )
-					p = p.replace("%" + b, "function" === typeof a ? a(f) : a)
+					p = p.replace("%" + b, "function" == typeof a ? a(f) : a)
 			});
 			return l ? p.substr(0, 1).toUpperCase() + p.substr(1) : p
 		};
@@ -359,7 +359,7 @@ License: www.highcharts.com/license
 		a.format = function (p, f) {
 			for (var l = "{", r = !1, n, w, u, e, h = [], m; p; ) {
 				l = p.indexOf(l);
-				if (-1 === l)
+				if (-1 == l)
 					break;
 				n = p.slice(0, l);
 				if (r) {
@@ -388,8 +388,8 @@ License: www.highcharts.com/license
 			l =
 				a.pick(l, 1);
 			w = p / l;
-			f || (f = n ? [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10] : [1, 2, 2.5, 5, 10], !1 === r && (1 === l ? f = a.grep(f, function (a) {
-							return 0 === a % 1
+			f || (f = n ? [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10] : [1, 2, 2.5, 5, 10], !1 == r && (1 == l ? f = a.grep(f, function (a) {
+							return 0 == a % 1
 						}) : .1 >= l && (f = [1 / l])));
 			for (r = 0; r < f.length && !(u = f[r], n && u * l >= p || !n && w <= (f[r] + (f[r + 1] || f[r])) / 2); r++);
 			return u = a.correctFloat(u * l, -Math.round(Math.log(.001) / Math.LN10))
@@ -402,7 +402,7 @@ License: www.highcharts.com/license
 				a[n].safeI = n;
 			a.sort(function (a, n) {
 				p = f(a, n);
-				return 0 === p ? a.safeI - n.safeI : p
+				return 0 == p ? a.safeI - n.safeI : p
 			});
 			for (n = 0; n < l; n++)
 				delete a[n].safeI
@@ -460,7 +460,7 @@ License: www.highcharts.com/license
 			u,
 			e,
 			h = p.toString().split("e");
-			-1 === f ? f = Math.min(w, 20) : a.isNumber(f) ? f && h[1] && 0 > h[1] && (u = f + +h[1], 0 <= u ? (h[0] = (+h[0]).toExponential(u).split("e")[0], f = u) : (h[0] = h[0].split(".")[0] || 0,
+			-1 == f ? f = Math.min(w, 20) : a.isNumber(f) ? f && h[1] && 0 > h[1] && (u = f + +h[1], 0 <= u ? (h[0] = (+h[0]).toExponential(u).split("e")[0], f = u) : (h[0] = h[0].split(".")[0] || 0,
 						p = 20 > f ? (h[0] * Math.pow(10, h[1])).toFixed(f) : 0, h[1] = 0)) : f = 2;
 			e = (Math.abs(h[1] ? h[0] : p) + Math.pow(10, -Math.max(f, w) - 1)).toFixed(f);
 			w = String(a.pInt(e));
@@ -477,10 +477,10 @@ License: www.highcharts.com/license
 			return  - .5 * (Math.cos(Math.PI * a) - 1)
 		};
 		a.getStyle = function (p, f, l) {
-			if ("width" === f)
+			if ("width" == f)
 				return Math.min(p.offsetWidth,
 					p.scrollWidth) - a.getStyle(p, "padding-left") - a.getStyle(p, "padding-right");
-			if ("height" === f)
+			if ("height" == f)
 				return Math.min(p.offsetHeight, p.scrollHeight) - a.getStyle(p, "padding-top") - a.getStyle(p, "padding-bottom");
 			H.getComputedStyle || a.error(27, !0);
 			if (p = H.getComputedStyle(p, void 0))
@@ -590,7 +590,7 @@ License: www.highcharts.com/license
 						type: f
 					}), f = 0; f < w; f++)
 					(u = n[f]) &&
-					!1 === u.call(p, l) && l.preventDefault();
+					!1 == u.call(p, l) && l.preventDefault();
 			r && !l.defaultPrevented && r(l)
 		};
 		a.animate = function (p, f, l) {
@@ -605,13 +605,13 @@ License: www.highcharts.com/license
 					complete: e[4]
 				});
 			a.isNumber(l.duration) || (l.duration = 400);
-			l.easing = "function" === typeof l.easing ? l.easing : Math[l.easing] || Math.easeInOutSine;
+			l.easing = "function" == typeof l.easing ? l.easing : Math[l.easing] || Math.easeInOutSine;
 			l.curAnim = a.merge(f);
 			a.objectEach(f, function (e, m) {
 				a.stop(p, m);
 				u = new a.Fx(p, l, m);
 				w = null;
-				"d" === m ? (u.paths = u.initPath(p, p.d, f.d), u.toD = f.d, r = 0, w = 1) : p.attr ? r = p.attr(m) : (r = parseFloat(a.getStyle(p, m)) ||
+				"d" == m ? (u.paths = u.initPath(p, p.d, f.d), u.toD = f.d, r = 0, w = 1) : p.attr ? r = p.attr(m) : (r = parseFloat(a.getStyle(p, m)) ||
 							0, "opacity" !== m && (n = "px"));
 				w || (w = e);
 				w && w.match && w.match("px") && (w = w.replace(/px/g, ""));
@@ -681,8 +681,8 @@ License: www.highcharts.com/license
 					this.stops = H(l.stops, function (e) {
 							return new a.Color(e[1])
 						});
-				else if (l && l.charAt && "#" === l.charAt() && (f = l.length, l = parseInt(l.substr(1), 16), 7 === f ? n = [(l & 16711680) >> 16, (l & 65280) >>
-							8, l & 255, 1] : 4 === f && (n = [(l & 3840) >> 4 | (l & 3840) >> 8, (l & 240) >> 4 | l & 240, (l & 15) << 4 | l & 15, 1])), !n)
+				else if (l && l.charAt && "#" == l.charAt() && (f = l.length, l = parseInt(l.substr(1), 16), 7 == f ? n = [(l & 16711680) >> 16, (l & 65280) >>
+							8, l & 255, 1] : 4 == f && (n = [(l & 3840) >> 4 | (l & 3840) >> 8, (l & 240) >> 4 | l & 240, (l & 15) << 4 | l & 15, 1])), !n)
 					for (w = this.parsers.length; w-- && !n; )
 						u = this.parsers[w], (f = u.regex.exec(l)) && (n = u.parse(f));
 				this.rgba = n || []
@@ -693,7 +693,7 @@ License: www.highcharts.com/license
 				l;
 				this.stops ? (l = p(f), l.stops = [].concat(l.stops), E(this.stops, function (n, e) {
 						l.stops[e] = [l.stops[e][0], n.get(a)]
-					})) : l = n && D(n[0]) ? "rgb" === a || !a && 1 === n[3] ? "rgb(" + n[0] + "," + n[1] + "," + n[2] + ")" : "a" === a ? n[3] : "rgba(" + n.join(",") + ")" : f;
+					})) : l = n && D(n[0]) ? "rgb" == a || !a && 1 == n[3] ? "rgb(" + n[0] + "," + n[1] + "," + n[2] + ")" : "a" == a ? n[3] : "rgba(" + n.join(",") + ")" : f;
 				return l
 			},
 			brighten: function (a) {
@@ -768,7 +768,7 @@ License: www.highcharts.com/license
 			SVG_NS: P,
 			textProps: "direction fontSize fontWeight fontFamily fontStyle color lineHeight width textAlign textDecoration textOverflow textOutline".split(" "),
 			init: function (a, g) {
-				this.element = "span" === g ? w(g) : m.createElementNS(this.SVG_NS, g);
+				this.element = "span" == g ? w(g) : m.createElementNS(this.SVG_NS, g);
 				this.renderer = a
 			},
 			animate: function (y, g, b) {
@@ -798,7 +798,7 @@ License: www.highcharts.com/license
 							x2: k[2],
 							y2: k[3],
 							gradientUnits: "userSpaceOnUse"
-						}), "radialGradient" === O && J && !u(k.gradientUnits) && (e = k, k = q(k, v.getRadialAttr(J, e), {
+						}), "radialGradient" == O && J && !u(k.gradientUnits) && (e = k, k = q(k, v.getRadialAttr(J, e), {
 								gradientUnits: "userSpaceOnUse"
 							})), F(k, function (a, y) {
 						"id" !== y && t.push(y, a)
@@ -806,7 +806,7 @@ License: www.highcharts.com/license
 						t.push(a)
 					}), t = t.join(","), z[t] ? J = z[t].attr("id") : (k.id = J = a.uniqueKey(), z[t] = h = v.createElement(O).attr(k).add(v.defs),
 							h.radAttr = e, h.stops = [], d(m, function (y) {
-								0 === y[1].indexOf("rgba") ? (c = a.color(y[1]), L = c.get("rgb"), A = c.get("a")) : (L = y[1], A = 1);
+								0 == y[1].indexOf("rgba") ? (c = a.color(y[1]), L = c.get("rgb"), A = c.get("a")) : (L = y[1], A = 1);
 								y = v.createElement("stop").attr({
 										offset: y[0],
 										"stop-color": L,
@@ -835,10 +835,10 @@ License: www.highcharts.com/license
 							return 2 * y + g
 						});
 					for (e = y.length; e--; )
-						v = y[e], "highcharts-text-outline" === v.getAttribute("class") && b(y, g.removeChild(v));
+						v = y[e], "highcharts-text-outline" == v.getAttribute("class") && b(y, g.removeChild(v));
 					q = g.firstChild;
 					d(y, function (a, y) {
-						0 === y && (a.setAttribute("x", g.getAttribute("x")), y = g.getAttribute("y"), a.setAttribute("y", y || 0), null === y && g.setAttribute("y", 0));
+						0 == y && (a.setAttribute("x", g.getAttribute("x")), y = g.getAttribute("y"), a.setAttribute("y", y || 0), null == y && g.setAttribute("y", 0));
 						a = a.cloneNode(1);
 						f(a, {
 							"class": "highcharts-text-outline",
@@ -858,8 +858,8 @@ License: www.highcharts.com/license
 				d = this,
 				O,
 				q;
-				"string" === typeof a && void 0 !== g && (y = a, a = {}, a[y] = g);
-				"string" === typeof a ? d = (this[a + "Getter"] || this._defaultGetter).call(this, a, c) : (F(a, function (y, g) {
+				"string" == typeof a && void 0 !== g && (y = a, a = {}, a[y] = g);
+				"string" == typeof a ? d = (this[a + "Getter"] || this._defaultGetter).call(this, a, c) : (F(a, function (y, g) {
 						O = !1;
 						v || Q(this, g);
 						this.symbolName && /^(x|y|width|height|r|start|end|innerR|anchorX|anchorY)$/.test(g) && (k || (this.symbolAttr(a), k = !0), O = !0);
@@ -875,11 +875,11 @@ License: www.highcharts.com/license
 			},
 			updateShadows: function (a, g, b) {
 				for (var y = this.shadows, v = y.length; v--; )
-					b.call(y[v], "height" === a ? Math.max(g - (y[v].cutHeight || 0), 0) : "d" === a ? this.d : g, a, y[v])
+					b.call(y[v], "height" == a ? Math.max(g - (y[v].cutHeight || 0), 0) : "d" == a ? this.d : g, a, y[v])
 			},
 			addClass: function (a, g) {
 				var y = this.attr("class") || "";
-				-1 === y.indexOf(a) &&
+				-1 == y.indexOf(a) &&
 				(g || (a = (y + (y ? " " : "") + a).replace("  ", " ")), this.attr("class", a));
 				return this
 			},
@@ -926,11 +926,11 @@ License: www.highcharts.com/license
 				y && F(a, function (a, g) {
 					a !== y[g] && (b[g] = a, e = !0)
 				});
-				e && (y && (a = c(y, b)), k = this.textWidth = a && a.width && "auto" !== a.width && "text" === v.nodeName.toLowerCase() && g(a.width), this.styles = a, k && !L && this.renderer.forExport && delete a.width, K && !L ? n(this.element, a) : (q = function (a, y) {
+				e && (y && (a = c(y, b)), k = this.textWidth = a && a.width && "auto" !== a.width && "text" == v.nodeName.toLowerCase() && g(a.width), this.styles = a, k && !L && this.renderer.forExport && delete a.width, K && !L ? n(this.element, a) : (q = function (a, y) {
 						return "-" + y.toLowerCase()
 					}, F(a, function (a, y) {
-							-1 === B(y, z) && (d += y.replace(/([A-Z])/g, q) + ":" + a + ";")
-						}), d && f(v, "style", d)), this.added && ("text" === this.element.nodeName && this.renderer.buildText(this), a && a.textOutline && this.applyTextOutline(a.textOutline)));
+							-1 == B(y, z) && (d += y.replace(/([A-Z])/g, q) + ":" + a + ";")
+						}), d && f(v, "style", d)), this.added && ("text" == this.element.nodeName && this.renderer.buildText(this), a && a.textOutline && this.applyTextOutline(a.textOutline)));
 				return this
 			},
 			strokeWidth: function () {
@@ -940,12 +940,12 @@ License: www.highcharts.com/license
 			on: function (a, g) {
 				var y = this,
 				b = y.element;
-				z && "click" === a ? (b.ontouchstart = function (a) {
+				z && "click" == a ? (b.ontouchstart = function (a) {
 					y.touchEventFired = Date.now();
 					a.preventDefault();
 					g.call(b, a)
 				}, b.onclick = function (a) {
-					(-1 === R.navigator.userAgent.indexOf("Android") || 1100 < Date.now() - (y.touchEventFired || 0)) && g.call(b, a)
+					(-1 == R.navigator.userAgent.indexOf("Android") || 1100 < Date.now() - (y.touchEventFired || 0)) && g.call(b, a)
 				}) : b["on" + a] = g;
 				return this
 			},
@@ -1009,10 +1009,10 @@ License: www.highcharts.com/license
 				c = a.verticalAlign;
 				k = (v.x || 0) + (a.x || 0);
 				d = (v.y || 0) + (a.y || 0);
-				"right" === y ? e = 1 : "center" === y && (e = 2);
+				"right" == y ? e = 1 : "center" == y && (e = 2);
 				e && (k += (v.width - (a.width || 0)) / e);
 				q[g ? "translateX" : "x"] = Math.round(k);
-				"bottom" === c ? O = 1 : "middle" === c && (O = 2);
+				"bottom" == c ? O = 1 : "middle" == c && (O = 2);
 				O && (d += (v.height - (a.height || 0)) / O);
 				q[g ? "translateY" : "y"] = Math.round(d);
 				this[this.placed ? "animate" : "attr"](q);
@@ -1035,10 +1035,10 @@ License: www.highcharts.com/license
 				g = G(g, this.rotation);
 				v = g * e;
 				O = q && q.fontSize;
-				u(z) && (A = z.toString(), -1 === A.indexOf("\x3c") && (A = A.replace(/[0-9]/g, "0")), A += ["", g || 0, O, q && q.width, q && q.textOverflow].join());
+				u(z) && (A = z.toString(), -1 == A.indexOf("\x3c") && (A = A.replace(/[0-9]/g, "0")), A += ["", g || 0, O, q && q.width, q && q.textOverflow].join());
 				A && !a && (y = m[A]);
 				if (!y) {
-					if (k.namespaceURI === this.SVG_NS || b.forExport) {
+					if (k.namespaceURI == this.SVG_NS || b.forExport) {
 						try {
 							(h = this.fakeTS && function (a) {
 								d(k.querySelectorAll(".highcharts-text-outline"), function (y) {
@@ -1059,7 +1059,7 @@ License: www.highcharts.com/license
 					} else
 						y = this.htmlGetBBox();
 					b.isSVG &&
-					(a = y.width, b = y.height, q && "11px" === q.fontSize && 17 === Math.round(b) && (y.height = b = 14), g && (y.width = Math.abs(b * Math.sin(v)) + Math.abs(a * Math.cos(v)), y.height = Math.abs(b * Math.cos(v)) + Math.abs(a * Math.sin(v))));
+					(a = y.width, b = y.height, q && "11px" == q.fontSize && 17 == Math.round(b) && (y.height = b = 14), g && (y.width = Math.abs(b * Math.sin(v)) + Math.abs(a * Math.cos(v)), y.height = Math.abs(b * Math.cos(v)) + Math.abs(a * Math.sin(v))));
 					if (A && 0 < y.height) {
 						for (; 250 < L.length; )
 							delete m[L.shift()];
@@ -1114,7 +1114,7 @@ License: www.highcharts.com/license
 			destroy: function () {
 				var a = this,
 				g = a.element || {},
-				v = a.renderer.isSVG && "SPAN" === g.nodeName && a.parentGroup,
+				v = a.renderer.isSVG && "SPAN" == g.nodeName && a.parentGroup,
 				c = g.ownerSVGElement;
 				g.onclick = g.onmouseout =
 					g.onmouseover = g.onmousemove = g.point = null;
@@ -1128,7 +1128,7 @@ License: www.highcharts.com/license
 					a.stops = null
 				}
 				a.safeRemoveChild(g);
-				for (a.destroyShadows(); v && v.div && 0 === v.div.childNodes.length; )
+				for (a.destroyShadows(); v && v.div && 0 == v.div.childNodes.length; )
 					g = v.parentGroup, a.safeRemoveChild(v.div), delete v.div, v = g;
 				a.alignTo &&
 				b(a.renderer.alignedObjects, a);
@@ -1173,7 +1173,7 @@ License: www.highcharts.com/license
 				this.shadows = void 0
 			},
 			xGetter: function (a) {
-				"circle" === this.element.nodeName && ("x" === a ? a = "cx" : "y" === a && (a = "cy"));
+				"circle" == this.element.nodeName && ("x" == a ? a = "cx" : "y" == a && (a = "cy"));
 				return this._defaultGetter(a)
 			},
 			_defaultGetter: function (a) {
@@ -1189,7 +1189,7 @@ License: www.highcharts.com/license
 			dashstyleSetter: function (a) {
 				var b,
 				v = this["stroke-width"];
-				"inherit" === v && (v = 1);
+				"inherit" == v && (v = 1);
 				if (a = a && a.toLowerCase()) {
 					a = a.replace("shortdashdotdot", "3,1,1,1,1,1,").replace("shortdashdot", "3,1,1,1").replace("shortdot", "1,1,").replace("shortdash", "3,1,").replace("longdash", "8,3,").replace(/dot/g, "1,3,").replace("dash", "4,3,").replace(/,$/, "").split(",");
 					for (b = a.length; b--; )
@@ -1223,10 +1223,10 @@ License: www.highcharts.com/license
 				a !== this.textStr && (delete this.bBox, this.textStr = a, this.added && this.renderer.buildText(this))
 			},
 			fillSetter: function (a, g, b) {
-				"string" === typeof a ? b.setAttribute(g, a) : a && this.colorGradient(a, g, b)
+				"string" == typeof a ? b.setAttribute(g, a) : a && this.colorGradient(a, g, b)
 			},
 			visibilitySetter: function (a, g, b) {
-				"inherit" === a ? b.removeAttribute(g) : this[g] !== a && b.setAttribute(g, a);
+				"inherit" == a ? b.removeAttribute(g) : this[g] !== a && b.setAttribute(g, a);
 				this[g] = a
 			},
 			zIndexSetter: function (a, b) {
@@ -1237,11 +1237,11 @@ License: www.highcharts.com/license
 				d = this.element,
 				q,
 				e,
-				v = c === v.box;
+				v = c == v.box;
 				k = this.added;
 				var z;
 				u(a) &&
-				(d.zIndex = a, a = +a, this[b] === a && (k = !1), this[b] = a);
+				(d.zIndex = a, a = +a, this[b] == a && (k = !1), this[b] = a);
 				if (k) {
 					(a = this.zIndex) && y && (y.handleZ = !0);
 					b = c.childNodes;
@@ -1267,7 +1267,7 @@ License: www.highcharts.com/license
 		};
 		E.prototype["stroke-widthSetter"] = E.prototype.strokeSetter = function (a, g, b) {
 			this[g] = a;
-			this.stroke && this["stroke-width"] ? (E.prototype.fillSetter.call(this, this.stroke, "stroke", b), b.setAttribute("stroke-width", this["stroke-width"]), this.hasStroke = !0) : "stroke-width" === g && 0 === a && this.hasStroke &&
+			this.stroke && this["stroke-width"] ? (E.prototype.fillSetter.call(this, this.stroke, "stroke", b), b.setAttribute("stroke-width", this["stroke-width"]), this.hasStroke = !0) : "stroke-width" == g && 0 == a && this.hasStroke &&
 			(b.removeAttribute("stroke"), this.hasStroke = !1)
 		};
 		D = a.SVGRenderer = function () {
@@ -1285,7 +1285,7 @@ License: www.highcharts.com/license
 				y = v.element;
 				a.appendChild(y);
 				f(a, "dir", "ltr");
-				-1 === a.innerHTML.indexOf("xmlns") && f(y, "xmlns", this.SVG_NS);
+				-1 == a.innerHTML.indexOf("xmlns") && f(y, "xmlns", this.SVG_NS);
 				this.isSVG = !0;
 				this.box = y;
 				this.boxWrapper = v;
@@ -1370,8 +1370,8 @@ License: www.highcharts.com/license
 				y = this.getSpanWidth(a, g);
 				if (z = y > v) {
 					for (; d <= q; )
-						k = Math.ceil((d + q) / 2), y = b.substring(0, k) + "\u2026", e(y), y = this.getSpanWidth(a, g), d === q ? d = q + 1 : y > v ? q = k - 1 : d = k;
-					0 === q && e("")
+						k = Math.ceil((d + q) / 2), y = b.substring(0, k) + "\u2026", e(y), y = this.getSpanWidth(a, g), d == q ? d = q + 1 : y > v ? q = k - 1 : d = k;
+					0 == q && e("")
 				}
 				a.rotation = c;
 				return z
@@ -1399,8 +1399,8 @@ License: www.highcharts.com/license
 				B = a.textWidth,
 				l = x && x.lineHeight,
 				C = x && x.textOutline,
-				u = x && "ellipsis" === x.textOverflow,
-				Q = x && "nowrap" === x.whiteSpace,
+				u = x && "ellipsis" == x.textOverflow,
+				Q = x && "nowrap" == x.whiteSpace,
 				w = x && x.fontSize,
 				R,
 				I,
@@ -1430,7 +1430,7 @@ License: www.highcharts.com/license
 							g = g.replace(/^\s+|\s+$/g, "").replace(/<span/g, "|||\x3cspan").replace(/<\/span>/g, "\x3c/span\x3e|||");
 							k = g.split("|||");
 							d(k, function (g) {
-								if ("" !== g || 1 === k.length) {
+								if ("" !== g || 1 == k.length) {
 									var d = {},
 									e = m.createElementNS(v.SVG_NS, "tspan"),
 									x,
@@ -1457,7 +1457,7 @@ License: www.highcharts.com/license
 											C = p(e),
 											G = a.rotation;
 											for (u && (J = v.applyEllipsis(a, e, g, B)); !u && x && (d.length || O.length); )
-												a.rotation = 0, l = v.getSpanWidth(a, e), g = l > B, void 0 === J && (J = g), g && 1 !== d.length ? (e.removeChild(e.firstChild), O.unshift(d.pop())) : (d = O, O = [], d.length && !Q && (e = m.createElementNS(P, "tspan"), f(e, {
+												a.rotation = 0, l = v.getSpanWidth(a, e), g = l > B, void 0 == J && (J = g), g && 1 !== d.length ? (e.removeChild(e.firstChild), O.unshift(d.pop())) : (d = O, O = [], d.length && !Q && (e = m.createElementNS(P, "tspan"), f(e, {
 															dy: C,
 															x: t
 														}), F && f(e, "style", F), b.appendChild(e)), l > B && (B = l)), d.length && e.appendChild(m.createTextNode(d.join(" ").replace(/- /g,
@@ -1540,8 +1540,8 @@ License: www.highcharts.com/license
 				})
 			},
 			crispLine: function (a, g) {
-				a[1] === a[4] && (a[1] = a[4] = Math.round(a[1]) - g % 2 / 2);
-				a[2] === a[5] && (a[2] = a[5] = Math.round(a[2]) + g % 2 / 2);
+				a[1] == a[4] && (a[1] = a[4] = Math.round(a[1]) - g % 2 / 2);
+				a[2] == a[5] && (a[2] = a[5] = Math.round(a[2]) + g % 2 / 2);
 				return a
 			},
 			path: function (a) {
@@ -1577,7 +1577,7 @@ License: www.highcharts.com/license
 			rect: function (a, g, b, v, c, d) {
 				c = t(a) ? a.r : c;
 				var k = this.createElement("rect");
-				a = t(a) ? a : void 0 === a ? {}
+				a = t(a) ? a : void 0 == a ? {}
 				 : {
 					x: a,
 					y: g,
@@ -1661,7 +1661,7 @@ License: www.highcharts.com/license
 						y[a + "Setter"] = function (a, g) {
 							var b = {},
 							v = this["img" + g],
-							c = "width" === g ? "translateX" : "translateY";
+							c = "width" == g ? "translateX" : "translateY";
 							this[g] = a;
 							u(v) && (this.element && this.element.setAttribute(g, v), this.alignByTranslate || (b[c] = ((this[g] || 0) - v) / 2, this.attr(b)))
 						}
@@ -1674,7 +1674,7 @@ License: www.highcharts.com/license
 						}), w("img", {
 							onload: function () {
 								var a = l[e.chartIndex];
-								0 === this.width &&
+								0 == this.width &&
 								(n(this, {
 										position: "absolute",
 										top: "-999em"
@@ -1764,7 +1764,7 @@ License: www.highcharts.com/license
 				c.x = Math.round(g || 0);
 				b && (c.y =
 						Math.round(b));
-				if (a || 0 === a)
+				if (a || 0 == a)
 					c.text = a;
 				a = this.createElement("text").attr(c);
 				v || (a.xSetter = function (a, g, b) {
@@ -1773,7 +1773,7 @@ License: www.highcharts.com/license
 					d = b.getAttribute(g),
 					k;
 					for (k = 0; k < v.length; k++)
-						c = v[k], c.getAttribute(g) === d && c.setAttribute(g, a);
+						c = v[k], c.getAttribute(g) == d && c.setAttribute(g, a);
 					b.setAttribute(g, a)
 				});
 				return a
@@ -1830,18 +1830,18 @@ License: www.highcharts.com/license
 				O = function () {
 					var a = t.element.style,
 					g = {};
-					F = (void 0 === C || void 0 === f || w) && u(t.textStr) && t.getBBox();
+					F = (void 0 == C || void 0 == f || w) && u(t.textStr) && t.getBBox();
 					J.width = (C || F.width || 0) + 2 * B + l;
 					J.height =
 						(f || F.height || 0) + 2 * B;
 					P = B + y.fontMetrics(a && a.fontSize, t).b;
-					p && (x || (J.box = x = y.symbols[e] || r ? y.symbol(e) : y.rect(), x.addClass(("button" === L ? "" : "highcharts-label-box") + (L ? " highcharts-" + L + "-box" : "")), x.add(J), a = K(), g.x = a, g.y = (A ? -P : 0) + a), g.width = Math.round(J.width), g.height = Math.round(J.height), x.attr(c(g, R)), R = {})
+					p && (x || (J.box = x = y.symbols[e] || r ? y.symbol(e) : y.rect(), x.addClass(("button" == L ? "" : "highcharts-label-box") + (L ? " highcharts-" + L + "-box" : "")), x.add(J), a = K(), g.x = a, g.y = (A ? -P : 0) + a), g.width = Math.round(J.width), g.height = Math.round(J.height), x.attr(c(g, R)), R = {})
 				};
 				N = function () {
 					var a = l + B,
 					g;
 					g = A ? 0 : P;
-					u(C) && F && ("center" === w || "right" === w) && (a += {
+					u(C) && F && ("center" == w || "right" == w) && (a += {
 						center: .5,
 						right: 1
 					}
@@ -1858,7 +1858,7 @@ License: www.highcharts.com/license
 				J.onAdd = function () {
 					t.add(J);
 					J.attr({
-						text: g || 0 === g ? g : "",
+						text: g || 0 == g ? g : "",
 						x: b,
 						y: k
 					});
@@ -1904,7 +1904,7 @@ License: www.highcharts.com/license
 					T(g, a)
 				};
 				J.strokeSetter = J.fillSetter = J.rSetter = function (a, g) {
-					"r" !== g && ("fill" === g && a && (p = !0), J[g] = a);
+					"r" !== g && ("fill" == g && a && (p = !0), J[g] = a);
 					T(g, a)
 				};
 				J.anchorXSetter = function (a, g) {
@@ -1981,9 +1981,9 @@ License: www.highcharts.com/license
 		l(a.SVGElement.prototype, {
 			htmlCss: function (a) {
 				var b = this.element;
-				if (b = a && "SPAN" === b.tagName && a.width)
+				if (b = a && "SPAN" == b.tagName && a.width)
 					delete a.width, this.textWidth = b, this.updateTransform();
-				a && "ellipsis" === a.textOverflow && (a.whiteSpace = "nowrap", a.overflow = "hidden");
+				a && "ellipsis" == a.textOverflow && (a.whiteSpace = "nowrap", a.overflow = "hidden");
 				this.styles = l(this.styles, a);
 				H(this.element, a);
 				return this
@@ -2026,7 +2026,7 @@ License: www.highcharts.com/license
 					this.inverted && f(b.childNodes, function (c) {
 						a.invertChild(c, b)
 					});
-					if ("SPAN" === b.tagName) {
+					if ("SPAN" == b.tagName) {
 						var l = this.rotation,
 						u = e(this.textWidth),
 						q = t && t.whiteSpace,
@@ -2088,7 +2088,7 @@ License: www.highcharts.com/license
 				};
 				m && w(c, c.element.style);
 				c.xSetter = c.ySetter = c.alignSetter = c.rotationSetter = function (a, b) {
-					"align" === b && (b = "textAlign");
+					"align" == b && (b = "textAlign");
 					c[b] = a;
 					c.htmlUpdateTransform()
 				};
@@ -2115,7 +2115,7 @@ License: www.highcharts.com/license
 							f(k.reverse(), function (a) {
 								function e(g, b) {
 									a[b] = g;
-									n ? q[h.getTransformKey()] = "translate(" + (a.x || a.translateX) + "px," + (a.y || a.translateY) + "px)" : "translateX" === b ? q.left = g + "px" : q.top = g + "px";
+									n ? q[h.getTransformKey()] = "translate(" + (a.x || a.translateX) + "px," + (a.y || a.translateY) + "px)" : "translateX" == b ? q.left = g + "px" : q.top = g + "px";
 									a.doTransform = !0
 								}
 								var q,
@@ -2400,8 +2400,8 @@ License: www.highcharts.com/license
 				m = this.pos,
 				d = w.labels,
 				c = a.tickPositions,
-				b = m === c[0],
-				k = m === c[c.length - 1],
+				b = m == c[0],
+				k = m == c[c.length - 1],
 				h = e ? l(e[m], h[m], m) : m,
 				e = this.label,
 				c = c.info,
@@ -2447,9 +2447,9 @@ License: www.highcharts.com/license
 				x = 1,
 				p,
 				t = {};
-				if (b || !1 === n.overflow)
+				if (b || !1 == n.overflow)
 					0 > b && e - k * z < d ? p = Math.round(e / Math.cos(b * r) - d) : 0 < b && e + k * z > m && (p = Math.round((h - e) / Math.cos(b * r)));
-				else if (h = e + (1 - k) * z, e - k * z < d ? I = a.x + I * (1 - k) - d : h > m && (I = m - a.x + I * k, x = -1), I = Math.min(B, I), I < B && "center" === f.labelAlign &&
+				else if (h = e + (1 - k) * z, e - k * z < d ? I = a.x + I * (1 - k) - d : h > m && (I = m - a.x + I * k, x = -1), I = Math.min(B, I), I < B && "center" == f.labelAlign &&
 					(a.x += x * (B - I - k * (B - Math.min(z, I)))), z > I || f.autoRotation && (c.styles || {}).width)
 					p = I;
 				p && (t.width = p, (n.style || {}).textOverflow || (t.textOverflow = "ellipsis"), c.css(t))
@@ -2474,8 +2474,8 @@ License: www.highcharts.com/license
 					y: 0
 				},
 				x = h.y,
-				u = e || b.reserveSpaceDefault ? 0 : -b.labelOffset * ("center" === b.labelAlign ? .5 : 1);
-				D(x) || (x = 0 === b.side ? l.rotation ? -8 : -l.getBBox().height : 2 === b.side ? n.y + 8 : Math.cos(l.rotation * r) * (n.y - l.getBBox(!1, 0).height / 2));
+				u = e || b.reserveSpaceDefault ? 0 : -b.labelOffset * ("center" == b.labelAlign ? .5 : 1);
+				D(x) || (x = 0 == b.side ? l.rotation ? -8 : -l.getBBox().height : 2 == b.side ? n.y + 8 : Math.cos(l.rotation * r) * (n.y - l.getBBox(!1, 0).height / 2));
 				a = a + h.x + u + n.x - (m && e ? m * k * (z ? -1 : 1) : 0);
 				f = f + x - (m && !e ? m * k * (z ? 1 : -1) : 0);
 				B && (l = d / (c || 1) % B, b.opposite && (l = B - l - 1), f += b.labelOffset / B * l);
@@ -2542,7 +2542,7 @@ License: www.highcharts.com/license
 				z = !0,
 				B = a.x;
 				a = a.y;
-				c && p(B) && (c.xy = a = this.getLabelPosition(B, a, c, m, b, h, e, k), this.isFirst && !this.isLast && !l(d.showFirstLabel, 1) || this.isLast && !this.isFirst && !l(d.showLastLabel, 1) ? z = !1 : !m || b.step || b.rotation || f || 0 === u || this.handleOverflow(a), k && e % k && (z = !1), z && p(a.y) ? (a.opacity = u, c[this.isNewLabel ? "attr" : "animate"](a), this.isNewLabel = !1) : (c.attr("y", -9999), this.isNewLabel = !0))
+				c && p(B) && (c.xy = a = this.getLabelPosition(B, a, c, m, b, h, e, k), this.isFirst && !this.isLast && !l(d.showFirstLabel, 1) || this.isLast && !this.isFirst && !l(d.showLastLabel, 1) ? z = !1 : !m || b.step || b.rotation || f || 0 == u || this.handleOverflow(a), k && e % k && (z = !1), z && p(a.y) ? (a.opacity = u, c[this.isNewLabel ? "attr" : "animate"](a), this.isNewLabel = !1) : (c.attr("y", -9999), this.isNewLabel = !0))
 			},
 			render: function (a, f, u) {
 				var e =
@@ -2551,7 +2551,7 @@ License: www.highcharts.com/license
 				m = this.getPosition(h, this.pos, e.tickmarkOffset, f),
 				d = m.x,
 				c = m.y,
-				e = h && d === e.pos + e.len || !h && c === e.pos ? -1 : 1;
+				e = h && d == e.pos + e.len || !h && c == e.pos ? -1 : 1;
 				u = l(u, 1);
 				this.isActive = !0;
 				this.renderGridLine(f, u, e);
@@ -2725,13 +2725,13 @@ License: www.highcharts.com/license
 				v.reversed = c.reversed;
 				v.visible = !1 !== c.visible;
 				v.zoomEnabled = !1 !== c.zoomEnabled;
-				v.hasNames = "category" === d || !0 === c.categories;
+				v.hasNames = "category" == d || !0 == c.categories;
 				v.categories =
 					c.categories || v.hasNames;
 				v.names = v.names || [];
 				v.plotLinesAndBandsGroups = {};
-				v.isLog = "logarithmic" === d;
-				v.isDatetimeAxis = "datetime" === d;
+				v.isLog = "logarithmic" == d;
+				v.isDatetimeAxis = "datetime" == d;
 				v.positiveValuesOnly = v.isLog && !v.allowNegativeLog;
 				v.isLinked = n(c.linkedTo);
 				v.ticks = {};
@@ -2751,9 +2751,9 @@ License: www.highcharts.com/license
 				v.crosshair = C(c.crosshair, q(a.options.tooltip.crosshairs)[g ?
 							0 : 1], !1);
 				b = v.options.events;
-				-1 === k(v, a.axes) && (g ? a.axes.splice(a.xAxis.length, 0, v) : a.axes.push(v), a[v.coll].push(v));
+				-1 == k(v, a.axes) && (g ? a.axes.splice(a.xAxis.length, 0, v) : a.axes.push(v), a[v.coll].push(v));
 				v.series = v.series || [];
-				a.inverted && !v.isZAxis && g && void 0 === v.reversed && (v.reversed = !0);
+				a.inverted && !v.isZAxis && g && void 0 == v.reversed && (v.reversed = !0);
 				t(b, function (a, g) {
 					E(v, g, a)
 				});
@@ -2761,7 +2761,7 @@ License: www.highcharts.com/license
 				v.isLog && (v.val2lin = v.log2lin, v.lin2val = v.lin2log)
 			},
 			setOptions: function (a) {
-				this.options = x(this.defaultOptions, "yAxis" === this.coll && this.defaultYAxisOptions, [this.defaultTopAxisOptions, this.defaultRightAxisOptions, this.defaultBottomAxisOptions,
+				this.options = x(this.defaultOptions, "yAxis" == this.coll && this.defaultYAxisOptions, [this.defaultTopAxisOptions, this.defaultRightAxisOptions, this.defaultBottomAxisOptions,
 							this.defaultLeftAxisOptions][this.side], x(r[this.coll], a))
 			},
 			defaultLabelFormatter: function () {
@@ -2783,9 +2783,9 @@ License: www.highcharts.com/license
 				else if (k)
 					m = a.dateFormat(k, b);
 				else if (h && 1E3 <= g)
-					for (; h-- && void 0 === m; )
-						c = Math.pow(e, h + 1), g >= c && 0 === 10 * b % c && null !== q[h] && 0 !== b && (m = a.numberFormat(b / c, -1) + q[h]);
-				void 0 ===
+					for (; h-- && void 0 == m; )
+						c = Math.pow(e, h + 1), g >= c && 0 == 10 * b % c && null !== q[h] && 0 !== b && (m = a.numberFormat(b / c, -1) + q[h]);
+				void 0 ==
 				m && (m = 1E4 <= Math.abs(b) ? a.numberFormat(b, -1) : a.numberFormat(b, -1, void 0, ""));
 				return m
 			},
@@ -2859,13 +2859,13 @@ License: www.highcharts.com/license
 				c = l(Math.ceil(c / a) * a);
 				var d = [],
 				k;
-				l(v + a) === v && (k = 20);
+				l(v + a) == v && (k = 20);
 				if (this.single)
 					return [b];
 				for (b = v; b <= c; ) {
 					d.push(b);
 					b = l(b + a, k);
-					if (b === g)
+					if (b == g)
 						break;
 					g = b
 				}
@@ -2873,7 +2873,7 @@ License: www.highcharts.com/license
 			},
 			getMinorTickInterval: function () {
 				var a = this.options;
-				return !0 === a.minorTicks ? C(a.minorTickInterval, "auto") : !1 === a.minorTicks ? null : a.minorTickInterval
+				return !0 == a.minorTicks ? C(a.minorTickInterval, "auto") : !1 == a.minorTicks ? null : a.minorTickInterval
 			},
 			getMinorTickPositions: function () {
 				var a = this,
@@ -2891,7 +2891,7 @@ License: www.highcharts.com/license
 							b && k.push.apply(k, a.getLogTickPositions(d, v[b - 1], v[b], !0))
 						});
 					else if (a.isDatetimeAxis &&
-						"auto" === this.getMinorTickInterval())
+						"auto" == this.getMinorTickInterval())
 						k = k.concat(a.getTimeTicks(a.normalizeTimeTickInterval(d), h, q, b.startOfWeek));
 					else
 						for (b = h + (c[0] - h) % d; b <= q && b !== k[0]; b += d)
@@ -2911,10 +2911,10 @@ License: www.highcharts.com/license
 				z,
 				A,
 				t;
-				this.isXAxis && void 0 === this.minRange && !this.isLog && (n(a.min) || n(a.max) ? this.minRange = null : (e(this.series, function (a) {
+				this.isXAxis && void 0 == this.minRange && !this.isLog && (n(a.min) || n(a.max) ? this.minRange = null : (e(this.series, function (a) {
 								z = a.xData;
 								for (h = A = a.xIncrement ? 1 : z.length - 1; 0 < h; h--)
-									if (m = z[h] - z[h - 1], void 0 === q || m < q)
+									if (m = z[h] - z[h - 1], void 0 == q || m < q)
 										q = m
 							}),
 							this.minRange = Math.min(5 * q, this.dataMax - this.dataMin)));
@@ -2938,8 +2938,8 @@ License: www.highcharts.com/license
 				c = a.options.x,
 				d;
 				a.series.requireSorting = !1;
-				n(c) || (c = !1 === this.options.uniqueNames ? a.series.autoIncrement() : k(a.name, b));
-				-1 === c ? g || (d = b.length) : d = c;
+				n(c) || (c = !1 == this.options.uniqueNames ? a.series.autoIncrement() : k(a.name, b));
+				-1 == c ? g || (d = b.length) : d = c;
 				void 0 !== d && (this.names[d] = a.name);
 				return d
 			},
@@ -2972,7 +2972,7 @@ License: www.highcharts.com/license
 						var b = m ? 1 : A ? C(a.options.pointRange, d, 0) : g.axisPointRange || 0;
 						a = a.options.pointPlacement;
 						c = Math.max(c, b);
-						g.single || (k = Math.max(k, I(a) ? 0 : b / 2), q = Math.max(q, "on" === a ? 0 : b))
+						g.single || (k = Math.max(k, I(a) ? 0 : b / 2), q = Math.max(q, "on" == a ? 0 : b))
 					}), h = g.ordinalSlope && d ? g.ordinalSlope / d : 1, g.minPointOffset = k *= h, g.pointRangePadding = q *= h, g.pointRange = Math.min(c, b), A && (g.closestPointRange = d);
 				a && (g.oldTransA = z);
 				g.translationSlope = g.transA = z = g.options.staticScale || g.len / (b + q || 1);
@@ -3019,7 +3019,7 @@ License: www.highcharts.com/license
 				B(k.floor) && (b.min = Math.max(b.min, k.floor));
 				B(k.ceiling) && (b.max = Math.min(b.max, k.ceiling));
 				I && n(b.dataMin) && (p = p || 0, !n(N) && b.min < p && b.dataMin >= p ? b.min = p : !n(D) && b.max > p && b.dataMax <= p && (b.max = p));
-				b.tickInterval = b.min === b.max || void 0 === b.min || void 0 === b.max ? 1 : t && !F && u === b.linkedParent.options.tickPixelInterval ? F = b.linkedParent.tickInterval : C(F, this.tickAmount ? (b.max - b.min) / Math.max(this.tickAmount - 1, 1) :
+				b.tickInterval = b.min == b.max || void 0 == b.min || void 0 == b.max ? 1 : t && !F && u == b.linkedParent.options.tickPixelInterval ? F = b.linkedParent.tickInterval : C(F, this.tickAmount ? (b.max - b.min) / Math.max(this.tickAmount - 1, 1) :
 						void 0, G ? 1 : (b.max - b.min) * u / Math.max(b.len, u));
 				A && !g && e(b.series, function (a) {
 					a.processData(b.min !== b.oldMin || b.max !== b.oldMax)
@@ -3043,13 +3043,13 @@ License: www.highcharts.com/license
 				var d = a.tickPositioner,
 				k = a.startOnTick,
 				q = a.endOnTick;
-				this.tickmarkOffset = this.categories && "between" === a.tickmarkPlacement && 1 === this.tickInterval ? .5 : 0;
-				this.minorTickInterval = "auto" === b && this.tickInterval ? this.tickInterval /
+				this.tickmarkOffset = this.categories && "between" == a.tickmarkPlacement && 1 == this.tickInterval ? .5 : 0;
+				this.minorTickInterval = "auto" == b && this.tickInterval ? this.tickInterval /
 					5 : b;
-				this.single = this.min === this.max && n(this.min) && !this.tickAmount && (parseInt(this.min, 10) === this.min || !1 !== a.allowDecimals);
+				this.single = this.min == this.max && n(this.min) && !this.tickAmount && (parseInt(this.min, 10) == this.min || !1 !== a.allowDecimals);
 				this.tickPositions = b = c && c.slice();
 				!b && (b = this.isDatetimeAxis ? this.getTimeTicks(this.normalizeTimeTickInterval(this.tickInterval, a.units), this.min, this.max, a.startOfWeek, this.ordinalPositions, this.closestPointRange, !0) : this.isLog ? this.getLogTickPositions(this.tickInterval, this.min, this.max) : this.getLinearTickPositions(this.tickInterval, this.min, this.max), b.length > this.len && (b =
-							[b[0], b.pop()], b[0] === b[1] && (b.length = 1)), this.tickPositions = b, d && (d = d.apply(this, [this.min, this.max]))) && (this.tickPositions = b = d);
+							[b[0], b.pop()], b[0] == b[1] && (b.length = 1)), this.tickPositions = b, d && (d = d.apply(this, [this.min, this.max]))) && (this.tickPositions = b = d);
 				this.paddedTicks = b.slice(0);
 				this.trimTicks(b, k, q);
 				this.isLinked || (this.single && 2 > b.length && (this.min -= .5, this.max += .5), c || d || this.adjustTickAmount())
@@ -3069,14 +3069,14 @@ License: www.highcharts.com/license
 					else
 						for (; this.max + k < a[a.length - 1]; )
 							a.pop();
-					0 === a.length && n(g) && !this.options.tickPositions && a.push((d + g) / 2)
+					0 == a.length && n(g) && !this.options.tickPositions && a.push((d + g) / 2)
 				}
 			},
 			alignToOthers: function () {
 				var a = {},
 				b,
 				c = this.options;
-				!1 === this.chart.options.chart.alignTicks || !1 === c.alignTicks || this.isLog || e(this.chart[this.coll], function (g) {
+				!1 == this.chart.options.chart.alignTicks || !1 == c.alignTicks || this.isLog || e(this.chart[this.coll], function (g) {
 					var c = g.options,
 					c = [g.horiz ? c.left : c.top, c.width, c.height, c.pane].join();
 					g.series.length && (a[c] ? b = !0 : a[c] = 1)
@@ -3103,7 +3103,7 @@ License: www.highcharts.com/license
 				if (this.hasData()) {
 					if (k < c) {
 						for (; b.length < c; )
-							b.length % 2 || this.min === q ? b.push(l(b[b.length - 1] + a)) : b.unshift(l(b[0] - a));
+							b.length % 2 || this.min == q ? b.push(l(b[b.length - 1] + a)) : b.unshift(l(b[0] - a));
 						this.transA *= (k - 1) / (c - 1);
 						this.min = b[0];
 						this.max = b[b.length - 1]
@@ -3112,7 +3112,7 @@ License: www.highcharts.com/license
 							2, this.setTickPositions());
 					if (n(d)) {
 						for (a = c = b.length; a--; )
-							(3 === d && 1 === a % 2 || 2 >= d && 0 < a && a < c - 1) && b.splice(a, 1);
+							(3 == d && 1 == a % 2 || 2 >= d && 0 < a && a < c - 1) && b.splice(a, 1);
 						this.finalTickAmt = void 0
 					}
 				}
@@ -3194,7 +3194,7 @@ License: www.highcharts.com/license
 				g = this.lin2log,
 				c = b ? g(this.min) : this.min,
 				b = b ? g(this.max) : this.max;
-				null === a ? a = c : c > a ? a = c : b < a && (a = b);
+				null == a ? a = c : c > a ? a = c : b < a && (a = b);
 				return this.translate(a, 0, 1, 0, 1)
 			},
 			autoLabelAlign: function (a) {
@@ -3204,9 +3204,9 @@ License: www.highcharts.com/license
 			tickSize: function (a) {
 				var b = this.options,
 				g = b[a + "Length"],
-				c = C(b[a + "Width"], "tick" === a && this.isXAxis ? 1 : 0);
+				c = C(b[a + "Width"], "tick" == a && this.isXAxis ? 1 : 0);
 				if (c && g)
-					return "inside" === b[a + "Position"] && (g = -g), [g, c]
+					return "inside" == b[a + "Position"] && (g = -g), [g, c]
 			},
 			labelMetrics: function () {
 				var a =
@@ -3233,7 +3233,7 @@ License: www.highcharts.com/license
 				b ? (t = !a.staggerLines && !a.step && (n(h) ? [h] : k < C(a.autoRotationLimit,
 								80) && a.autoRotation)) && e(t, function (a) {
 					var b;
-					if (a === h || a && -90 <= a && 90 >= a)
+					if (a == h || a && -90 <= a && 90 >= a)
 						z = x(Math.abs(m.h / Math.sin(w * a))), b = z + Math.abs(a / 360), b < A && (A = b, q = a, d = z)
 				}) : a.step || (d = x(m.h));
 				this.autoRotation = t;
@@ -3278,7 +3278,7 @@ License: www.highcharts.com/license
 						}, !t))
 					for (f.textOverflow = "clip", l = c.length; !q && l--; )
 						if (B = c[l], m = d[B].label)
-							m.styles && "ellipsis" === m.styles.textOverflow ? m.css({
+							m.styles && "ellipsis" == m.styles.textOverflow ? m.css({
 								textOverflow: "clip"
 							}) : d[B].labelLength > h && m.css({
 								width: h + "px"
@@ -3367,11 +3367,11 @@ License: www.highcharts.com/license
 						}).addClass("highcharts-" + a.coll.toLowerCase() + "-labels " + (r || "")).add(w));
 				A || a.isLinked ? (e(k, function (b, c) {
 						a.generateTick(b, c)
-					}), a.renderUnsquish(), a.reserveSpaceDefault = 0 === m || 2 === m || {
+					}), a.renderUnsquish(), a.reserveSpaceDefault = 0 == m || 2 == m || {
 						1: "left",
 						3: "right"
 					}
-					[m] === a.labelAlign, C(u.reserveSpace, "center" === a.labelAlign ? !0 : null, a.reserveSpaceDefault) && e(k, function (a) {
+					[m] == a.labelAlign, C(u.reserveSpace, "center" == a.labelAlign ? !0 : null, a.reserveSpaceDefault) && e(k, function (a) {
 						G = Math.max(q[a].getLabelSize(), G)
 					}), a.staggerLines && (G *= a.staggerLines), a.labelOffset = G *
 						(a.opposite ? -1 : 1)) : t(q, function (a, b) {
@@ -3385,7 +3385,7 @@ License: www.highcharts.com/license
 					x: 0,
 					y: 0
 				};
-				c = 0 === m ? -a.labelMetrics().h : 2 === m ? a.tickRotCorr.y : 0;
+				c = 0 == m ? -a.labelMetrics().h : 2 == m ? a.tickRotCorr.y : 0;
 				l = Math.abs(G) + l;
 				G && (l = l - c + I * (h ? C(u.y, a.tickRotCorr.y + 8 * I) : u.x));
 				a.axisTitleMargin = C(F, l);
@@ -3487,9 +3487,9 @@ License: www.highcharts.com/license
 					}), m.length && (e(m, function (a, c) {
 							b.renderTick(a,
 								c)
-						}), u && (0 === b.min || b.single) && (x[-1] || (x[-1] = new F(b, -1, null, !0)), x[-1].render(-1))), n && e(m, function (d, g) {
+						}), u && (0 == b.min || b.single) && (x[-1] || (x[-1] = new F(b, -1, null, !0)), x[-1].render(-1))), n && e(m, function (d, g) {
 						w = void 0 !== m[g + 1] ? m[g + 1] + u : b.max - u;
-						0 === g % 2 && d < b.max && w <= b.max + (c.polar ? -u : u) && (l[d] || (l[d] = new a.PlotLineOrBand(b)), r = d + u, l[d].options = {
+						0 == g % 2 && d < b.max && w <= b.max + (c.polar ? -u : u) && (l[d] || (l[d] = new a.PlotLineOrBand(b)), r = d + u, l[d].options = {
 								from: k ? q(r) : r,
 								to: k ? q(w) : w,
 								color: n
@@ -3550,7 +3550,7 @@ License: www.highcharts.com/license
 					b.plotLinesAndBandsGroups[g] =
 						b.plotLinesAndBandsGroups[g].destroy();
 				t(b, function (a, c) {
-					-1 === k(c, b.keepProps) && delete b[c]
+					-1 == k(c, b.keepProps) && delete b[c]
 				})
 			},
 			drawCrosshair: function (a, b) {
@@ -3622,7 +3622,7 @@ License: www.highcharts.com/license
 				t >= h.month && (x[D.hcSetMonth](t >= h.year ? 0 : C * Math.floor(x[D.hcGetMonth]() / C)), n = x[D.hcGetFullYear]());
 				if (t >= h.year)
 					x[D.hcSetFullYear](n - n % C);
-				if (t === h.week)
+				if (t == h.week)
 					x[D.hcSetDate](x[D.hcGetDate]() - x[D.hcGetDay]() + e(b, 1));
 				n = x[D.hcGetFullYear]();
 				b = x[D.hcGetMonth]();
@@ -3632,10 +3632,10 @@ License: www.highcharts.com/license
 				D.hcHasTimeZone && (q = (!B || !!D.hcGetTimezoneOffset) && (c - d > 4 * h.month || w(d) !== w(c)), N = w(x), x = new D(d + N));
 				B = x.getTime();
 				for (d = 1; B < c; )
-					k.push(B), B = t === h.year ? u(n + d * C, 0) : t === h.month ? u(n, b + d * C) : !q || t !== h.day && t !== h.week ? q && t === h.hour ? u(n, b, A, F + d * C, 0, 0, N) - N : B + t * C : u(n, b, A + d * C * (t === h.day ? 1 : 7)), d++;
+					k.push(B), B = t == h.year ? u(n + d * C, 0) : t == h.month ? u(n, b + d * C) : !q || t !== h.day && t !== h.week ? q && t == h.hour ? u(n, b, A, F + d * C, 0, 0, N) - N : B + t * C : u(n, b, A + d * C * (t == h.day ? 1 : 7)), d++;
 				k.push(B);
 				t <= h.hour && 1E4 > k.length && l(k, function (a) {
-					0 === a % 18E5 && "000000000" === H("%H%M%S%L", a) && (m[a] = "day")
+					0 == a % 18E5 && "000000000" == H("%H%M%S%L", a) && (m[a] = "day")
 				})
 			}
 			k.info = r(a, {
@@ -3651,8 +3651,8 @@ License: www.highcharts.com/license
 			k = d[1],
 			e;
 			for (e = 0; e < c.length && !(d = c[e], b = h[d[0]], k = d[1], c[e + 1] && a <= (b * k[k.length - 1] + h[c[e + 1][0]]) / 2); e++);
-			b === h.year && a < 5 * b && (k = [1, 2, 5]);
-			a = u(a / b, k, "year" === d[0] ? Math.max(n(a / b), 1) : 1);
+			b == h.year && a < 5 * b && (k = [1, 2, 5]);
+			a = u(a / b, k, "year" == d[0] ? Math.max(n(a / b), 1) : 1);
 			return {
 				unitRange: b,
 				count: a,
@@ -3681,7 +3681,7 @@ License: www.highcharts.com/license
 						k = m(h(e) * l[c]), k > r && (!w || z <= n) && void 0 !== z && d.push(z), z > n &&
 						(B = !0), z = k;
 			else
-				r = h(r), n = h(n), a = w ? this.getMinorTickInterval() : l.tickInterval, a = f("auto" === a ? null : a, this._minorAutoInterval, l.tickPixelInterval / (w ? 5 : 1) * (n - r) / ((w ? e / this.tickPositions.length : e) || 1)), a = p(a, null, D(a)), d = H(this.getLinearTickPositions(a, r, n), m), w || (this._minorAutoInterval = a / 5);
+				r = h(r), n = h(n), a = w ? this.getMinorTickInterval() : l.tickInterval, a = f("auto" == a ? null : a, this._minorAutoInterval, l.tickPixelInterval / (w ? 5 : 1) * (n - r) / ((w ? e / this.tickPositions.length : e) || 1)), a = p(a, null, D(a)), d = H(this.getLinearTickPositions(a, r, n), m), w || (this._minorAutoInterval = a / 5);
 			w || (this.tickInterval = a);
 			return d
 		};
@@ -3804,8 +3804,8 @@ License: www.highcharts.com/license
 				a = a < this.min && e < this.min || a > this.max &&
 					e > this.max;
 				if (m && h)
-					for (a && (k = m.toString() === h.toString(), b = 0), a = 0; a < m.length; a += 6)
-						c && h[a + 1] === m[a + 1] ? (h[a + 1] += b, h[a + 4] += b) : c || h[a + 2] !== m[a + 2] || (h[a + 2] += b, h[a + 5] += b), d.push("M", m[a + 1], m[a + 2], "L", m[a + 4], m[a + 5], h[a + 4], h[a + 5], h[a + 1], h[a + 2], "z"), d.flat = k;
+					for (a && (k = m.toString() == h.toString(), b = 0), a = 0; a < m.length; a += 6)
+						c && h[a + 1] == m[a + 1] ? (h[a + 1] += b, h[a + 4] += b) : c || h[a + 2] !== m[a + 2] || (h[a + 2] += b, h[a + 5] += b), d.push("M", m[a + 1], m[a + 2], "L", m[a + 4], m[a + 5], h[a + 4], h[a + 5], h[a + 1], h[a + 2], "z"), d.flat = k;
 				return d
 			},
 			addPlotBand: function (a) {
@@ -3823,10 +3823,10 @@ License: www.highcharts.com/license
 			},
 			removePlotBandOrLine: function (a) {
 				for (var e = this.plotLinesAndBands, h = this.options, m = this.userOptions, d = e.length; d--; )
-					e[d].id === a && e[d].destroy();
+					e[d].id == a && e[d].destroy();
 				l([h.plotLines || [], m.plotLines || [], h.plotBands || [], m.plotBands || []], function (c) {
 					for (d = c.length; d--; )
-						c[d].id === a && r(c, c[d])
+						c[d].id == a && r(c, c[d])
 				})
 			},
 			removePlotBand: function (a) {
@@ -3935,7 +3935,7 @@ License: www.highcharts.com/license
 				n;
 				a = w(a);
 				d = a[0].tooltipPos;
-				this.followPointer && e && (void 0 === e.chartX && (e = c.pointer.normalize(e)), d = [e.chartX - c.plotLeft, e.chartY - k]);
+				this.followPointer && e && (void 0 == e.chartX && (e = c.pointer.normalize(e)), d = [e.chartX - c.plotLeft, e.chartY - k]);
 				d || (D(a, function (a) {
 						x =
 							a.series.yAxis;
@@ -3953,7 +3953,7 @@ License: www.highcharts.com/license
 				m,
 				f = ["y", c.chartHeight, e, d.plotY + c.plotTop, c.plotTop, c.plotTop + c.plotHeight],
 				x = ["x", c.chartWidth, a, d.plotX + c.plotLeft, c.plotLeft, c.plotLeft + c.plotWidth],
-				l = !this.followPointer && n(d.ttBelow, !c.inverted === !!d.negative),
+				l = !this.followPointer && n(d.ttBelow, !c.inverted == !!d.negative),
 				t = function (a, c, d, g, e, q) {
 					var m = d < g - b,
 					z = g + b + d < c,
@@ -4014,7 +4014,7 @@ License: www.highcharts.com/license
 							}), m = {
 								x: k[0].category,
 								y: k[0].y
-							}, m.points = f, k = k[0]), this.len = f.length, m = d.call(m, this), x = k.series, this.distance = n(x.tooltipOptions.distance, 16), !1 === m ? this.hide() : (d = this.getLabel(), this.isHidden && d.attr({
+							}, m.points = f, k = k[0]), this.len = f.length, m = d.call(m, this), x = k.series, this.distance = n(x.tooltipOptions.distance, 16), !1 == m ? this.hide() : (d = this.getLabel(), this.isHidden && d.attr({
 							opacity: 1
 						}).show(), this.split ? this.renderSplit(m, w(a)) : (c.style.width || d.css({
 								width: this.chart.spacingBox.width
@@ -4086,7 +4086,7 @@ License: www.highcharts.com/license
 					var c = a.point,
 					d = c.series;
 					a.tt.attr({
-						visibility: void 0 === a.pos ? "hidden" : "inherit",
+						visibility: void 0 == a.pos ? "hidden" : "inherit",
 						x: h || c.isHeader ? a.x : c.plotX + b.plotLeft + n(f.distance, 16),
 						y: a.pos + b.plotTop,
 						anchorX: c.isHeader ? c.plotX + b.plotLeft : c.plotX + d.xAxis.pos,
@@ -4113,7 +4113,7 @@ License: www.highcharts.com/license
 				},
 				l = "millisecond";
 				for (h in e) {
-					if (a === e.week && +E("%w", m) === d && "00:00:00.000" === b.substr(6)) {
+					if (a == e.week && +E("%w", m) == d && "00:00:00.000" == b.substr(6)) {
 						h = "week";
 						break
 					}
@@ -4139,7 +4139,7 @@ License: www.highcharts.com/license
 				c = d.tooltipOptions,
 				b = c.xDateFormat,
 				k = d.xAxis,
-				h = k && "datetime" === k.options.type && f(a.key),
+				h = k && "datetime" == k.options.type && f(a.key),
 				m = c[e + "Format"];
 				h && !b && (b = this.getXDateFormat(a, c, k));
 				h && b && D(a.point && a.point.tooltipDateKeys || ["key"], function (a) {
@@ -4272,7 +4272,7 @@ License: www.highcharts.com/license
 									!0) && !a.noSharedTooltip
 							}), r(n, function (a) {
 							var b = w(a.points, function (a) {
-									return a.x === k.x && !a.isNull
+									return a.x == k.x && !a.isNull
 								});
 							e(b) && (x && (b = a.getPoint(b)), z.push(b))
 						})) : z.push(k));
@@ -4298,7 +4298,7 @@ License: www.highcharts.com/license
 				e = e && f && !f.noSharedTooltip;
 				if (h && (h !== d.hoverPoint || k && k.isHidden)) {
 					r(d.hoverPoints || [], function (b) {
-						-1 === a.inArray(b, l) && b.setState()
+						-1 == a.inArray(b, l) && b.setState()
 					});
 					r(l || [], function (a) {
 						a.setState("hover")
@@ -4326,7 +4326,7 @@ License: www.highcharts.com/license
 				r(d.axes, function (c) {
 					var d = m(c.crosshair.snap, !0),
 					k = d ? a.find(l, function (a) {
-							return a.series[c.coll] === c
+							return a.series[c.coll] == c
 						}) : void 0;
 					k || !d ? c.drawCrosshair(b, k) : c.hideCrosshair()
 				})
@@ -4339,7 +4339,7 @@ License: www.highcharts.com/license
 				m = b.tooltip,
 				f = m && m.shared ? h : e;
 				a && f && r(d(f), function (b) {
-					b.series.isCartesian && void 0 === b.plotX &&
+					b.series.isCartesian && void 0 == b.plotX &&
 					(a = !1)
 				});
 				if (a)
@@ -4432,7 +4432,7 @@ License: www.highcharts.com/license
 										}
 										[c.coll]])) {
 								var k = c.horiz,
-								h = "touchend" === a.type ? c.minPixelPadding : 0,
+								h = "touchend" == a.type ? c.minPixelPadding : 0,
 								g = c.toValue((k ? m : t) + h),
 								k = c.toValue((k ? m + p : t + w) - h);
 								e[c.coll].push({
@@ -4478,7 +4478,7 @@ License: www.highcharts.com/license
 				l(a.hoverChartIndex) && H[a.hoverChartIndex] && H[a.hoverChartIndex].mouseIsDown || (a.hoverChartIndex = c.index);
 				b = this.normalize(b);
 				b.returnValue = !1;
-				"mousedown" === c.mouseIsDown && this.drag(b);
+				"mousedown" == c.mouseIsDown && this.drag(b);
 				!this.inClass(b.target, "highcharts-tracker") && !c.isInsidePlot(b.chartX - c.plotLeft, b.chartY - c.plotTop) || c.openMenu || this.runPointActions(b)
 			},
 			inClass: function (a, c) {
@@ -4568,7 +4568,7 @@ License: www.highcharts.com/license
 				t = d || 1,
 				C = c.inverted,
 				u = c.bounds[a ? "h" : "v"],
-				q = 1 === f.length,
+				q = 1 == f.length,
 				A = f[0][z],
 				F = l[0][z],
 				G = !q && f[1][z],
@@ -4600,14 +4600,14 @@ License: www.highcharts.com/license
 				d = n.hasZoom,
 				c = n.selectionMarker,
 				b = {},
-				k = 1 === h && (n.inClass(a.target, "highcharts-tracker") && r.runTrackerClick || n.runChartClick),
+				k = 1 == h && (n.inClass(a.target, "highcharts-tracker") && r.runTrackerClick || n.runChartClick),
 				z = {};
 				1 < h && (n.initiated = !0);
 				d && n.initiated && !k && a.preventDefault();
 				p(e, function (a) {
 					return n.normalize(a)
 				});
-				"touchstart" === a.type ? (D(e, function (a, b) {
+				"touchstart" == a.type ? (D(e, function (a, b) {
 						u[b] = {
 							chartX: a.chartX,
 							chartY: a.chartY
@@ -4623,7 +4623,7 @@ License: www.highcharts.com/license
 							b.min = Math.min(a.pos, Math.min(d, e) - c);
 							b.max = Math.max(a.pos + a.len, k + c)
 						}
-					}), n.res = !0) : n.followTouchMove && 1 === h ? this.runPointActions(n.normalize(a)) : u.length && (c || (n.selectionMarker = c = H({
+					}), n.res = !0) : n.followTouchMove && 1 == h ? this.runPointActions(n.normalize(a)) : u.length && (c || (n.selectionMarker = c = H({
 								destroy: f,
 								touch: !0
 							}, r.plotBox)), n.pinchTranslate(u, e, b, c, z, m), n.hasPinched = d, n.scaleGroups(b, z), n.res && (n.res = !1, this.reset(!1, 0)))
@@ -4637,7 +4637,7 @@ License: www.highcharts.com/license
 						relatedTarget: !0
 					});
 				a.hoverChartIndex = p.index;
-				1 === f.touches.length ? (f = this.normalize(f), (e = p.isInsidePlot(f.chartX - p.plotLeft, f.chartY - p.plotTop)) && !p.openMenu ? (n && this.runPointActions(f), "touchmove" === f.type && (n = this.pinchDown, r = n[0] ? 4 <= Math.sqrt(Math.pow(n[0].chartX - f.chartX, 2) + Math.pow(n[0].chartY - f.chartY, 2)) : !1), l(r, !0) && this.pinch(f)) : n && this.reset()) : 2 === f.touches.length && this.pinch(f)
+				1 == f.touches.length ? (f = this.normalize(f), (e = p.isInsidePlot(f.chartX - p.plotLeft, f.chartY - p.plotTop)) && !p.openMenu ? (n && this.runPointActions(f), "touchmove" == f.type && (n = this.pinchDown, r = n[0] ? 4 <= Math.sqrt(Math.pow(n[0].chartX - f.chartX, 2) + Math.pow(n[0].chartY - f.chartY, 2)) : !1), l(r, !0) && this.pinch(f)) : n && this.reset()) : 2 == f.touches.length && this.pinch(f)
 			},
 			onContainerTouchStart: function (a) {
 				this.zoomOption(a);
@@ -4871,7 +4871,7 @@ License: www.highcharts.com/license
 				var c = this.chart,
 				b = c.renderer,
 				d = this.options,
-				e = "horizontal" === d.layout,
+				e = "horizontal" == d.layout,
 				h = this.symbolWidth,
 				f = d.symbolPadding,
 				m = this.itemStyle,
@@ -4918,7 +4918,7 @@ License: www.highcharts.com/license
 				var a = [];
 				f(this.chart.series, function (c) {
 					var b = c && c.options;
-					c && w(b.showInLegend, p(b.linkedTo) ? !1 : void 0, !0) && (a = a.concat(c.legendItems || ("point" === b.legendType ? c.data : c)))
+					c && w(b.showInLegend, p(b.linkedTo) ? !1 : void 0, !0) && (a = a.concat(c.legendItems || ("point" == b.legendType ? c.data : c)))
 				});
 				return a
 			},
@@ -4932,7 +4932,7 @@ License: www.highcharts.com/license
 				e = this.getAlignment();
 				e && f([/(lth|ct|rth)/, /(rtv|rm|rbv)/, /(rbh|cb|lbh)/, /(lbv|lm|ltv)/], function (k, h) {
 					k.test(e) &&
-					!p(a[h]) && (b[r[h]] = Math.max(b[r[h]], b.legend[(h + 1) % 2 ? "legendHeight" : "legendWidth"] + [1, -1, -1, 1][h] * d[h % 2 ? "x" : "y"] + w(d.margin, 12) + c[h] + (0 === h ? b.titleOffset + b.options.title.margin : 0)))
+					!p(a[h]) && (b[r[h]] = Math.max(b[r[h]], b.legend[(h + 1) % 2 ? "legendHeight" : "legendWidth"] + [1, -1, -1, 1][h] * d[h % 2 ? "x" : "y"] + w(d.margin, 12) + c[h] + (0 == h ? b.titleOffset + b.options.title.margin : 0)))
 				})
 			},
 			render: function () {
@@ -5009,7 +5009,7 @@ License: www.highcharts.com/license
 				h =
 					e.y,
 				m = this.padding,
-				b = b.spacingBox.height + ("top" === e.verticalAlign ? -h : h) - m,
+				b = b.spacingBox.height + ("top" == e.verticalAlign ? -h : h) - m,
 				h = e.maxHeight,
 				l,
 				n = this.clipRect,
@@ -5021,12 +5021,12 @@ License: www.highcharts.com/license
 				F,
 				G = this.allItems,
 				g = function (a) {
-					"number" === typeof a ? n.attr({
+					"number" == typeof a ? n.attr({
 						height: a
 					}) : n && (c.clipRect = n.destroy(), c.contentGroup.clip());
 					c.contentGroup.div && (c.contentGroup.div.style.clip = a ? "rect(" + m + "px,9999px," + (m + a) + "px,0)" : "auto")
 				};
-				"horizontal" !== e.layout || "middle" === e.verticalAlign || e.floating || (b /= 2);
+				"horizontal" !== e.layout || "middle" == e.verticalAlign || e.floating || (b /= 2);
 				h && (b = Math.min(b, h));
 				A.length =
 					0;
@@ -5038,7 +5038,7 @@ License: www.highcharts.com/license
 							A.push(F || c), g++;
 						a.pageIx = g - 1;
 						F && (G[b - 1].pageIx = g - 1);
-						b === G.length - 1 && c + d - A[g - 1] > l && (A.push(c), a.pageIx = g);
+						b == G.length - 1 && c + d - A[g - 1] > l && (A.push(c), a.pageIx = g);
 						c !== F && (F = c)
 					}), n || (n = c.clipRect = d.clipRect(0, m, 9999, 0), c.contentGroup.clip(n)), g(l), q || (this.nav = q = d.g().attr({
 								zIndex: 1
@@ -5066,21 +5066,21 @@ License: www.highcharts.com/license
 						translateY: e + this.padding + 7 + this.titleHeight,
 						visibility: "visible"
 					}), this.up.attr({
-						"class": 1 === a ? "highcharts-legend-nav-inactive" : "highcharts-legend-nav-active"
+						"class": 1 == a ? "highcharts-legend-nav-inactive" : "highcharts-legend-nav-active"
 					}), f.attr({
 						text: a + "/" + d
 					}), this.down.attr({
 						x: 18 + this.pager.getBBox().width,
-						"class": a === d ? "highcharts-legend-nav-inactive" : "highcharts-legend-nav-active"
+						"class": a == d ? "highcharts-legend-nav-inactive" : "highcharts-legend-nav-active"
 					}), this.up.attr({
-						fill: 1 === a ? h.inactiveColor : h.activeColor
+						fill: 1 == a ? h.inactiveColor : h.activeColor
 					}).css({
-						cursor: 1 === a ? "default" : "pointer"
+						cursor: 1 == a ? "default" : "pointer"
 					}), this.down.attr({
-						fill: a ===
+						fill: a ==
 						d ? h.inactiveColor : h.activeColor
 					}).css({
-						cursor: a === d ? "default" : "pointer"
+						cursor: a == d ? "default" : "pointer"
 					}), this.scrollOffset = -b[a - 1] + this.initialItemY, this.scrollGroup.animate({
 						translateY: this.scrollOffset
 					}), this.currentPage = a, this.positionCheckboxes())
@@ -5109,7 +5109,7 @@ License: www.highcharts.com/license
 				};
 				c.dashStyle && (l.dashstyle = c.dashStyle);
 				this.legendLine = f.path(["M", 0, a, "L", d, a]).addClass("highcharts-graph").attr(l).add(m);
-				b && !1 !== b.enabled && (c = Math.min(w(b.radius, h), h), 0 === this.symbol.indexOf("url") && (b = n(b, {
+				b && !1 !== b.enabled && (c = Math.min(w(b.radius, h), h), 0 == this.symbol.indexOf("url") && (b = n(b, {
 								width: e,
 								height: e
 							}), c = 0), this.legendSymbol = b = f.symbol(this.symbol, d /
@@ -5259,7 +5259,7 @@ License: www.highcharts.com/license
 					for (c = e.length; c--; )
 						F = e[c], F.options.stacking && (F.isDirty = !0);
 				m(e, function (a) {
-					a.isDirty && "point" === a.options.legendType && (a.updateTotals && a.updateTotals(), h = !0);
+					a.isDirty && "point" == a.options.legendType && (a.updateTotals && a.updateTotals(), h = !0);
 					a.isDirtyData && b(a, "updatedData")
 				});
 				h && q.options.enabled &&
@@ -5298,7 +5298,7 @@ License: www.highcharts.com/license
 			},
 			get: function (a) {
 				function b(b) {
-					return b.id === a || b.options && b.options.id === a
+					return b.id == a || b.options && b.options.id == a
 				}
 				var d,
 				g = this.series,
@@ -5380,7 +5380,7 @@ License: www.highcharts.com/license
 				m(["title", "subtitle"], function (a) {
 					var c = this[a],
 					k = this.options[a];
-					a = "title" === a ? -3 : k.verticalAlign ? 0 : b + 2;
+					a = "title" == a ? -3 : k.verticalAlign ? 0 : b + 2;
 					var q;
 					c && (q = k.style.fontSize, q = g.fontMetrics(q, c).b, c.css({
 							width: (k.width || e.width + k.widthAdjust) + "px"
@@ -5412,7 +5412,7 @@ License: www.highcharts.com/license
 				else
 					for (; c && c.style; ) {
 						f.body.contains(c) || c.parentNode || (c.hcOrigDetached = !0, f.body.appendChild(c));
-						if ("none" === a.getStyle(c, "display", !1) || c.hcOricDetached)
+						if ("none" == a.getStyle(c, "display", !1) || c.hcOricDetached)
 							c.hcOrigStyle = {
 								display: c.style.display,
 								height: c.style.height,
@@ -5426,7 +5426,7 @@ License: www.highcharts.com/license
 						a.css(c, b),
 						c.offsetWidth || c.style.setProperty("display", "block", "important");
 						c = c.parentNode;
-						if (c === f.body)
+						if (c == f.body)
 							break
 					}
 			},
@@ -5506,7 +5506,7 @@ License: www.highcharts.com/license
 				k = d.width || a.getStyle(g, "width"),
 				d = d.height || a.getStyle(g, "height"),
 				g = b ? b.target : L;
-				if (!e && !c.isPrinting && k && d && (g === L || g === f)) {
+				if (!e && !c.isPrinting && k && d && (g == L || g == f)) {
 					if (k !== c.containerWidth || d !== c.containerHeight)
 						clearTimeout(c.reflowTimeout),
 						c.reflowTimeout = Q(function () {
@@ -5715,7 +5715,7 @@ License: www.highcharts.com/license
 				});
 				m(b, function (b) {
 					var c = b.options.linkedTo;
-					I(c) && (c = ":previous" === c ? a.series[b.index - 1] : a.get(c)) && c.linkedParent !== b && (c.linkedSeries.push(b), b.linkedParent = c, b.visible = q(b.options.visible, c.options.visible, b.visible))
+					I(c) && (c = ":previous" == c ? a.series[b.index - 1] : a.get(c)) && c.linkedParent !== b && (c.linkedSeries.push(b), b.linkedParent = c, b.visible = q(b.options.visible, c.options.visible, b.visible))
 				})
 			},
 			renderSeries: function () {
@@ -5820,10 +5820,10 @@ License: www.highcharts.com/license
 			},
 			isReadyToRender: function () {
 				var a = this;
-				return v || L != L.top || "complete" === f.readyState ? !0 : (f.attachEvent("onreadystatechange", function () {
+				return v || L != L.top || "complete" == f.readyState ? !0 : (f.attachEvent("onreadystatechange", function () {
 						f.detachEvent("onreadystatechange",
 							a.firstRender);
-						"complete" === f.readyState && a.firstRender()
+						"complete" == f.readyState && a.firstRender()
 					}), !1)
 			},
 			firstRender: function () {
@@ -5878,7 +5878,7 @@ License: www.highcharts.com/license
 				this.color = a.color;
 				this.applyOptions(h, f);
 				a.options.colorByPoint ? (h = a.options.colors || a.chart.options.colors, this.color = this.color || h[a.colorCounter],
-					h = h.length, f = a.colorCounter, a.colorCounter++, a.colorCounter === h && (a.colorCounter = 0)) : f = a.colorIndex;
+					h = h.length, f = a.colorCounter, a.colorCounter++, a.colorCounter == h && (a.colorCounter = 0)) : f = a.colorIndex;
 				this.colorIndex = w(this.colorIndex, f);
 				a.chart.pointCount++;
 				return this
@@ -5891,11 +5891,11 @@ License: www.highcharts.com/license
 				this.options = this.options ? H(this.options, a) : a;
 				a.group && delete this.group;
 				d && (this.y = this[d]);
-				this.isNull = w(this.isValid && !this.isValid(), null === this.x || !n(this.y, !0));
+				this.isNull = w(this.isValid && !this.isValid(), null == this.x || !n(this.y, !0));
 				this.selected && (this.state =
 						"select");
-				"name" in this && void 0 === h && e.xAxis && e.xAxis.hasNames && (this.x = e.xAxis.nameToX(this));
-				void 0 === this.x && e && (this.x = void 0 === h ? e.autoIncrement(this) : h);
+				"name" in this && void 0 == h && e.xAxis && e.xAxis.hasNames && (this.x = e.xAxis.nameToX(this));
+				void 0 == this.x && e && (this.x = void 0 == h ? e.autoIncrement(this) : h);
 				return this
 			},
 			optionsToObject: function (a) {
@@ -5906,13 +5906,13 @@ License: www.highcharts.com/license
 				b = c.length,
 				k = 0,
 				l = 0;
-				if (n(a) || null === a)
+				if (n(a) || null == a)
 					e[c[0]] = a;
 				else if (r(a))
-					for (!d && a.length > b && (f = typeof a[0], "string" === f ? e.name = a[0] : "number" === f && (e.x = a[0]), k++); l < b; )
-						d && void 0 === a[k] || (e[c[l]] = a[k]), k++, l++;
+					for (!d && a.length > b && (f = typeof a[0], "string" == f ? e.name = a[0] : "number" == f && (e.x = a[0]), k++); l < b; )
+						d && void 0 == a[k] || (e[c[l]] = a[k]), k++, l++;
 				else
-					"object" === typeof a && (e = a, a.dataLabels &&
+					"object" == typeof a && (e = a, a.dataLabels &&
 						(f._hasPointLabels = !0), a.marker && (f._hasPointMarkers = !0));
 				return e
 			},
@@ -5936,7 +5936,7 @@ License: www.highcharts.com/license
 				f;
 				a.pointCount--;
 				h && (this.setState(), p(h, this), h.length || (a.hoverPoints = null));
-				if (this === a.hoverPoint)
+				if (this == a.hoverPoint)
 					this.onMouseOut();
 				if (this.graphic || this.dataLabel)
 					u(this), this.destroyElements();
@@ -5984,7 +5984,7 @@ License: www.highcharts.com/license
 				var d = this,
 				c = this.series.options;
 				(c.point.events[a] || d.options && d.options.events && d.options.events[a]) && this.importEvents();
-				"click" === a && c.allowPointSelect && (m = function (a) {
+				"click" == a && c.allowPointSelect && (m = function (a) {
 					d.select && d.select(null, a.ctrlKey || a.metaKey || a.shiftKey)
 				});
 				f(this, a, h, m)
@@ -6052,7 +6052,7 @@ License: www.highcharts.com/license
 				dataLabels: {
 					align: "center",
 					formatter: function () {
-						return null === this.y ? "" : a.numberFormat(this.y, -1)
+						return null == this.y ? "" : a.numberFormat(this.y, -1)
 					},
 					style: {
 						fontSize: "11px",
@@ -6110,7 +6110,7 @@ License: www.highcharts.com/license
 						name: b.name,
 						state: "",
 						visible: !1 !== b.visible,
-						selected: !0 === b.selected
+						selected: !0 == b.selected
 					});
 					d = b.events;
 					B(d, function (a, b) {
@@ -6138,7 +6138,7 @@ License: www.highcharts.com/license
 								a.splice(d + 1, 0, this);
 								break
 							}
-						-1 === d && a.unshift(this);
+						-1 == d && a.unshift(this);
 						d += 1
 					} else
 						a.push(this);
@@ -6153,17 +6153,17 @@ License: www.highcharts.com/license
 						u(d[g],
 							function (a) {
 							e = a.options;
-							if (c[g] === e.index || void 0 !== c[g] && c[g] === e.id || void 0 === c[g] && 0 === e.index)
+							if (c[g] == e.index || void 0 !== c[g] && c[g] == e.id || void 0 == c[g] && 0 == e.index)
 								b.insert(a.series), b[g] = a, a.isDirty = !0
 						});
-						b[g] || b.optionalAxis === g || a.error(18, !0)
+						b[g] || b.optionalAxis == g || a.error(18, !0)
 					})
 				},
 				updateParallelArrays: function (a, c) {
 					var d = a.series,
 					e = arguments,
 					g = b(c) ? function (b) {
-						var g = "y" === b && d.toYData ? d.toYData(a) : a[b];
+						var g = "y" == b && d.toYData ? d.toYData(a) : a[b];
 						d[b + "Data"][c] = g
 					}
 					 : function (a) {
@@ -6179,7 +6179,7 @@ License: www.highcharts.com/license
 					g = 0,
 					c = I(c, b.pointStart, 0);
 					this.pointInterval = d = I(this.pointInterval, b.pointInterval, 1);
-					e && (b = new l(c), "day" === e ? b = +b[l.hcSetDate](b[l.hcGetDate]() + d) : "month" === e ? b = +b[l.hcSetMonth](b[l.hcGetMonth]() + d) : "year" === e && (b = +b[l.hcSetFullYear](b[l.hcGetFullYear]() + d)), l.hcHasTimeZone && (g = a.getTZOffset(b) - a.getTZOffset(c)), d = b - c + g);
+					e && (b = new l(c), "day" == e ? b = +b[l.hcSetDate](b[l.hcGetDate]() + d) : "month" == e ? b = +b[l.hcSetMonth](b[l.hcGetMonth]() + d) : "year" == e && (b = +b[l.hcSetFullYear](b[l.hcGetFullYear]() + d)), l.hcHasTimeZone && (g = a.getTZOffset(b) - a.getTZOffset(c)), d = b - c + g);
 					this.xIncrement = c + d;
 					return c
 				},
@@ -6194,7 +6194,7 @@ License: www.highcharts.com/license
 							d.series, a);
 					this.tooltipOptions = z(r.tooltip, r.plotOptions.series && r.plotOptions.series.tooltip, r.plotOptions[this.type].tooltip, c.tooltip.userOptions, d.series && d.series.tooltip, d[this.type].tooltip, a.tooltip);
 					this.stickyTracking = I(a.stickyTracking, g[this.type] && g[this.type].stickyTracking, g.series && g.series.stickyTracking, this.tooltipOptions.shared && !this.noSharedTooltip ? !0 : b.stickyTracking);
-					null === e.marker && delete b.marker;
+					null == e.marker && delete b.marker;
 					this.zoneAxis = b.zoneAxis;
 					a = this.zones = (b.zones || []).slice();
 					!b.negativeColor &&
@@ -6246,7 +6246,7 @@ License: www.highcharts.com/license
 					d = d || [];
 					l = d.length;
 					e = I(e, !0);
-					if (!1 !== f && l && m === l && !g.cropped && !g.hasGroupedData && g.visible)
+					if (!1 !== f && l && m == l && !g.cropped && !g.hasGroupedData && g.visible)
 						u(d, function (a, b) {
 							q[b].update && a !== A.data[b] && q[b].update(a, !1, null, !1)
 						});
@@ -6257,7 +6257,7 @@ License: www.highcharts.com/license
 							g[a + "Data"].length = 0
 						});
 						if (p && l > p) {
-							for (h = 0; null === x && h < l; )
+							for (h = 0; null == x && h < l; )
 								x = d[h], h++;
 							if (b(x))
 								for (h = 0; h < l; h++)
@@ -6287,7 +6287,7 @@ License: www.highcharts.com/license
 						g.isDirtyData = !!q;
 						h = !1
 					}
-					"point" === A.legendType && (this.processData(), this.generatePoints());
+					"point" == A.legendType && (this.processData(), this.generatePoints());
 					e && t.redraw(h)
 				},
 				processData: function (b) {
@@ -6319,7 +6319,7 @@ License: www.highcharts.com/license
 							g = this.cropData(this.xData, this.yData, p, z), c = g.xData, d = g.yData, g = g.start, k = !0;
 					for (f = c.length ||
 							1; --f; )
-						e = x ? m(c[f]) - m(c[f - 1]) : c[f] - c[f - 1], 0 < e && (void 0 === h || e < h) ? h = e : 0 > e && n && (a.error(15), n = !1);
+						e = x ? m(c[f]) - m(c[f - 1]) : c[f] - c[f - 1], 0 < e && (void 0 == h || e < h) ? h = e : 0 > e && n && (a.error(15), n = !1);
 					this.cropped = k;
 					this.cropStart = g;
 					this.processedXData = c;
@@ -6368,7 +6368,7 @@ License: www.highcharts.com/license
 					c || l || (c = [], c.length = b.length, c = this.data = c);
 					a && l && (this.options.keys = !1);
 					for (n = 0; n < h; n++)
-						m = f + n, l ? (t = (new k).init(this, [g[n]].concat(K(e[n]))), t.dataGroup = this.groupMap[n]) : (t = c[m]) || void 0 === b[m] || (c[m] = t = (new k).init(this, b[m], g[n])), t && (t.index = m, x[n] = t);
+						m = f + n, l ? (t = (new k).init(this, [g[n]].concat(K(e[n]))), t.dataGroup = this.groupMap[n]) : (t = c[m]) || void 0 == b[m] || (c[m] = t = (new k).init(this, b[m], g[n])), t && (t.index = m, x[n] = t);
 					this.options.keys = a;
 					if (c && (h !== (d = c.length) || l))
 						for (n = 0; n < d; n++)
@@ -6395,7 +6395,7 @@ License: www.highcharts.com/license
 						if (l = e[n], t = a[n], m = (b(t, !0) || c(t)) && (!d.positiveValuesOnly || t.length || 0 < t), l = this.getExtremesFromAll || this.options.getExtremesFromAll || this.cropped || (e[n + 1] || l) >= f && (e[n - 1] || l) <= q, m && l)
 							if (m = t.length)
 								for (; m--; )
-									"number" === typeof t[m] && (g[h++] = t[m]);
+									"number" == typeof t[m] && (g[h++] = t[m]);
 							else
 								g[h++] = t;
 					this.dataMin =
@@ -6414,7 +6414,7 @@ License: www.highcharts.com/license
 					h = k.length,
 					m = !!this.modifyValue,
 					l = a.pointPlacement,
-					t = "between" === l || b(l),
+					t = "between" == l || b(l),
 					n = a.threshold,
 					x = a.startFromThreshold ? n : 0,
 					p,
@@ -6422,7 +6422,7 @@ License: www.highcharts.com/license
 					C,
 					r,
 					u = Number.MAX_VALUE;
-					"between" === l && (l = .5);
+					"between" == l && (l = .5);
 					b(l) && (l *= I(a.pointRange || d.pointRange));
 					for (a = 0; a < h; a++) {
 						var B = k[a],
@@ -6432,12 +6432,12 @@ License: www.highcharts.com/license
 						var D = c && g.stacks[(this.negStacks && K < (x ? 0 : n) ? "-" : "") + this.stackKey],
 						E;
 						g.positiveValuesOnly && null !== K && 0 >= K && (B.isNull = !0);
-						B.plotX = p = f(Math.min(Math.max(-1E5, d.translate(N, 0, 0, 0, 1, l, "flags" === this.type)), 1E5));
-						c && this.visible && !B.isNull && D && D[N] && (r = this.getStackIndicator(r, N, this.index), E = D[N], K = E.points[r.key], z = K[0], K = K[1], z === x && r.key === D[N].base && (z = I(n, g.min)), g.positiveValuesOnly && 0 >= z && (z = null), B.total = B.stackTotal = E.total, B.percentage = E.total && B.y / E.total * 100, B.stackY = K, E.setOffset(this.pointXOffset || 0, this.barW || 0));
+						B.plotX = p = f(Math.min(Math.max(-1E5, d.translate(N, 0, 0, 0, 1, l, "flags" == this.type)), 1E5));
+						c && this.visible && !B.isNull && D && D[N] && (r = this.getStackIndicator(r, N, this.index), E = D[N], K = E.points[r.key], z = K[0], K = K[1], z == x && r.key == D[N].base && (z = I(n, g.min)), g.positiveValuesOnly && 0 >= z && (z = null), B.total = B.stackTotal = E.total, B.percentage = E.total && B.y / E.total * 100, B.stackY = K, E.setOffset(this.pointXOffset || 0, this.barW || 0));
 						B.yBottom = w(z) ? g.translate(z, 0, 1, 0, 1) :
 							null;
 						m && (K = this.modifyValue(K, B));
-						B.plotY = z = "number" === typeof K && Infinity !== K ? Math.min(Math.max(-1E5, g.translate(K, 0, 1, 0, 1)), 1E5) : void 0;
+						B.plotY = z = "number" == typeof K && Infinity !== K ? Math.min(Math.max(-1E5, g.translate(K, 0, 1, 0, 1)), 1E5) : void 0;
 						B.isInside = void 0 !== z && 0 <= z && z <= g.len && 0 <= p && p <= d.len;
 						B.clientX = t ? f(d.translate(N, 0, 0, 0, 1, l)) : p;
 						B.negative = B.y < (n || 0);
@@ -6470,7 +6470,7 @@ License: www.highcharts.com/license
 					a && !f.count[this.index] && (f.count[this.index] =
 							!0, f.count.length += 1);
 					!1 !== c.clip && (this.group.clip(a || e ? f : b.clipRect), this.markerGroup.clip(q), this.sharedClipKey = h);
-					a || (f.count[this.index] && (delete f.count[this.index], --f.count.length), 0 === f.count.length && h && b[h] && (e || (b[h] = b[h].destroy()), b[h + "m"] && (b[h + "m"] = b[h + "m"].destroy())))
+					a || (f.count[this.index] && (delete f.count[this.index], --f.count.length), 0 == f.count.length && h && b[h] && (e || (b[h] = b[h].destroy()), b[h + "m"] && (b[h + "m"] = b[h + "m"].destroy())))
 				},
 				animate: function (a) {
 					var b = this.chart,
@@ -6508,10 +6508,10 @@ License: www.highcharts.com/license
 						for (c = 0; c < a.length; c++)
 							d = a[c], e = d.graphic, h = d.marker || {},
 					f = !!d.marker,
-					g = n && void 0 === h.enabled || h.enabled,
+					g = n && void 0 == h.enabled || h.enabled,
 					l = d.isInside,
 					g && !d.isNull ? (g = I(h.symbol, this.symbol),
-						d.hasImage = 0 === g.indexOf("url"), t = this.markerAttribs(d, d.selected && "select"), e ? e[l ? "show" : "hide"](!0).animate(t) : l && (0 < t.width || d.hasImage) && (d.graphic = e = b.renderer.symbol(g, t.x, t.y, t.width, t.height, f ? h : k).add(m)), e && e.attr(this.pointAttribs(d, d.selected && "select")), e && e.addClass(d.getClassName(), !0)) : e && (d.graphic = e.destroy())
+						d.hasImage = 0 == g.indexOf("url"), t = this.markerAttribs(d, d.selected && "select"), e ? e[l ? "show" : "hide"](!0).animate(t) : l && (0 < t.width || d.hasImage) && (d.graphic = e = b.renderer.symbol(g, t.x, t.y, t.width, t.height, f ? h : k).add(m)), e && e.attr(this.pointAttribs(d, d.selected && "select")), e && e.addClass(d.getClassName(), !0)) : e && (d.graphic = e.destroy())
 				},
 				markerAttribs: function (a, b) {
 					var c = this.options.marker,
@@ -6567,10 +6567,10 @@ License: www.highcharts.com/license
 					a.points = null;
 					clearTimeout(a.animationTimeout);
 					B(a, function (a, b) {
-						a instanceof t && !a.survive && (d = c && "group" === b ? "hide" : "destroy",
+						a instanceof t && !a.survive && (d = c && "group" == b ? "hide" : "destroy",
 							a[d]())
 					});
-					b.hoverSeries === a && (b.hoverSeries = null);
+					b.hoverSeries == a && (b.hoverSeries = null);
 					e(b.series, a);
 					b.orderSeries();
 					B(a, function (b, c) {
@@ -6598,8 +6598,8 @@ License: www.highcharts.com/license
 						t = k.plotY,
 						n = a[m - 1];
 						(k.leftCliff || n && n.rightCliff) && !c && (l = !0);
-						k.isNull && !w(b) && 0 < m ? l = !g.connectNulls : k.isNull && !b ? l = !0 : (0 === m || l ? m = ["M", k.plotX, k.plotY] :
-								d.getPointSpline ? m = d.getPointSpline(a, k, m) : e ? (m = 1 === e ? ["L", n.plotX, t] : 2 === e ? ["L", (n.plotX + q) / 2, n.plotY, "L", (n.plotX + q) / 2, t] : ["L", q, n.plotY], m.push("L", q, t)) : m = ["L", q, t], f.push(k.x), e && f.push(k.x), h.push.apply(h, m), l = !1)
+						k.isNull && !w(b) && 0 < m ? l = !g.connectNulls : k.isNull && !b ? l = !0 : (0 == m || l ? m = ["M", k.plotX, k.plotY] :
+								d.getPointSpline ? m = d.getPointSpline(a, k, m) : e ? (m = 1 == e ? ["L", n.plotX, t] : 2 == e ? ["L", (n.plotX + q) / 2, n.plotY, "L", (n.plotX + q) / 2, t] : ["L", q, n.plotY], m.push("L", q, t)) : m = ["L", q, t], f.push(k.x), e && f.push(k.x), h.push.apply(h, m), l = !1)
 					});
 					h.xMap = f;
 					return d.graphPath = h
@@ -6745,7 +6745,7 @@ License: www.highcharts.com/license
 					a.visible && a.drawPoints();
 					a.drawTracker && !1 !== a.options.enableMouseTracking && a.drawTracker();
 					a.invertGroups(l);
-					!1 === d.clip || a.sharedClipKey || f || c.clip(b.clipRect);
+					!1 == d.clip || a.sharedClipKey || f || c.clip(b.clipRect);
 					e && a.animate();
 					f || (a.animationTimeout = C(function () {
 								a.afterAnimate()
@@ -6890,7 +6890,7 @@ License: www.highcharts.com/license
 				a = d.xAxis[0].translate(this.x) + a;
 				c = this.getStackBox(d, this, a, c, h, e);
 				if (h = this.label)
-					h.align(this.alignOptions, null, c), c = h.alignAttr, h[!1 === this.options.crop || d.isInsidePlot(c.x, c.y) ? "show" : "hide"](!0)
+					h.align(this.alignOptions, null, c), c = h.alignAttr, h[!1 == this.options.crop || d.isInsidePlot(c.x, c.y) ? "show" : "hide"](!0)
 			},
 			getStackBox: function (a, h, f, d, c, b) {
 				var e = h.axis.reversed,
@@ -6964,7 +6964,7 @@ License: www.highcharts.com/license
 				}))
 		};
 		u.prototype.setStackedPoints = function () {
-			if (this.options.stacking && (!0 === this.visible || !1 === this.chart.options.chart.ignoreHiddenSeries)) {
+			if (this.options.stacking && (!0 == this.visible || !1 == this.chart.options.chart.ignoreHiddenSeries)) {
 				var e = this.processedXData,
 				h = this.processedYData,
 				f = [],
@@ -6990,9 +6990,9 @@ License: www.highcharts.com/license
 				v;
 				u.stacksTouched += 1;
 				for (G = 0; G < d; G++)
-					g = e[G], v = h[G], N = this.getStackIndicator(N, g, this.index), F = N.key, A = (q = x && v < (k ? 0 : b)) ? r : n, t[A] || (t[A] = {}), t[A][g] || (C[A] && C[A][g] ? (t[A][g] = C[A][g], t[A][g].total = null) : t[A][g] = new a.StackItem(u, u.options.stackLabels, q, g, l)), A = t[A][g], null !== v ? (A.points[F] = A.points[this.index] = [w(A.cumulative, k)], p(A.cumulative) || (A.base = F), A.touched = u.stacksTouched, 0 < N.index && !1 === this.singleStacks && (A.points[F][0] =
-								A.points[this.index + "," + g + ",0"][0])) : A.points[F] = A.points[this.index] = null, "percent" === c ? (q = q ? n : r, x && t[q] && t[q][g] ? (q = t[q][g], A.total = q.total = Math.max(q.total, A.total) + Math.abs(v) || 0) : A.total = H(A.total + (Math.abs(v) || 0))) : A.total = H(A.total + (v || 0)), A.cumulative = w(A.cumulative, k) + (v || 0), null !== v && (A.points[F].push(A.cumulative), f[G] = A.cumulative);
-				"percent" === c && (u.usePercentage = !0);
+					g = e[G], v = h[G], N = this.getStackIndicator(N, g, this.index), F = N.key, A = (q = x && v < (k ? 0 : b)) ? r : n, t[A] || (t[A] = {}), t[A][g] || (C[A] && C[A][g] ? (t[A][g] = C[A][g], t[A][g].total = null) : t[A][g] = new a.StackItem(u, u.options.stackLabels, q, g, l)), A = t[A][g], null !== v ? (A.points[F] = A.points[this.index] = [w(A.cumulative, k)], p(A.cumulative) || (A.base = F), A.touched = u.stacksTouched, 0 < N.index && !1 == this.singleStacks && (A.points[F][0] =
+								A.points[this.index + "," + g + ",0"][0])) : A.points[F] = A.points[this.index] = null, "percent" == c ? (q = q ? n : r, x && t[q] && t[q][g] ? (q = t[q][g], A.total = q.total = Math.max(q.total, A.total) + Math.abs(v) || 0) : A.total = H(A.total + (Math.abs(v) || 0))) : A.total = H(A.total + (v || 0)), A.cumulative = w(A.cumulative, k) + (v || 0), null !== v && (A.points[F].push(A.cumulative), f[G] = A.cumulative);
+				"percent" == c && (u.usePercentage = !0);
 				this.stackedYData = f;
 				u.oldStacks = {}
 			}
@@ -7157,21 +7157,21 @@ License: www.highcharts.com/license
 				a.colors && (this.options.colors = a.colors);
 				a.plotOptions && c(!0, this.options.plotOptions, a.plotOptions);
 				b(a, function (a, b) {
-					if (m[b] && "function" === typeof m[b].update)
+					if (m[b] && "function" == typeof m[b].update)
 						m[b].update(a, !1);
-					else if ("function" === typeof m[n[b]])
+					else if ("function" == typeof m[n[b]])
 						m[n[b]](a);
 					"chart" !== b && -1 !== e(b, m.propsRequireUpdateSeries) && (g = !0)
 				});
 				r("xAxis yAxis zAxis series colorAxis pane".split(" "), function (b) {
 					a[b] && (r(K(a[b]), function (a, c) {
-							(c = l(a.id) && m.get(a.id) || m[b][c]) && c.coll === b && (c.update(a,
+							(c = l(a.id) && m.get(a.id) || m[b][c]) && c.coll == b && (c.update(a,
 									!1), f && (c.touched = !0));
 							if (!c && f)
-								if ("series" === b)
+								if ("series" == b)
 									m.addSeries(a, !1).touched = !0;
-								else if ("xAxis" === b || "yAxis" === b)
-									m.addAxis(a, "xAxis" === b, !1).touched = !0
+								else if ("xAxis" == b || "yAxis" == b)
+									m.addAxis(a, "xAxis" == b, !1).touched = !0
 						}), f && r(m[b], function (a) {
 							a.touched ? delete a.touched : p.push(a)
 						}))
@@ -7199,14 +7199,14 @@ License: www.highcharts.com/license
 			update: function (a, b, c, d) {
 				function e() {
 					h.applyOptions(a);
-					null === h.y && g && (h.graphic = g.destroy());
+					null == h.y && g && (h.graphic = g.destroy());
 					m(a, !0) && (g && g.element && a && a.marker && void 0 !== a.marker.symbol && (h.graphic = g.destroy()), a && a.dataLabels && h.dataLabel && (h.dataLabel = h.dataLabel.destroy()), h.connector && (h.connector = h.connector.destroy()));
 					l = h.index;
 					f.updateParallelArrays(h, l);
 					t.data[l] = m(t.data[l], !0) || m(a, !0) ? h.options : a;
 					f.isDirty = f.isDirtyData = !0;
 					!f.fixedBox && f.hasCartesianSeries && (n.isDirtyBox = !0);
-					"point" === t.legendType &&
+					"point" == t.legendType &&
 					(n.isDirtyLegend = !0);
 					b && n.redraw(c)
 				}
@@ -7217,7 +7217,7 @@ License: www.highcharts.com/license
 				n = f.chart,
 				t = f.options;
 				b = k(b, !0);
-				!1 === d ? e() : h.firePointEvent("update", {
+				!1 == d ? e() : h.firePointEvent("update", {
 					options: a
 				}, e)
 			},
@@ -7254,7 +7254,7 @@ License: www.highcharts.com/license
 				g && m.name && (g[x] = m.name);
 				l.splice(q, 0, a);
 				n && (this.data.splice(q, 0, null), this.processData());
-				"point" === e.legendType && this.generatePoints();
+				"point" == e.legendType && this.generatePoints();
 				c && (h[0] && h[0].remove ? h[0].remove(!1) : (h.shift(), this.updateParallelArrays(m, "shift"), l.shift()));
 				this.isDirtyData = this.isDirty = !0;
 				b && f.redraw(d)
@@ -7266,7 +7266,7 @@ License: www.highcharts.com/license
 				f = d.points,
 				g = d.chart,
 				l = function () {
-					f && f.length === e.length &&
+					f && f.length == e.length &&
 					f.splice(a, 1);
 					e.splice(a, 1);
 					d.options.data.splice(a, 1);
@@ -7306,7 +7306,7 @@ License: www.highcharts.com/license
 				x = d.finishedAnimating && {
 					animation: !1
 				};
-				if (Object.keys && "data" === Object.keys(a).toString())
+				if (Object.keys && "data" == Object.keys(a).toString())
 					return this.setData(a.data, b);
 				t = n.concat(t);
 				r(t, function (a) {
@@ -7418,13 +7418,13 @@ License: www.highcharts.com/license
 						x;
 						if (m[a] && !m[a].isNull)
 							l.push(m[a]), D([-1, 1], function (e) {
-								var f = 1 === e ? "rightNull" : "leftNull",
+								var f = 1 == e ? "rightNull" : "leftNull",
 								l = 0,
 								t = h[r[c + e]];
 								if (t)
 									for (B = d; 0 <= B && B < b; )
-										n = t.points[B], n || (B === d ? m[a][f] = !0 : k[B] && (x = h[a].points[B]) && (l -= x[1] - x[0])), B += z;
-								m[a][1 === e ? "rightCliff" : "leftCliff"] =
+										n = t.points[B], n || (B == d ? m[a][f] = !0 : k[B] && (x = h[a].points[B]) && (l -= x[1] - x[0])), B += z;
+								m[a][1 == e ? "rightCliff" : "leftCliff"] =
 									l
 							});
 						else {
@@ -7463,7 +7463,7 @@ License: www.highcharts.com/license
 				B = r.threshold,
 				I = e.getThreshold(r.threshold),
 				x,
-				r = r.connectNulls || "percent" === u,
+				r = r.connectNulls || "percent" == u,
 				K = function (h, f, l) {
 					var m = a[h];
 					h = u && z[m.x].points[b];
@@ -7475,12 +7475,12 @@ License: www.highcharts.com/license
 					l || n ? (x = (n ? h[0] : h[1]) + l, t = h[0] + l, m = !!n) : !u && a[f] && a[f].isNull && (x = t = B);
 					void 0 !== x && (c.push({
 							plotX: k,
-							plotY: null === x ? I : e.getThreshold(x),
+							plotY: null == x ? I : e.getThreshold(x),
 							isNull: m,
 							isCliff: !0
 						}), d.push({
 							plotX: k,
-							plotY: null === t ? I : e.getThreshold(t),
+							plotY: null == t ? I : e.getThreshold(t),
 							doCurve: !1
 						}))
 				};
@@ -7631,7 +7631,7 @@ License: www.highcharts.com/license
 				var a = this,
 				h = a.chart;
 				h.hasRendered && H(h.series, function (e) {
-					e.type === a.type && (e.isDirty = !0)
+					e.type == a.type && (e.isDirty = !0)
 				})
 			},
 			getColumnMetrics: function () {
@@ -7643,11 +7643,11 @@ License: www.highcharts.com/license
 				b,
 				k = {},
 				l = 0;
-				!1 === h.grouping ? l = 1 : H(a.chart.series, function (c) {
+				!1 == h.grouping ? l = 1 : H(a.chart.series, function (c) {
 						var e = c.options,
 						h = c.yAxis,
 						f;
-						c.type !== a.type || !c.visible && a.chart.options.chart.ignoreHiddenSeries || d.len !== h.len || d.pos !== h.pos || (e.stacking ? (b = c.stackKey, void 0 === k[b] && (k[b] = l++), f = k[b]) : !1 !== e.grouping && (f = l++), c.columnIndex = f)
+						c.type !== a.type || !c.visible && a.chart.options.chart.ignoreHiddenSeries || d.len !== h.len || d.pos !== h.pos || (e.stacking ? (b = c.stackKey, void 0 == k[b] && (k[b] = l++), f = k[b]) : !1 !== e.grouping && (f = l++), c.columnIndex = f)
 					});
 				var n = Math.min(Math.abs(f.transA) * (f.ordinalSlope || h.pointRange || f.closestPointRange || f.tickInterval || 1), f.len),
 				p = n * h.groupPadding,
@@ -7707,7 +7707,7 @@ License: www.highcharts.com/license
 					p,
 					g = Math.max(f, e) - t;
 					l &&
-					Math.abs(g) < l && (g = l, p = !c.reversed && !d.negative || c.reversed && d.negative, d.y === b && a.dataMax <= b && c.min < b && (p = !p), t = Math.abs(t - k) > l ? e - l : k - (p ? l : 0));
+					Math.abs(g) < l && (g = l, p = !c.reversed && !d.negative || c.reversed && d.negative, d.y == b && a.dataMax <= b && c.min < b && (p = !p), t = Math.abs(t - k) > l ? e - l : k - (p ? l : 0));
 					d.barX = m;
 					d.pointWidth = u;
 					d.tooltipPos = h.inverted ? [c.len + c.pos - h.plotLeft - f, a.xAxis.len - m - n / 2, g] : [m + n / 2, f + c.pos - h.plotTop, g];
@@ -7787,7 +7787,7 @@ License: www.highcharts.com/license
 				f = a.chart;
 				f.hasRendered && H(f.series,
 					function (e) {
-					e.type === a.type && (e.isDirty = !0)
+					e.type == a.type && (e.isDirty = !0)
 				});
 				n.prototype.remove.apply(a, arguments)
 			}
@@ -7842,7 +7842,7 @@ License: www.highcharts.com/license
 				e,
 				h;
 				for (e = 0; 4 > e; ++e)
-					h = w[e], a = 2 > e || 2 === e && /%$/.test(h), w[e] = p(h, [n, l, u, w[2]][e]) + (a ? r : 0);
+					h = w[e], a = 2 > e || 2 == e && /%$/.test(h), w[e] = p(h, [n, l, u, w[2]][e]) + (a ? r : 0);
 				w[3] > w[2] && (w[3] = w[2]);
 				return w
 			},
@@ -8048,7 +8048,7 @@ License: www.highcharts.com/license
 				c;
 				a.name = w(a.name, "Slice");
 				c = function (b) {
-					a.slice("select" === b.type)
+					a.slice("select" == b.type)
 				};
 				E(a, "select", c);
 				E(a, "unselect", c);
@@ -8063,7 +8063,7 @@ License: www.highcharts.com/license
 				e = d.chart,
 				f = d.options.ignoreHiddenPoint;
 				c = w(c, f);
-				a !== b.visible && (b.visible = b.options.visible = a = void 0 === a ? !b.visible : a, d.options.data[r(b, d.data)] = b.options, p(["graphic", "dataLabel", "connector", "shadowGroup"], function (c) {
+				a !== b.visible && (b.visible = b.options.visible = a = void 0 == a ? !b.visible : a, d.options.data[r(b, d.data)] = b.options, p(["graphic", "dataLabel", "connector", "shadowGroup"], function (c) {
 						if (b[c])
 							b[c][a ? "show" : "hide"](!0)
 					}), b.legendItem && e.legend.colorizeItem(b, a), a || "hover" !== b.state || b.setState(""), f && (d.isDirty = !0), c && e.redraw())
@@ -8159,8 +8159,8 @@ License: www.highcharts.com/license
 		h.prototype.drawDataLabels = function () {
 			function c(a, b) {
 				var c = b.filter;
-				return c ? (b = c.operator, a = a[c.property], c = c.value, "\x3e" === b && a > c || "\x3c" ===
-					b && a < c || "\x3e\x3d" === b && a >= c || "\x3c\x3d" === b && a <= c || "\x3d\x3d" === b && a == c || "\x3d\x3d\x3d" === b && a === c ? !0 : !1) : !0
+				return c ? (b = c.operator, a = a[c.property], c = c.value, "\x3e" == b && a > c || "\x3c" ==
+					b && a < c || "\x3e\x3d" == b && a >= c || "\x3c\x3d" == b && a <= c || "\x3d\x3d" == b && a == c || "\x3d\x3d\x3d" == b && a == c ? !0 : !1) : !0
 			}
 			var b = this,
 			d = b.options,
@@ -8192,8 +8192,8 @@ License: www.highcharts.com/license
 					z = !p,
 					C;
 					h = f.dlOptions || f.options && f.options.dataLabels;
-					(k = u(h && h.enabled, m.enabled) && !f.isNull) && (k = !0 === c(f, h || e));
-					k && (e = n(m, h), g = f.getLabelConfig(), C = e[f.formatPrefix + "Format"] || e.format, t = H(C) ? l(C, g) : (e[f.formatPrefix + "Formatter"] || e.formatter).call(g, e), C = e.style, g = e.rotation, C.color = u(e.color, C.color, b.color, "#000000"), "contrast" === C.color && (f.contrastColor = q.getContrast(f.color || b.color), C.color = e.inside || 0 > u(f.labelDistance,
+					(k = u(h && h.enabled, m.enabled) && !f.isNull) && (k = !0 == c(f, h || e));
+					k && (e = n(m, h), g = f.getLabelConfig(), C = e[f.formatPrefix + "Format"] || e.format, t = H(C) ? l(C, g) : (e[f.formatPrefix + "Formatter"] || e.formatter).call(g, e), C = e.style, g = e.rotation, C.color = u(e.color, C.color, b.color, "#000000"), "contrast" == C.color && (f.contrastColor = q.getContrast(f.color || b.color), C.color = e.inside || 0 > u(f.labelDistance,
 									e.distance) || d.stacking ? f.contrastColor : "#000000"), d.cursor && (C.cursor = d.cursor), x = {
 							fill: e.backgroundColor,
 							stroke: e.borderColor,
@@ -8203,7 +8203,7 @@ License: www.highcharts.com/license
 							padding: e.padding,
 							zIndex: 1
 						}, a.objectEach(x, function (a, b) {
-							void 0 === a && delete x[b]
+							void 0 == a && delete x[b]
 						}));
 					!p || k && H(t) ? k && H(t) && (p ? x.text = t : (p = f.dataLabel = g ? q.text(t, 0, -9999).addClass("highcharts-data-label") : q.label(t, 0, -9999, e.shape, null, null, e.useHTML, null, "data-label"), p.addClass(" highcharts-data-label-color-" + f.colorIndex + " " + (e.className ||
 										"") + (e.useHTML ? "highcharts-tracker" : ""))), p.attr(x), p.css(C).shadow(e.shadow), p.added || p.add(w), b.alignDataLabel(f, p, e, null, z)) : (f.dataLabel = p = p.destroy(), r && (f.connector = r.destroy()))
@@ -8219,7 +8219,7 @@ License: www.highcharts.com/license
 			q = d.rotation,
 			r = d.align,
 			w = this.visible && (a.series.forceDL || c.isInsidePlot(l, Math.round(m), k) || e && c.isInsidePlot(l, k ? e.x + 1 : e.y + e.height - 1, k)),
-			z = "justify" === u(d.overflow,
+			z = "justify" == u(d.overflow,
 					"justify");
 			if (w && (p = d.style.fontSize, p = c.renderer.fontMetrics(p, b).b, e = f({
 							x: k ? this.yAxis.len - m : l,
@@ -8239,7 +8239,7 @@ License: www.highcharts.com/license
 							[d.verticalAlign] * e.height
 						}, b[h ? "attr" : "animate"](l).attr({
 							align: r
-						}), m = (q + 720) % 360, m = 180 < m && 360 > m, "left" === r ? l.y -= m ? n.height : 0 : "center" === r ? (l.x -= n.width / 2, l.y -= n.height / 2) : "right" === r && (l.x -= n.width, l.y -= m ? 0 : n.height)) :
+						}), m = (q + 720) % 360, m = 180 < m && 360 > m, "left" == r ? l.y -= m ? n.height : 0 : "center" == r ? (l.x -= n.width / 2, l.y -= n.height / 2) : "right" == r && (l.x -= n.width, l.y -= m ? 0 : n.height)) :
 					(b.align(d, null, e), l = b.alignAttr), z ? a.isLabelJustified = this.justifyDataLabel(b, d, l, n, e, h) : u(d.crop, !0) && (w = c.isInsidePlot(l.x, l.y) && c.isInsidePlot(l.x + n.width, l.y + n.height)), d.shape && !q))
 				b[h ? "attr" : "animate"]({
 					anchorX: k ? c.plotWidth - a.plotY : a.plotX,
@@ -8257,13 +8257,13 @@ License: www.highcharts.com/license
 			n,
 			p = a.box ? 0 : a.padding || 0;
 			m = d.x + p;
-			0 > m && ("right" === k ? b.align = "left" : b.x = -m, n = !0);
+			0 > m && ("right" == k ? b.align = "left" : b.x = -m, n = !0);
 			m = d.x + e.width - p;
-			m > c.plotWidth && ("left" === k ? b.align = "right" : b.x = c.plotWidth - m, n = !0);
+			m > c.plotWidth && ("left" == k ? b.align = "right" : b.x = c.plotWidth - m, n = !0);
 			m = d.y + p;
-			0 > m && ("bottom" === l ? b.verticalAlign = "top" : b.y = -m, n = !0);
+			0 > m && ("bottom" == l ? b.verticalAlign = "top" : b.y = -m, n = !0);
 			m = d.y + e.height - p;
-			m > c.plotHeight && ("top" === l ? b.verticalAlign = "bottom" : b.y = c.plotHeight - m, n = !0);
+			m > c.plotHeight && ("top" == l ? b.verticalAlign = "bottom" : b.y = c.plotHeight - m, n = !0);
 			n && (a.placed = !h, a.align(b, null, f));
 			return n
 		};
@@ -8315,7 +8315,7 @@ License: www.highcharts.com/license
 												rank: a.y
 											}) - 1)
 								}), a.distribute(r, m + z - k)), M = 0; M < x; M++)
-							d = b[M], m = d.positionsIndex, g = d.labelPos, F = d.dataLabel, J = !1 === d.visible ? "hidden" : "inherit", P = k = g[1], r && H(r[m]) && (void 0 === r[m].pos ? J = "hidden" : (v = r[m].size, P = d.top + r[m].pos)), delete d.positionIndex,
+							d = b[M], m = d.positionsIndex, g = d.labelPos, F = d.dataLabel, J = !1 == d.visible ? "hidden" : "inherit", P = k = g[1], r && H(r[m]) && (void 0 == r[m].pos ? J = "hidden" : (v = r[m].size, P = d.top + r[m].pos)), delete d.positionIndex,
 							L = f.justify ? w[0] + (h ? -1 : 1) * (q + d.labelDistance) : c.getX(P < d.top + 2 || P > d.bottom - 2 ? k : P, h, d), F._attr = {
 								visibility: J,
 								align: g[6]
@@ -8331,7 +8331,7 @@ License: www.highcharts.com/license
 					g.x = L,
 					g.y = P,
 					u(f.crop, !0) && (G = F.getBBox().width, k = null, L - G < l ? (k = Math.round(G - L + l), y[3] = Math.max(k, y[3])) : L + G > n - l && (k = Math.round(L + G - n + l), y[1] = Math.max(k, y[1])), 0 > P - v / 2 ? y[0] = Math.max(Math.round(-P + v / 2), y[0]) : P + v / 2 > t && (y[2] = Math.max(Math.round(P + v / 2 - t), y[2])), F.sideOverflow = k)
-				}), 0 === D(y) || this.verifyDataLabelOverflow(y)) && (this.placeDataLabels(),
+				}), 0 == D(y) || this.verifyDataLabelOverflow(y)) && (this.placeDataLabels(),
 				m && p(this.points, function (a) {
 					var b;
 					r = a.connector;
@@ -8353,7 +8353,7 @@ License: www.highcharts.com/license
 			var b =
 				a.x,
 			c = a.y;
-			return u(this.options.dataLabels.softConnector, !0) ? ["M", b + ("left" === a[6] ? 5 : -5), c, "C", b, c, 2 * a[2] - a[4], 2 * a[3] - a[5], a[2], a[3], "L", a[4], a[5]] : ["M", b + ("left" === a[6] ? 5 : -5), c, "L", a[2], a[3], "L", a[4], a[5]]
+			return u(this.options.dataLabels.softConnector, !0) ? ["M", b + ("left" == a[6] ? 5 : -5), c, "C", b, c, 2 * a[2] - a[4], 2 * a[3] - a[5], a[2], a[3], "L", a[4], a[5]] : ["M", b + ("left" == a[6] ? 5 : -5), c, "L", a[2], a[3], "L", a[4], a[5]]
 		}, m.pie.prototype.placeDataLabels = function () {
 			p(this.points, function (a) {
 				var b = a.dataLabel;
@@ -8527,7 +8527,7 @@ License: www.highcharts.com/license
 				p = "rgba(192,192,192," + (B ? .0001 : .002) + ")";
 				if (e && !c)
 					for (m = e + 1; m--; )
-						"M" === d[m] && d.splice(m + 1, 0, d[m + 1] - l, d[m + 2], "L"), (m && "M" === d[m] || m === e) && d.splice(m,
+						"M" == d[m] && d.splice(m + 1, 0, d[m + 1] - l, d[m + 2], "L"), (m && "M" == d[m] || m == e) && d.splice(m,
 							0, "L", d[m - 2] + l, d[m - 1]);
 				g ? g.attr({
 					d: d
@@ -8603,7 +8603,7 @@ License: www.highcharts.com/license
 				c = a.options.chart.resetZoomButton,
 				d = c.theme,
 				e = d.states,
-				h = "chart" === c.relativeTo ? null : "plotBox";
+				h = "chart" == c.relativeTo ? null : "plotBox";
 				this.resetZoomButton = a.renderer.button(b.resetZoom, null, null, function () {
 						a.zoomOut()
 					}, d, e && e.hover).attr({
@@ -8641,7 +8641,7 @@ License: www.highcharts.com/license
 				d && r(d, function (a) {
 					a.setState()
 				});
-				r("xy" === b ? [1, 0] : [1], function (b) {
+				r("xy" == b ? [1, 0] : [1], function (b) {
 					b =
 						c[b ? "xAxis" : "yAxis"][0];
 					var d = b.horiz,
@@ -8722,9 +8722,9 @@ License: www.highcharts.com/license
 				f = this.series,
 				h = f.options.states[a] || {},
 				k = l[f.type].marker && f.options.marker,
-				m = k && !1 === k.enabled,
+				m = k && !1 == k.enabled,
 				p = k && k.states && k.states[a] || {},
-				g = !1 === p.enabled,
+				g = !1 == p.enabled,
 				r = f.stateMarkerGraphic,
 				u = this.marker || {},
 				w = f.chart,
@@ -8732,7 +8732,7 @@ License: www.highcharts.com/license
 				z,
 				B = k && f.markerAttribs;
 				a = a || "";
-				if (!(a === this.state && !b || this.selected && "select" !== a || !1 === h.enabled || a && (g || m && !1 === p.enabled) || a && u.states && u.states[a] && !1 === u.states[a].enabled)) {
+				if (!(a == this.state && !b || this.selected && "select" !== a || !1 == h.enabled || a && (g || m && !1 == p.enabled) || a && u.states && u.states[a] && !1 == u.states[a].enabled)) {
 					B && (z = f.markerAttribs(this, a));
 					if (this.graphic)
 						this.state && this.graphic.removeClass("highcharts-point-" +
@@ -8818,12 +8818,12 @@ License: www.highcharts.com/license
 				f,
 				h = d.options.chart.ignoreHiddenSeries,
 				k = c.visible;
-				f = (c.visible = a = c.options.visible = c.userOptions.visible = void 0 === a ? !k : a) ? "show" : "hide";
+				f = (c.visible = a = c.options.visible = c.userOptions.visible = void 0 == a ? !k : a) ? "show" : "hide";
 				r(["group", "dataLabelsGroup", "markerGroup", "tracker", "tt"], function (a) {
 					if (c[a])
 						c[a][f]()
 				});
-				if (d.hoverSeries === c || (d.hoverPoint && d.hoverPoint.series) === c)
+				if (d.hoverSeries == c || (d.hoverPoint && d.hoverPoint.series) == c)
 					c.onMouseOut();
 				e && d.legend.colorizeItem(c, a);
 				c.isDirty = !0;
@@ -8845,7 +8845,7 @@ License: www.highcharts.com/license
 				this.setVisible(!1)
 			},
 			select: function (a) {
-				this.selected = a = void 0 === a ? !this.selected : a;
+				this.selected = a = void 0 == a ? !this.selected : a;
 				this.checkbox && (this.checkbox.checked = a);
 				w(this, a ? "select" : "unselect")
 			},
@@ -8866,12 +8866,12 @@ License: www.highcharts.com/license
 			e = this.currentResponsive;
 			l && l.rules &&
 			D(l.rules, function (e) {
-				void 0 === e._id && (e._id = a.uniqueKey());
+				void 0 == e._id && (e._id = a.uniqueKey());
 				this.matchResponsiveRule(e, n, f)
 			}, this);
 			var h = a.merge.apply(0, a.map(n, function (e) {
 						return a.find(l.rules, function (a) {
-							return a._id === e
+							return a._id == e
 						}).chartOptions
 					})),
 			n = n.toString() || void 0;

@@ -1,91 +1,112 @@
-
-var chartTitleHandle = document.getElementById("ChartTitle");
-
-function appendInnerHtml(el,data) {
-    el.appendChild(document.createTextNode(data));
-    el.appendChild(document.createElement('br'));
-};
-
-function setInnerHtml(el,data) {
-    el.innerHTML = data;
-};
-
 var source = new EventSource("/sse-financial");
-source.onopen = function () { chartTitleHandle.innerHTML = '-- CONNECTION ESTABLISHED --' };
-source.onerror = function () { appendInnerHtml(chartTitleHandle, '-- CONNECTION FAILED --'); };
+source.onopen = function () { console.log('-- CONNECTION ESTABLISHED --'); };
+source.onerror = function () { console.log('-- CONNECTION FAILED --'); };
+source.onmessage = handleDateSeries(e);
 
-source.onmessage = function (event) {
+//var chartTitleHandle = document.getElementById("ChartTitle");
 
-    //console.log('SSE EVENT: { id: "' + event.id + '", data: "' + event.data + '" }');
+//function appendInnerHtml(el,data) {
+//    el.appendChild(document.createTextNode(data));
+//    el.appendChild(document.createElement('br'));
+//};
 
-    //var seriesInput = JSON.parse(event.data);
+//function setInnerHtml(el,data) {
+//    el.innerHTML = data;
+//};
 
-    //var tabsArray = document.getElementById("tabs").querySelectorAll('div[role="tabpanel"]');
-    //[].forEach.call(tabsArray, function (tabPanel) {
+function handleDateSeries(event) {
+
+    var seriesInput = JSON.parse(event.data);
+
+    var chartDivs = document.querySelector('div[role="chart"]');
+    for (var i = 0; i < chartDivs.length; i++) {
         
-    //});
-
-    //Highcharts.chart('browserChart', {
-
-    //    title: {
-    //        text: 'Volatility Smile'
-    //    },
-
-    //    subtitle: {
-    //        text: ''
-    //    },
-
-    //    yAxis: {
-    //        title: {
-    //            text: 'VOL'
-    //        }
-    //    },
-    //    legend: {
-    //        layout: 'vertical',
-    //        align: 'right',
-    //        verticalAlign: 'middle'
-    //    },
+        var chartId = chartDivs[i];
         
-    //    plotOptions: {
-    //        series: {
-    //            label: {
-    //                connectorAllowed: false
-    //            },
-    //            pointStart: 100
-    //        }
-    //    },
 
-    //    series: seriesInput,
-
-
-    //    responsive: {
-    //        rules: [{
-    //            condition: {
-    //                maxWidth: 500
-    //            },
-    //            chartOptions: {
-    //                legend: {
-    //                    layout: 'horizontal',
-    //                    align: 'center',
-    //                    verticalAlign: 'bottom'
-    //                }
-    //            }
-    //        }]
-    //    }
-
-    //});
+        fillChartWithData(chartId);
+    }
 
     
-
-
-
-
-
-        
-    //    //setInnerHtml(chartRef, event.data);
-
-
-    //    if (event.id === "CLOSE") {
-    //        source.close();
-    //    }
+    if (event.id === "CLOSE") {
+        source.close();
     }
+}
+
+function fillChartWithData(chartId) {
+
+    var chartDiv = document.querySelector('#' + chartId);
+    var assetId = chartDiv.getAttribute("assetId");
+    var dateId = chartDiv.getAttribute("dateId");
+
+
+
+    // find asset name from select list
+    var assetItems = document.querySelector('#AssetsMenu');
+    var assetName = assetItems.querySelector('option[value="' + assetId + '"]').text;
+
+    // find date string from checkboxes on the tab
+    var tabId = getTabId(assetId);
+    var tab = document.querySelector('#' + tabId);
+    var dateString = tab.querySelector('input[dateId=' + dateId + ']').text;
+
+    var partialSeries = seriesInput.filter(function (d) {
+        return d.id == dateId;
+    });
+
+
+    Highcharts.chart(chartId, {
+
+        title: {
+            text: assetName
+        },
+
+        subtitle: {
+            text: dateString
+        },
+
+        yAxis: {
+            title: {
+                text: 'VOL'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 100
+            }
+        },
+
+        series: partialSeries,
+
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
+}
+
+
+
+
+

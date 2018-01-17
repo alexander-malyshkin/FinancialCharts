@@ -95,7 +95,7 @@
                     readOnly : this.$.data('readonly') || (this.$.attr('readonly') == 'readonly'),
 
                     // UI
-                    cursor : (this.$.data('cursor') === true && 30)
+                    cursor : (this.$.data('cursor') == true && 30)
                                 || this.$.data('cursor')
                                 || 0,
                     thickness : (
@@ -322,7 +322,7 @@
 
                         if (
                             s.rH
-                            && (s.rH(s.cv) === false)
+                            && (s.rH(s.cv) == false)
                         ) return;
 
                         s.val(s.cv);
@@ -350,12 +350,12 @@
                     // Escape key cancel current change
                     "keyup.k"
                     , function (e) {
-                        if (e.keyCode === 27) {
+                        if (e.keyCode == 27) {
                             k.c.d.unbind("mouseup.k mousemove.k keyup.k");
 
                             if (
                                 s.eH
-                                && (s.eH() === false)
+                                && (s.eH() == false)
                             ) return;
 
                             s.cancel();
@@ -369,7 +369,7 @@
 
                         if (
                             s.rH
-                            && (s.rH(s.cv) === false)
+                            && (s.rH(s.cv) == false)
                         ) return;
 
                         s.val(s.cv);
@@ -695,7 +695,7 @@
             this.cv = v;
             if (
                 this.cH
-                && (this.cH(v) === false)
+                && (this.cH(v) == false)
             ) return;
         };
 

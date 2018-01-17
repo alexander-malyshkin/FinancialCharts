@@ -44,12 +44,12 @@ jquery.flot.stack.js plugin, possibly some code could be shared.
 			var i;
 
 			for ( i = 0; i < allseries.length; ++i ) {
-				if ( allseries[ i ].id === s.fillBetween ) {
+				if ( allseries[ i ].id == s.fillBetween ) {
 					return allseries[ i ];
 				}
 			}
 
-			if ( typeof s.fillBetween === "number" ) {
+			if ( typeof s.fillBetween == "number" ) {
 				if ( s.fillBetween < 0 || s.fillBetween >= allseries.length ) {
 					return null;
 				}
@@ -136,7 +136,7 @@ jquery.flot.stack.js plugin, possibly some code could be shared.
 					qy = otherpoints[ j + 1 ];
 					bottom = 0;
 
-					if ( px === qx ) {
+					if ( px == qx ) {
 
 						for ( m = 0; m < ps; ++m ) {
 							newpoints.push( points[ i + m ] );

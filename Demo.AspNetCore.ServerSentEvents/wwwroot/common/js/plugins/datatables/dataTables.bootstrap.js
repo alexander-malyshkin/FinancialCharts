@@ -78,7 +78,7 @@ if ( $.fn.dataTable.Api ) {
 
 						default:
 							btnDisplay = button + 1;
-							btnClass = page === button ?
+							btnClass = page == button ?
 								'active' : '';
 							break;
 					}
@@ -88,7 +88,7 @@ if ( $.fn.dataTable.Api ) {
 								'class': classes.sPageButton+' '+btnClass,
 								'aria-controls': settings.sTableId,
 								'tabindex': settings.iTabIndex,
-								'id': idx === 0 && typeof button === 'string' ?
+								'id': idx == 0 && typeof button == 'string' ?
 									settings.sTableId +'_'+ button :
 									null
 							} )
@@ -126,9 +126,9 @@ else {
 			"iLength":        oSettings._iDisplayLength,
 			"iTotal":         oSettings.fnRecordsTotal(),
 			"iFilteredTotal": oSettings.fnRecordsDisplay(),
-			"iPage":          oSettings._iDisplayLength === -1 ?
+			"iPage":          oSettings._iDisplayLength == -1 ?
 				0 : Math.ceil( oSettings._iDisplayStart / oSettings._iDisplayLength ),
-			"iTotalPages":    oSettings._iDisplayLength === -1 ?
+			"iTotalPages":    oSettings._iDisplayLength == -1 ?
 				0 : Math.ceil( oSettings.fnRecordsDisplay() / oSettings._iDisplayLength )
 		};
 	};
@@ -194,13 +194,13 @@ else {
 					}
 
 					// Add / remove disabled classes from the static elements
-					if ( oPaging.iPage === 0 ) {
+					if ( oPaging.iPage == 0 ) {
 						$('li:first', an[i]).addClass('disabled');
 					} else {
 						$('li:first', an[i]).removeClass('disabled');
 					}
 
-					if ( oPaging.iPage === oPaging.iTotalPages-1 || oPaging.iTotalPages === 0 ) {
+					if ( oPaging.iPage == oPaging.iTotalPages-1 || oPaging.iTotalPages == 0 ) {
 						$('li:last', an[i]).addClass('disabled');
 					} else {
 						$('li:last', an[i]).removeClass('disabled');

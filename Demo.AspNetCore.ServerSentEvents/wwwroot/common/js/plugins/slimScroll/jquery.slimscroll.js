@@ -286,7 +286,7 @@
         getBarHeight();
 
         // check start position
-        if (o.start === 'bottom')
+        if (o.start == 'bottom')
         {
           // scroll content to bottom
           bar.css({ top: me.outerHeight() - bar.outerHeight() });

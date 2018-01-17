@@ -168,7 +168,7 @@ $(window).load(function() {
             return c.prototype = b.prototype, a.prototype = new c, a.__super__ = b.prototype, a
         }, Y = [].indexOf || function(a) {
             for (var b = 0, c = this.length; c > b; b++)
-                if (b in this && this[b] === a)
+                if (b in this && this[b] == a)
                     return b;
             return-1
         };
@@ -227,7 +227,7 @@ $(window).load(function() {
                     if (null == b)
                         return delete this.bindings[a];
                     for (c = 0, e = []; c < this.bindings[a].length; )
-                        this.bindings[a][c].handler === b ? e.push(this.bindings[a].splice(c, 1)) : e.push(c++);
+                        this.bindings[a][c].handler == b ? e.push(this.bindings[a].splice(c, 1)) : e.push(c++);
                     return e
                 }
             }, a.prototype.trigger = function() {
@@ -239,7 +239,7 @@ $(window).load(function() {
                 }
             }, a
         }(), null == window.Pace && (window.Pace = {}), u(Pace, g.prototype), C = Pace.options = u({}, t, window.paceOptions, w()), S = ["ajax", "document", "eventLag", "elements"], O = 0, Q = S.length; Q > O; O++)
-            I = S[O], C[I] === !0 && (C[I] = t[I]);
+            I = S[O], C[I] == !0 && (C[I] = t[I]);
         i = function(a) {
             function b() {
                 return T = b.__super__.constructor.apply(this, arguments)
@@ -308,10 +308,10 @@ $(window).load(function() {
             return b = arguments[0], a = 2 <= arguments.length ? V.call(arguments, 1) : [], z.unshift("track"), c = b.apply(null, a), z.shift(), c
         }, H = function(a) {
             var b;
-            if (null == a && (a = "GET"), "track" === z[0])
+            if (null == a && (a = "GET"), "track" == z[0])
                 return"force";
             if (!z.length && C.ajax) {
-                if ("socket" === a && C.ajax.trackWebSockets)
+                if ("socket" == a && C.ajax.trackWebSockets)
                     return!0;
                 if (b = a.toUpperCase(), Y.call(C.ajax.trackMethods, b) >= 0)
                     return!0
@@ -341,9 +341,9 @@ $(window).load(function() {
             return null == P && (P = new j), P
         }, x().on("request", function(b) {
             var c, d, e, f;
-            return f = b.type, e = b.request, Pace.running || C.restartOnRequestAfter === !1 && "force" !== H(f) ? void 0 : (d = arguments, c = C.restartOnRequestAfter || 0, "boolean" == typeof c && (c = 0), setTimeout(function() {
+            return f = b.type, e = b.request, Pace.running || C.restartOnRequestAfter == !1 && "force" !== H(f) ? void 0 : (d = arguments, c = C.restartOnRequestAfter || 0, "boolean" == typeof c && (c = 0), setTimeout(function() {
                 var b, c, g, h, i, j;
-                if (b = "socket" === f ? e.readyState < 2 : 0 < (h = e.readyState) && 4 > h) {
+                if (b = "socket" == f ? e.readyState < 2 : 0 < (h = e.readyState) && 4 > h) {
                     for (Pace.restart(), i = Pace.sources, j = [], c = 0, g = i.length; g > c; c++) {
                         if (I = i[c], I instanceof a) {
                             I.watch.apply(I, d);
@@ -363,7 +363,7 @@ $(window).load(function() {
             }
             return a.prototype.watch = function(a) {
                 var b, c, d;
-                return d = a.type, b = a.request, c = "socket" === d ? new m(b) : new n(b), this.elements.push(c)
+                return d = a.type, b = a.request, c = "socket" == d ? new m(b) : new n(b), this.elements.push(c)
             }, a
         }(), n = function() {
             function a(a) {
@@ -378,7 +378,7 @@ $(window).load(function() {
                 else
                     f = a.onreadystatechange, a.onreadystatechange = function() {
                         var b;
-                        return 0 === (b = a.readyState) || 4 === b ? h.progress = 100 : 3 === a.readyState && (h.progress = 50), "function" == typeof f ? f.apply(null, arguments) : void 0
+                        return 0 == (b = a.readyState) || 4 == b ? h.progress = 100 : 3 == a.readyState && (h.progress = 50), "function" == typeof f ? f.apply(null, arguments) : void 0
                     }
             }
             return a
@@ -433,7 +433,7 @@ $(window).load(function() {
             }
             return a.prototype.tick = function(a, b) {
                 var c;
-                return null == b && (b = E(this.source, "progress")), b >= 100 && (this.done = !0), b === this.last ? this.sinceLastUpdate += a : (this.sinceLastUpdate && (this.rate = (b - this.last) / this.sinceLastUpdate), this.catchup = (b - this.progress) / C.catchupTime, this.sinceLastUpdate = 0, this.last = b), b > this.progress && (this.progress += this.catchup * a), c = 1 - Math.pow(this.progress / 100, C.easeFactor), this.progress += c * this.rate * a, this.progress = Math.min(this.lastProgress + C.maxProgressPerFrame, this.progress), this.progress = Math.max(0, this.progress), this.progress = Math.min(100, this.progress), this.lastProgress = this.progress, this.progress
+                return null == b && (b = E(this.source, "progress")), b >= 100 && (this.done = !0), b == this.last ? this.sinceLastUpdate += a : (this.sinceLastUpdate && (this.rate = (b - this.last) / this.sinceLastUpdate), this.catchup = (b - this.progress) / C.catchupTime, this.sinceLastUpdate = 0, this.last = b), b > this.progress && (this.progress += this.catchup * a), c = 1 - Math.pow(this.progress / 100, C.easeFactor), this.progress += c * this.rate * a, this.progress = Math.min(this.lastProgress + C.maxProgressPerFrame, this.progress), this.progress = Math.max(0, this.progress), this.progress = Math.min(100, this.progress), this.lastProgress = this.progress, this.progress
             }, a
         }(), J = null, G = null, q = null, K = null, o = null, r = null, Pace.running = !1, y = function() {
             return C.restartOnPushState ? Pace.restart() : void 0
@@ -509,7 +509,7 @@ $(window).load(function() {
 
         return this.each(function() {
             //if a source is specified
-            if (settings.source === "") {
+            if (settings.source == "") {
                 if (console) {
                     console.log("Please specify a source first - boxRefresh()");
                 }
@@ -698,7 +698,7 @@ $(window).load(function() {
 //            var l = $(this);
 //            a = a.add(l);
 //            $.data(this, d, {w: l.width(), h: l.height()});
-//            if (a.length === 1) {
+//            if (a.length == 1) {
 //                g();
 //            }
 //        }, teardown: function() {
@@ -745,7 +745,7 @@ $(window).load(function() {
 
 /*!
  * SlimScroll https://github.com/rochal/jQuery-slimScroll
- * =======================================================
+ * =====================================
  * 
  * Copyright (c) 2011 Piotr Rochala (http://rocha.la) Dual licensed under the MIT 
  */
@@ -883,7 +883,7 @@ $(window).load(function() {
                                 (m((z - b.originalEvent.touches[0].pageY) / a.touchScrollStep, !0), z = b.originalEvent.touches[0].pageY)
                     });
                     w();
-                    "bottom" === a.start ? (c.css({top: b.outerHeight() - c.outerHeight()}), m(0, !0)) : "top" !== a.start && (m(f(a.start).position().top, null, !0), a.alwaysVisible || c.hide());
+                    "bottom" == a.start ? (c.css({top: b.outerHeight() - c.outerHeight()}), m(0, !0)) : "top" !== a.start && (m(f(a.start).position().top, null, !0), a.alwaysVisible || c.hide());
                     C()
                 }
             });

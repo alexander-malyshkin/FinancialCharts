@@ -210,9 +210,9 @@ API.txt for details.
 						// make quarter use a possibility if quarters are
 						// mentioned in either of these options
 
-						var spec = (opts.tickSize && opts.tickSize[1] ===
+						var spec = (opts.tickSize && opts.tickSize[1] ==
 							"quarter") ||
-							(opts.minTickSize && opts.minTickSize[1] ===
+							(opts.minTickSize && opts.minTickSize[1] ==
 							"quarter") ? specQuarters : specMonths;
 
 						if (opts.minTickSize != null) {

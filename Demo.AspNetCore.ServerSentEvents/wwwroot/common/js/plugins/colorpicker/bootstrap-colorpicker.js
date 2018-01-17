@@ -32,10 +32,10 @@
     Color.prototype = {
         constructor: Color,
         _sanitizeNumber: function(val) {
-            if (typeof val === 'number') {
+            if (typeof val == 'number') {
                 return val;
             }
-            if (isNaN(val) || (val === null) || (val === '') || (val === undefined)) {
+            if (isNaN(val) || (val == null) || (val == '') || (val == undefined)) {
                 return 1;
             }
             if (val.toLowerCase !== undefined) {
@@ -93,7 +93,7 @@
             a = a || this.value.a;
 
             var r, g, b, i, f, p, q, t;
-            if (h && s === undefined && v === undefined) {
+            if (h && s == undefined && v == undefined) {
                 s = h.s, v = h.v, h = h.h;
             }
             i = Math.floor(h * 6);
@@ -165,13 +165,13 @@
             var H, S, V, C;
             V = Math.max(r, g, b);
             C = V - Math.min(r, g, b);
-            H = (C === 0 ? null :
-                V === r ? (g - b) / C :
-                V === g ? (b - r) / C + 2 :
+            H = (C == 0 ? null :
+                V == r ? (g - b) / C :
+                V == g ? (b - r) / C + 2 :
                 (r - g) / C + 4
             );
             H = ((H + 360) % 6) * 60 / 360;
-            S = C === 0 ? 0 : C / V;
+            S = C == 0 ? 0 : C / V;
             return {
                 h: this._sanitizeNumber(H),
                 s: S,
@@ -572,16 +572,16 @@
         this.options = $.extend({}, defaults, this.element.data(), options);
         this.component = this.options.component;
         this.component = (this.component !== false) ? this.element.find(this.component) : false;
-        if (this.component && (this.component.length === 0)) {
+        if (this.component && (this.component.length == 0)) {
             this.component = false;
         }
-        this.container = (this.options.container === true) ? this.element : this.options.container;
+        this.container = (this.options.container == true) ? this.element : this.options.container;
         this.container = (this.container !== false) ? $(this.container) : false;
 
         // Is the element an input? Should we search inside for any input?
         this.input = this.element.is('input') ? this.element : (this.options.input ?
             this.element.find(this.options.input) : false);
-        if (this.input && (this.input.length === 0)) {
+        if (this.input && (this.input.length == 0)) {
             this.input = false;
         }
         // Set HSB color
@@ -598,7 +598,7 @@
         if (this.options.horizontal) {
             this.picker.addClass('colorpicker-horizontal');
         }
-        if (this.format === 'rgba' || this.format === 'hsla') {
+        if (this.format == 'rgba' || this.format == 'hsla') {
             this.picker.addClass('colorpicker-with-alpha');
         }
         this.picker.on('mousedown.colorpicker', $.proxy(this.mousedown, this));
@@ -609,12 +609,12 @@
             this.input.on({
                 'keyup.colorpicker': $.proxy(this.keyup, this)
             });
-            if (this.component === false) {
+            if (this.component == false) {
                 this.element.on({
                     'focus.colorpicker': $.proxy(this.show, this)
                 });
             }
-            if (this.options.inline === false) {
+            if (this.options.inline == false) {
                 this.element.on({
                     'focusout.colorpicker': $.proxy(this.hide, this)
                 });
@@ -627,7 +627,7 @@
             });
         }
 
-        if ((this.input === false) && (this.component === false)) {
+        if ((this.input == false) && (this.component == false)) {
             this.element.on({
                 'click.colorpicker': $.proxy(this.show, this)
             });
@@ -682,7 +682,7 @@
                     e.preventDefault();
                 }
             }
-            if (this.options.inline === false) {
+            if (this.options.inline == false) {
                 $(window.document).on({
                     'mousedown.colorpicker': $.proxy(this.hide, this)
                 });
@@ -720,12 +720,12 @@
             if (val !== undefined) {
                 this.color = new Color(val);
             }
-            var sl = (this.options.horizontal === false) ? this.options.sliders : this.options.slidersHorz;
+            var sl = (this.options.horizontal == false) ? this.options.sliders : this.options.slidersHorz;
             var icns = this.picker.find('i');
-            if (icns.length === 0) {
+            if (icns.length == 0) {
                 return;
             }
-            if (this.options.horizontal === false) {
+            if (this.options.horizontal == false) {
                 sl = this.options.sliders;
                 icns.eq(1).css('top', sl.hue.maxTop * (1 - this.color.value.h)).end()
                     .eq(2).css('top', sl.alpha.maxTop * (1 - this.color.value.a));
@@ -761,7 +761,7 @@
         },
         update: function(force) {
             var val = this.updateComponent();
-            if ((this.getValue(false) !== false) || (force === true)) {
+            if ((this.getValue(false) !== false) || (force == true)) {
                 // Update input/data only if the current value is not blank
                 this.updateInput(val);
                 this.updateData(val);
@@ -780,14 +780,14 @@
             });
         },
         getValue: function(defaultValue) {
-            defaultValue = (defaultValue === undefined) ? '#000000' : defaultValue;
+            defaultValue = (defaultValue == undefined) ? '#000000' : defaultValue;
             var val;
             if (this.hasInput()) {
                 val = this.input.val();
             } else {
                 val = this.element.data('color');
             }
-            if ((val === undefined) || (val === '') || (val === null)) {
+            if ((val == undefined) || (val == '') || (val == null)) {
                 // if not defined or empty, return default
                 val = defaultValue;
             }
@@ -798,7 +798,7 @@
         },
         isDisabled: function() {
             if (this.hasInput()) {
-                return (this.input.prop('disabled') === true);
+                return (this.input.prop('disabled') == true);
             }
             return false;
         },
@@ -900,12 +900,12 @@
             return false;
         },
         keyup: function(e) {
-            if ((e.keyCode === 38)) {
+            if ((e.keyCode == 38)) {
                 if (this.color.value.a < 1) {
                     this.color.value.a = Math.round((this.color.value.a + 0.01) * 100) / 100;
                 }
                 this.update(true);
-            } else if ((e.keyCode === 40)) {
+            } else if ((e.keyCode == 40)) {
                 if (this.color.value.a > 0) {
                     this.color.value.a = Math.round((this.color.value.a - 0.01) * 100) / 100;
                 }
@@ -933,11 +933,11 @@
         return this.each(function() {
             var $this = $(this),
                 inst = $this.data('colorpicker'),
-                options = ((typeof option === 'object') ? option : {});
+                options = ((typeof option == 'object') ? option : {});
             if ((!inst) && (typeof option !== 'string')) {
                 $this.data('colorpicker', new Colorpicker(this, options));
             } else {
-                if (typeof option === 'string') {
+                if (typeof option == 'string') {
                     inst[option].apply(inst, Array.prototype.slice.call(arguments, 1));
                 }
             }

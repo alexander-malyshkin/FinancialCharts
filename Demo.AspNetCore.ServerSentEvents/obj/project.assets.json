@@ -9930,7 +9930,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amalyshk\\.nuget\\packages\\": {},
+    "C:\\Users\\Alex\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -9939,17 +9939,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
+      "projectUniqueName": "C:\\C# projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
       "projectName": "Demo.AspNetCore.ServerSentEvents",
-      "projectPath": "C:\\projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
-      "packagesPath": "C:\\Users\\amalyshk\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\obj\\",
+      "projectPath": "C:\\C# projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\FinancialCharts.csproj",
+      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+      "outputPath": "C:\\C# projects\\FinancialCharts\\Demo.AspNetCore.ServerSentEvents\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\amalyshk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

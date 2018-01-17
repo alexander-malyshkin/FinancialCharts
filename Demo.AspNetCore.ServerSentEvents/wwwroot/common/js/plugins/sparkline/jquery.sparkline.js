@@ -204,7 +204,7 @@
 
 (function(document, Math, undefined) { // performance/minified-size optimization
 (function(factory) {
-    if(typeof define === 'function' && define.amd) {
+    if(typeof define == 'function' && define.amd) {
         define(['jquery'], factory);
     } else if (jQuery && !jQuery.fn.sparkline) {
         factory(jQuery);
@@ -434,7 +434,7 @@
                     prec = false;
                 }
                 fieldvalue = fields[token];
-                if (fieldvalue === undefined) {
+                if (fieldvalue == undefined) {
                     return '';
                 }
                 if (lookupkey && lookups && lookups[lookupkey]) {
@@ -477,7 +477,7 @@
 
     quartile = function (values, q) {
         var vl;
-        if (q === 2) {
+        if (q == 2) {
             vl = Math.floor(values.length / 2);
             return values.length % 2 ? values[vl] : (values[vl-1] + values[vl]) / 2;
         } else {
@@ -540,7 +540,7 @@
 
     formatNumber = function (num, prec, groupsize, groupsep, decsep) {
         var p, i;
-        num = (prec === false ? parseFloat(num).toString() : num.toFixed(prec)).split('');
+        num = (prec == false ? parseFloat(num).toString() : num.toFixed(prec)).split('');
         p = (p = $.inArray('.', num)) < 0 ? num.length : p;
         if (p < num.length) {
             num[p] = decsep;
@@ -556,7 +556,7 @@
     all = function (val, arr, ignoreNull) {
         var i;
         for (i = arr.length; i--; ) {
-            if (ignoreNull && arr[i] === null) continue;
+            if (ignoreNull && arr[i] == null) continue;
             if (arr[i] !== val) {
                 return false;
             }
@@ -568,7 +568,7 @@
     sum = function (vals) {
         var total = 0, i;
         for (i = vals.length; i--;) {
-            total += typeof vals[i] === 'number' ? vals[i] : 0;
+            total += typeof vals[i] == 'number' ? vals[i] : 0;
         }
         return total;
     };
@@ -598,11 +598,11 @@
             return target;
         }
 
-        if ($.fn.sparkline.canvas === false) {
+        if ($.fn.sparkline.canvas == false) {
             // We've already determined that neither Canvas nor VML are available
             return false;
 
-        } else if ($.fn.sparkline.canvas === undefined) {
+        } else if ($.fn.sparkline.canvas == undefined) {
             // No function defined yet -- need to see if we support Canvas or VML
             var el = document.createElement('canvas');
             if (!!(el.getContext && el.getContext('2d'))) {
@@ -623,10 +623,10 @@
             }
         }
 
-        if (width === undefined) {
+        if (width == undefined) {
             width = $(this).innerWidth();
         }
-        if (height === undefined) {
+        if (height == undefined) {
             height = $(this).innerHeight();
         }
 
@@ -650,10 +650,10 @@
         init: function (map) {
             var key, range, rangelist = [];
             for (key in map) {
-                if (map.hasOwnProperty(key) && typeof key === 'string' && key.indexOf(':') > -1) {
+                if (map.hasOwnProperty(key) && typeof key == 'string' && key.indexOf(':') > -1) {
                     range = key.split(':');
-                    range[0] = range[0].length === 0 ? -Infinity : parseFloat(range[0]);
-                    range[1] = range[1].length === 0 ? Infinity : parseFloat(range[1]);
+                    range[0] = range[0].length == 0 ? -Infinity : parseFloat(range[0]);
+                    range[1] = range[1].length == 0 ? Infinity : parseFloat(range[1]);
                     range[2] = map[key];
                     rangelist.push(range);
                 }
@@ -815,7 +815,7 @@
                     this.canvas.render();
                 }
             }
-            if (result === null) {
+            if (result == null) {
                 this.mouseleave();
             }
         }
@@ -891,8 +891,8 @@
         },
 
         updatePosition: function (x, y) {
-            if (x === undefined) {
-                if (this.mousex === undefined) {
+            if (x == undefined) {
+                if (this.mousex == undefined) {
                     return;
                 }
                 x = this.mousex - this.offsetLeft;
@@ -946,9 +946,9 @@
                  render, i;
             render = function () {
                 var values, width, height, tmp, mhandler, sp, vals;
-                if (userValues === 'html' || userValues === undefined) {
+                if (userValues == 'html' || userValues == undefined) {
                     vals = this.getAttribute(options.get('tagValuesAttribute'));
-                    if (vals === undefined || vals === null) {
+                    if (vals == undefined || vals == null) {
                         vals = $this.html();
                     }
                     values = vals.replace(/(^\s*<!--)|(-->\s*$)|\s+/g, '').split(',');
@@ -956,8 +956,8 @@
                     values = userValues;
                 }
 
-                width = options.get('width') === 'auto' ? values.length * options.get('defaultPixelsPerValue') : options.get('width');
-                if (options.get('height') === 'auto') {
+                width = options.get('width') == 'auto' ? values.length * options.get('defaultPixelsPerValue') : options.get('width');
+                if (options.get('height') == 'auto') {
                     if (!options.get('composite') || !$.data(this, '_jqs_vcanvas')) {
                         // must be a better way to get the line height
                         tmp = document.createElement('span');
@@ -1057,7 +1057,7 @@
             this.tagOptionsPrefix = userOptions.enableTagOptions && (userOptions.tagOptionsPrefix || base.tagOptionsPrefix);
 
             tagOptionType = this.getTagSetting('type');
-            if (tagOptionType === UNSET_OPTION) {
+            if (tagOptionType == UNSET_OPTION) {
                 extendedOptions = defaults[userOptions.type || base.type];
             } else {
                 extendedOptions = defaults[tagOptionType];
@@ -1069,21 +1069,21 @@
         getTagSetting: function (key) {
             var prefix = this.tagOptionsPrefix,
                 val, i, pairs, keyval;
-            if (prefix === false || prefix === undefined) {
+            if (prefix == false || prefix == undefined) {
                 return UNSET_OPTION;
             }
             if (this.tagValCache.hasOwnProperty(key)) {
                 val = this.tagValCache.key;
             } else {
                 val = this.tag.getAttribute(prefix + key);
-                if (val === undefined || val === null) {
+                if (val == undefined || val == null) {
                     val = UNSET_OPTION;
-                } else if (val.substr(0, 1) === '[') {
+                } else if (val.substr(0, 1) == '[') {
                     val = val.substr(1, val.length - 2).split(',');
                     for (i = val.length; i--;) {
                         val[i] = normalizeValue(val[i].replace(/(^\s*)|(\s*$)/g, ''));
                     }
-                } else if (val.substr(0, 1) === '{') {
+                } else if (val.substr(0, 1) == '{') {
                     pairs = val.substr(1, val.length - 2).split(',');
                     val = {};
                     for (i = pairs.length; i--;) {
@@ -1104,7 +1104,7 @@
             if (tagOption !== UNSET_OPTION) {
                 return tagOption;
             }
-            return (result = this.mergedOptions[key]) === undefined ? defaultval : result;
+            return (result = this.mergedOptions[key]) == undefined ? defaultval : result;
         }
     });
 
@@ -1208,7 +1208,7 @@
                 fields, formats, formatlen, fclass, text, i,
                 showFields, showFieldsKey, newFields, fv,
                 formatter, format, fieldlen, j;
-            if (this.currentRegion === undefined) {
+            if (this.currentRegion == undefined) {
                 return '';
             }
             fields = this.getCurrentRegionFields();
@@ -1246,7 +1246,7 @@
             fieldlen = fields.length;
             for (i = 0; i < formatlen; i++) {
                 format = formats[i];
-                if (typeof format === 'string') {
+                if (typeof format == 'string') {
                     format = new SPFormat(format);
                 }
                 fclass = format.fclass || 'jqsfield';
@@ -1281,7 +1281,7 @@
                 parse = /^#([0-9a-f])([0-9a-f])([0-9a-f])$/i.exec(color) || /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(color);
                 if (parse) {
                     rgbnew = [];
-                    mult = color.length === 4 ? 16 : 1;
+                    mult = color.length == 4 ? 16 : 1;
                     for (i = 0; i < 3; i++) {
                         rgbnew[i] = clipval(Math.round(parseInt(parse[i + 1], 16) * mult * lighten), 0, 255);
                     }
@@ -1379,7 +1379,7 @@
         getCurrentRegionFields: function () {
             var currentRegion = this.currentRegion;
             return {
-                isNull: this.yvalues[currentRegion] === null,
+                isNull: this.yvalues[currentRegion] == null,
                 x: this.xvalues[currentRegion],
                 y: this.yvalues[currentRegion],
                 color: this.options.get('lineColor'),
@@ -1436,10 +1436,10 @@
                 i, val, isStr, isArray, sp;
             for (i = 0; i < valcount; i++) {
                 val = values[i];
-                isStr = typeof(values[i]) === 'string';
-                isArray = typeof(values[i]) === 'object' && values[i] instanceof Array;
+                isStr = typeof(values[i]) == 'string';
+                isArray = typeof(values[i]) == 'object' && values[i] instanceof Array;
                 sp = isStr && values[i].split(':');
-                if (isStr && sp.length === 2) { // x:y
+                if (isStr && sp.length == 2) { // x:y
                     xvalues.push(Number(sp[0]));
                     yvalues.push(Number(sp[1]));
                     yminmax.push(Number(sp[1]));
@@ -1449,7 +1449,7 @@
                     yminmax.push(val[1]);
                 } else {
                     xvalues.push(i);
-                    if (values[i] === null || values[i] === 'null') {
+                    if (values[i] == null || values[i] == 'null') {
                         yvalues.push(null);
                     } else {
                         yvalues.push(Number(val));
@@ -1540,8 +1540,8 @@
 
             canvasTop = canvasLeft = 0;
 
-            rangex = this.maxx - this.minx === 0 ? 1 : this.maxx - this.minx;
-            rangey = this.maxy - this.miny === 0 ? 1 : this.maxy - this.miny;
+            rangex = this.maxx - this.minx == 0 ? 1 : this.maxx - this.minx;
+            rangey = this.maxy - this.miny == 0 ? 1 : this.maxy - this.miny;
             yvallast = this.yvalues.length - 1;
 
             if (spotRadius && (canvasWidth < (spotRadius * 4) || canvasHeight < (spotRadius * 4))) {
@@ -1550,21 +1550,21 @@
             if (spotRadius) {
                 // adjust the canvas size as required so that spots will fit
                 hlSpotsEnabled = options.get('highlightSpotColor') &&  !options.get('disableInteraction');
-                if (hlSpotsEnabled || options.get('minSpotColor') || (options.get('spotColor') && yvalues[yvallast] === this.miny)) {
+                if (hlSpotsEnabled || options.get('minSpotColor') || (options.get('spotColor') && yvalues[yvallast] == this.miny)) {
                     canvasHeight -= Math.ceil(spotRadius);
                 }
-                if (hlSpotsEnabled || options.get('maxSpotColor') || (options.get('spotColor') && yvalues[yvallast] === this.maxy)) {
+                if (hlSpotsEnabled || options.get('maxSpotColor') || (options.get('spotColor') && yvalues[yvallast] == this.maxy)) {
                     canvasHeight -= Math.ceil(spotRadius);
                     canvasTop += Math.ceil(spotRadius);
                 }
                 if (hlSpotsEnabled ||
-                     ((options.get('minSpotColor') || options.get('maxSpotColor')) && (yvalues[0] === this.miny || yvalues[0] === this.maxy))) {
+                     ((options.get('minSpotColor') || options.get('maxSpotColor')) && (yvalues[0] == this.miny || yvalues[0] == this.maxy))) {
                     canvasLeft += Math.ceil(spotRadius);
                     canvasWidth -= Math.ceil(spotRadius);
                 }
                 if (hlSpotsEnabled || options.get('spotColor') ||
                     (options.get('minSpotColor') || options.get('maxSpotColor') &&
-                        (yvalues[yvallast] === this.miny || yvalues[yvallast] === this.maxy))) {
+                        (yvalues[yvallast] == this.miny || yvalues[yvallast] == this.maxy))) {
                     canvasWidth -= Math.ceil(spotRadius);
                 }
             }
@@ -1589,7 +1589,7 @@
                 next = xpos + ((xposnext - xpos) / 2);
                 regionMap[i] = [last || 0, next, i];
                 last = next;
-                if (y === null) {
+                if (y == null) {
                     if (i) {
                         if (yvalues[i - 1] !== null) {
                             path = [];
@@ -1654,7 +1654,7 @@
 
             if (spotRadius && options.get('valueSpots')) {
                 valueSpots = options.get('valueSpots');
-                if (valueSpots.get === undefined) {
+                if (valueSpots.get == undefined) {
                     valueSpots = new RangeMap(valueSpots);
                 }
                 for (i = 0; i < yvalcount; i++) {
@@ -1719,7 +1719,7 @@
             // scan values to determine whether to stack bars
             for (i = 0, vlen = values.length; i < vlen; i++) {
                 val = values[i];
-                isStackString = typeof(val) === 'string' && val.indexOf(':') > -1;
+                isStackString = typeof(val) == 'string' && val.indexOf(':') > -1;
                 if (isStackString || $.isArray(val)) {
                     stacked = true;
                     if (isStackString) {
@@ -1747,8 +1747,8 @@
             this.initTarget();
 
             if (chartRangeClip) {
-                clipMin = chartRangeMin === undefined ? -Infinity : chartRangeMin;
-                clipMax = chartRangeMax === undefined ? Infinity : chartRangeMax;
+                clipMin = chartRangeMin == undefined ? -Infinity : chartRangeMin;
+                clipMax = chartRangeMax == undefined ? Infinity : chartRangeMax;
             }
 
             numValues = [];
@@ -1835,7 +1835,7 @@
             } else {
                 this.colorMapByIndex = null;
                 this.colorMapByValue = options.get('colorMap');
-                if (this.colorMapByValue && this.colorMapByValue.get === undefined) {
+                if (this.colorMapByValue && this.colorMapByValue.get == undefined) {
                     this.colorMapByValue = new RangeMap(this.colorMapByValue);
                 }
             }
@@ -1856,7 +1856,7 @@
             for (i = values.length; i--;) {
                 value = values[i];
                 result.push({
-                    isNull: value === null,
+                    isNull: value == null,
                     value: value,
                     color: this.calcColor(i, value, currentRegion),
                     offset: currentRegion
@@ -1875,7 +1875,7 @@
             } else {
                 color = (value < 0) ? options.get('negBarColor') : options.get('barColor');
             }
-            if (value === 0 && options.get('zeroColor') !== undefined) {
+            if (value == 0 && options.get('zeroColor') !== undefined) {
                 color = options.get('zeroColor');
             }
             if (colorMapByValue && (newColor = colorMapByValue.get(value))) {
@@ -1921,7 +1921,7 @@
             for (i = 0; i < valcount; i++) {
                 val = vals[i];
 
-                if (stacked && val === xaxisOffset) {
+                if (stacked && val == xaxisOffset) {
                     if (!allMin || minPlotted) {
                         continue;
                     }
@@ -1933,7 +1933,7 @@
                 } else {
                     height = 1;
                 }
-                if (val < xaxisOffset || (val === xaxisOffset && yoffset === 0)) {
+                if (val < xaxisOffset || (val == xaxisOffset && yoffset == 0)) {
                     y = yoffsetNeg;
                     yoffsetNeg += height;
                 } else {
@@ -1946,7 +1946,7 @@
                 }
                 result.push(target.drawRect(x, y, this.barWidth - 1, height - 1, color, color));
             }
-            if (result.length === 1) {
+            if (result.length == 1) {
                 return result[0];
             }
             return result;
@@ -1977,7 +1977,7 @@
             } else {
                 this.colorMapByIndex = null;
                 this.colorMapByValue = options.get('colorMap');
-                if (this.colorMapByValue && this.colorMapByValue.get === undefined) {
+                if (this.colorMapByValue && this.colorMapByValue.get == undefined) {
                     this.colorMapByValue = new RangeMap(this.colorMapByValue);
                 }
             }
@@ -1991,7 +1991,7 @@
         getCurrentRegionFields: function () {
             var currentRegion = this.currentRegion;
             return {
-                isNull: this.values[currentRegion] === undefined,
+                isNull: this.values[currentRegion] == undefined,
                 value: this.values[currentRegion],
                 color: this.calcColor(this.values[currentRegion], currentRegion),
                 offset: currentRegion
@@ -2041,7 +2041,7 @@
                 height = 2;
             }
             color = this.calcColor(values[valuenum], valuenum);
-            if (color === null) {
+            if (color == null) {
                 return;
             }
             if (highlight) {
@@ -2065,7 +2065,7 @@
             this.min = Math.min.apply(Math, values);
             this.max = Math.max.apply(Math, values);
             this.range = this.max - this.min;
-            this.width = width = options.get('width') === 'auto' ? values.length * 2 : this.width;
+            this.width = width = options.get('width') == 'auto' ? values.length * 2 : this.width;
             this.interval = Math.floor(width / values.length);
             this.itemWidth = width / values.length;
             if (options.get('chartRangeMin') !== undefined && (options.get('chartRangeClip') || options.get('chartRangeMin') < this.min)) {
@@ -2076,7 +2076,7 @@
             }
             this.initTarget();
             if (this.target) {
-                this.lineHeight = options.get('lineHeight') === 'auto' ? Math.round(this.canvasHeight * 0.3) : options.get('lineHeight');
+                this.lineHeight = options.get('lineHeight') == 'auto' ? Math.round(this.canvasHeight * 0.3) : options.get('lineHeight');
             }
         },
 
@@ -2087,7 +2087,7 @@
         getCurrentRegionFields: function () {
             var currentRegion = this.currentRegion;
             return {
-                isNull: this.values[currentRegion] === undefined,
+                isNull: this.values[currentRegion] == undefined,
                 value: this.values[currentRegion],
                 offset: currentRegion
             };
@@ -2131,11 +2131,11 @@
             this.values = values = normalizeValues(values);
             // target or performance could be null
             vals = values.slice();
-            vals[0] = vals[0] === null ? vals[2] : vals[0];
-            vals[1] = values[1] === null ? vals[2] : vals[1];
+            vals[0] = vals[0] == null ? vals[2] : vals[0];
+            vals[1] = values[1] == null ? vals[2] : vals[1];
             min = Math.min.apply(Math, values);
             max = Math.max.apply(Math, values);
-            if (options.get('base') === undefined) {
+            if (options.get('base') == undefined) {
                 min = min < 0 ? min : 0;
             } else {
                 min = options.get('base');
@@ -2146,7 +2146,7 @@
             this.shapes = {};
             this.valueShapes = {};
             this.regiondata = {};
-            this.width = width = options.get('width') === 'auto' ? '4.0em' : width;
+            this.width = width = options.get('width') == 'auto' ? '4.0em' : width;
             this.target = this.$el.simpledraw(width, height, options.get('composite'));
             if (!values.length) {
                 this.disabled = true;
@@ -2263,7 +2263,7 @@
             this.valueShapes = {}; // maps value offsets to shape ids
             this.values = values = $.map(values, Number);
 
-            if (options.get('width') === 'auto') {
+            if (options.get('width') == 'auto') {
                 this.width = this.height;
             }
 
@@ -2285,7 +2285,7 @@
         getCurrentRegionFields: function () {
             var currentRegion = this.currentRegion;
             return {
-                isNull: this.values[currentRegion] === undefined,
+                isNull: this.values[currentRegion] == undefined,
                 value: this.values[currentRegion],
                 percent: this.values[currentRegion] / this.total * 100,
                 color: this.options.get('sliceColors')[currentRegion % this.options.get('sliceColors').length],
@@ -2322,7 +2322,7 @@
                 if (total > 0) {  // avoid divide by zero
                     end = next + (circle * (values[i] / total));
                 }
-                if (valuenum === i) {
+                if (valuenum == i) {
                     color = options.get('sliceColors')[i % options.get('sliceColors').length];
                     if (highlight) {
                         color = this.calcHighlightColor(color, options);
@@ -2369,7 +2369,7 @@
         init: function (el, values, options, width, height) {
             box._super.init.call(this, el, values, options, width, height);
             this.values = $.map(values, Number);
-            this.width = options.get('width') === 'auto' ? '4.0em' : width;
+            this.width = options.get('width') == 'auto' ? '4.0em' : width;
             this.initTarget();
             if (!this.values.length) {
                 this.disabled = 1;
@@ -2411,8 +2411,8 @@
                 options = this.options,
                 canvasWidth = this.canvasWidth,
                 canvasHeight = this.canvasHeight,
-                minValue = options.get('chartRangeMin') === undefined ? Math.min.apply(Math, values) : options.get('chartRangeMin'),
-                maxValue = options.get('chartRangeMax') === undefined ? Math.max.apply(Math, values) : options.get('chartRangeMax'),
+                minValue = options.get('chartRangeMin') == undefined ? Math.min.apply(Math, values) : options.get('chartRangeMin'),
+                maxValue = options.get('chartRangeMax') == undefined ? Math.max.apply(Math, values) : options.get('chartRangeMax'),
                 canvasLeft = 0,
                 lwhisker, loutlier, iqr, q1, q2, q3, rwhisker, routlier, i,
                 size, unitSize;
@@ -2446,7 +2446,7 @@
                 if (options.get('showOutliers')) {
                     lwhisker = rwhisker = undefined;
                     for (i = 0; i < vlen; i++) {
-                        if (lwhisker === undefined && values[i] > q1 - (iqr * options.get('outlierIQR'))) {
+                        if (lwhisker == undefined && values[i] > q1 - (iqr * options.get('outlierIQR'))) {
                             lwhisker = values[i];
                         }
                         if (values[i] < q3 + (iqr * options.get('outlierIQR'))) {
@@ -2718,7 +2718,7 @@
             if (lineColor !== undefined) {
                 context.strokeStyle = lineColor;
             }
-            context.lineWidth = lineWidth === undefined ? 1 : lineWidth;
+            context.lineWidth = lineWidth == undefined ? 1 : lineWidth;
             if (fillColor !== undefined) {
                 context.fillStyle = fillColor;
             }
@@ -2838,7 +2838,7 @@
             var shapeseq = this.shapeseq,
                 i;
             for (i = shapeseq.length; i--;) {
-                if (shapeseq[i] === shapeid) {
+                if (shapeseq[i] == shapeid) {
                     shapeseq.splice(i + 1, 0, shape.id);
                     this.shapes[shape.id] = shape;
                     return;
@@ -2850,7 +2850,7 @@
             var shapeseq = this.shapeseq,
                 i;
             for (i = shapeseq.length; i--;) {
-                if (shapeseq[i] === shapeid) {
+                if (shapeseq[i] == shapeid) {
                     shapeseq.splice(i, 1);
                     break;
                 }
@@ -2915,10 +2915,10 @@
                 vpath[i] = '' + (path[i][0]) + ',' + (path[i][1]);
             }
             initial = vpath.splice(0, 1);
-            lineWidth = lineWidth === undefined ? 1 : lineWidth;
-            stroke = lineColor === undefined ? ' stroked="false" ' : ' strokeWeight="' + lineWidth + 'px" strokeColor="' + lineColor + '" ';
-            fill = fillColor === undefined ? ' filled="false"' : ' fillColor="' + fillColor + '" filled="true" ';
-            closed = vpath[0] === vpath[vpath.length - 1] ? 'x ' : '';
+            lineWidth = lineWidth == undefined ? 1 : lineWidth;
+            stroke = lineColor == undefined ? ' stroked="false" ' : ' strokeWeight="' + lineWidth + 'px" strokeColor="' + lineColor + '" ';
+            fill = fillColor == undefined ? ' filled="false"' : ' fillColor="' + fillColor + '" filled="true" ';
+            closed = vpath[0] == vpath[vpath.length - 1] ? 'x ' : '';
             vel = '<v:shape coordorigin="0 0" coordsize="' + this.pixelWidth + ' ' + this.pixelHeight + '" ' +
                  ' id="jqsshape' + shapeid + '" ' +
                  stroke +
@@ -2933,8 +2933,8 @@
             var stroke, fill, vel;
             x -= radius;
             y -= radius;
-            stroke = lineColor === undefined ? ' stroked="false" ' : ' strokeWeight="' + lineWidth + 'px" strokeColor="' + lineColor + '" ';
-            fill = fillColor === undefined ? ' filled="false"' : ' fillColor="' + fillColor + '" filled="true" ';
+            stroke = lineColor == undefined ? ' stroked="false" ' : ' strokeWeight="' + lineWidth + 'px" strokeColor="' + lineColor + '" ';
+            fill = fillColor == undefined ? ' filled="false"' : ' fillColor="' + fillColor + '" filled="true" ';
             vel = '<v:oval ' +
                  ' id="jqsshape' + shapeid + '" ' +
                 stroke +
@@ -2946,10 +2946,10 @@
 
         _drawPieSlice: function (shapeid, x, y, radius, startAngle, endAngle, lineColor, fillColor) {
             var vpath, startx, starty, endx, endy, stroke, fill, vel;
-            if (startAngle === endAngle) {
+            if (startAngle == endAngle) {
                 return '';  // VML seems to have problem when start angle equals end angle.
             }
-            if ((endAngle - startAngle) === (2 * Math.PI)) {
+            if ((endAngle - startAngle) == (2 * Math.PI)) {
                 startAngle = 0.0;  // VML seems to have a problem when drawing a full circle that doesn't start 0
                 endAngle = (2 * Math.PI);
             }
@@ -2959,7 +2959,7 @@
             endx = x + Math.round(Math.cos(endAngle) * radius);
             endy = y + Math.round(Math.sin(endAngle) * radius);
 
-            if (startx === endx && starty === endy) {
+            if (startx == endx && starty == endy) {
                 if ((endAngle - startAngle) < Math.PI) {
                     // Prevent very small slices from being mistaken as a whole pie
                     return '';
@@ -2969,13 +2969,13 @@
                 starty = endy = y;
             }
 
-            if (startx === endx && starty === endy && (endAngle - startAngle) < Math.PI) {
+            if (startx == endx && starty == endy && (endAngle - startAngle) < Math.PI) {
                 return '';
             }
 
             vpath = [x - radius, y - radius, x + radius, y + radius, startx, starty, endx, endy];
-            stroke = lineColor === undefined ? ' stroked="false" ' : ' strokeWeight="1px" strokeColor="' + lineColor + '" ';
-            fill = fillColor === undefined ? ' filled="false"' : ' fillColor="' + fillColor + '" filled="true" ';
+            stroke = lineColor == undefined ? ' stroked="false" ' : ' strokeWeight="1px" strokeColor="' + lineColor + '" ';
+            fill = fillColor == undefined ? ' filled="false"' : ' fillColor="' + fillColor + '" filled="true" ';
             vel = '<v:shape coordorigin="0 0" coordsize="' + this.pixelWidth + ' ' + this.pixelHeight + '" ' +
                  ' id="jqsshape' + shapeid + '" ' +
                  stroke +

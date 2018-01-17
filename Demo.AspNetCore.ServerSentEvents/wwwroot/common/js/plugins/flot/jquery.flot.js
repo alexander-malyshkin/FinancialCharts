@@ -309,7 +309,7 @@ Licensed under the MIT license.
 
 		// If the font is a font-spec object, generate a CSS font definition
 
-		if (typeof font === "object") {
+		if (typeof font == "object") {
 			textStyle = font.style + " " + font.variant + " " + font.weight + " " + font.size + "px/" + font.lineHeight + "px " + font.family;
 		} else {
 			textStyle = font;
@@ -343,12 +343,12 @@ Licensed under the MIT license.
 				})
 				.appendTo(this.getTextLayer(layer));
 
-			if (typeof font === "object") {
+			if (typeof font == "object") {
 				element.css({
 					font: textStyle,
 					color: font.color
 				});
-			} else if (typeof font === "string") {
+			} else if (typeof font == "string") {
 				element.addClass(font);
 			}
 
@@ -1212,7 +1212,7 @@ Licensed under the MIT license.
                     for (m = 0; m < ps; ++m) {
                         val = points[j + m];
                         f = format[m];
-                        if (!f || f.autoscale === false || val == fakeInfinity || val == -fakeInfinity)
+                        if (!f || f.autoscale == false || val == fakeInfinity || val == -fakeInfinity)
                             continue;
 
                         if (f.x) {
@@ -1404,7 +1404,7 @@ Licensed under the MIT license.
             var lw = axis.labelWidth,
                 lh = axis.labelHeight,
                 pos = axis.options.position,
-                isXAxis = axis.direction === "x",
+                isXAxis = axis.direction == "x",
                 tickLength = axis.options.tickLength,
                 axisMargin = options.grid.axisMargin,
                 padding = options.grid.labelMargin,
@@ -1417,9 +1417,9 @@ Licensed under the MIT license.
 
             $.each(isXAxis ? xaxes : yaxes, function(i, a) {
                 if (a && a.reserveSpace) {
-                    if (a === axis) {
+                    if (a == axis) {
                         found = true;
-                    } else if (a.options.position === pos) {
+                    } else if (a.options.position == pos) {
                         if (found) {
                             outermost = false;
                         } else {
@@ -1521,7 +1521,7 @@ Licensed under the MIT license.
             $.each(allAxes(), function (_, axis) {
                 if (axis.reserveSpace && axis.ticks && axis.ticks.length) {
                     var lastTick = axis.ticks[axis.ticks.length - 1];
-                    if (axis.direction === "x") {
+                    if (axis.direction == "x") {
                         margins.left = Math.max(margins.left, axis.labelWidth / 2);
                         if (lastTick.v <= axis.max) {
                             margins.right = Math.max(margins.right, axis.labelWidth / 2);
@@ -3037,7 +3037,7 @@ Licensed under the MIT license.
         function drawPointHighlight(series, point) {
             var x = point[0], y = point[1],
                 axisx = series.xaxis, axisy = series.yaxis,
-                highlightColor = (typeof series.highlightColor === "string") ? series.highlightColor : $.color.parse(series.color).scale('a', 0.5).toString();
+                highlightColor = (typeof series.highlightColor == "string") ? series.highlightColor : $.color.parse(series.color).scale('a', 0.5).toString();
 
             if (x < axisx.min || x > axisx.max || y < axisy.min || y > axisy.max)
                 return;
@@ -3059,7 +3059,7 @@ Licensed under the MIT license.
         }
 
         function drawBarHighlight(series, point) {
-            var highlightColor = (typeof series.highlightColor === "string") ? series.highlightColor : $.color.parse(series.color).scale('a', 0.5).toString(),
+            var highlightColor = (typeof series.highlightColor == "string") ? series.highlightColor : $.color.parse(series.color).scale('a', 0.5).toString(),
                 fillStyle = highlightColor,
                 barLeft;
 

@@ -1,7 +1,7 @@
-/* =========================================================
+/* ======================================
  * bootstrap-slider.js v2.0.0
  * http://www.eyecon.ro/bootstrap-slider
- * =========================================================
+ * ======================================
  * Copyright 2012 Stefan Petre
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ========================================================= */
+ * ====================================== */
  
 !function( $ ) {
 
@@ -76,7 +76,7 @@
 
 		this.selection = this.element.data('slider-selection')||options.selection;
 		this.selectionEl = this.picker.find('.slider-selection');
-		if (this.selection === 'none') {
+		if (this.selection == 'none') {
 			this.selectionEl.addClass('hide');
 		}
 		this.selectionElStyle = this.selectionEl[0].style;
@@ -136,7 +136,7 @@
 			});
 		}
 
-		if (tooltip === 'show') {
+		if (tooltip == 'show') {
 			this.picker.on({
 				mouseenter: $.proxy(this.showTooltip, this),
 				mouseleave: $.proxy(this.hideTooltip, this)
@@ -160,7 +160,7 @@
 		},
 		
 		hideTooltip: function(){
-			if (this.inDrag === false) {
+			if (this.inDrag == false) {
 				this.tooltip.removeClass('in');
 			}
 			this.over = false;
@@ -182,19 +182,19 @@
 					' : ' + 
 					this.formater(this.value[1])
 				);
-				this.tooltip[0].style[this.stylePos] = this.size * (this.percentage[0] + (this.percentage[1] - this.percentage[0])/2)/100 - (this.orientation === 'vertical' ? this.tooltip.outerHeight()/2 : this.tooltip.outerWidth()/2) +'px';
+				this.tooltip[0].style[this.stylePos] = this.size * (this.percentage[0] + (this.percentage[1] - this.percentage[0])/2)/100 - (this.orientation == 'vertical' ? this.tooltip.outerHeight()/2 : this.tooltip.outerWidth()/2) +'px';
 			} else {
 				this.tooltipInner.text(
 					this.formater(this.value[0])
 				);
-				this.tooltip[0].style[this.stylePos] = this.size * this.percentage[0]/100 - (this.orientation === 'vertical' ? this.tooltip.outerHeight()/2 : this.tooltip.outerWidth()/2) +'px';
+				this.tooltip[0].style[this.stylePos] = this.size * this.percentage[0]/100 - (this.orientation == 'vertical' ? this.tooltip.outerHeight()/2 : this.tooltip.outerWidth()/2) +'px';
 			}
 		},
 
 		mousedown: function(ev) {
 
 			// Touch: Get the original event:
-			if (this.touchCapable && ev.type === 'touchstart') {
+			if (this.touchCapable && ev.type == 'touchstart') {
 				ev = ev.originalEvent;
 			}
 
@@ -242,16 +242,16 @@
 		mousemove: function(ev) {
 			
 			// Touch: Get the original event:
-			if (this.touchCapable && ev.type === 'touchmove') {
+			if (this.touchCapable && ev.type == 'touchmove') {
 				ev = ev.originalEvent;
 			}
 
 			var percentage = this.getPercentage(ev);
 			if (this.range) {
-				if (this.dragged === 0 && this.percentage[1] < percentage) {
+				if (this.dragged == 0 && this.percentage[1] < percentage) {
 					this.percentage[0] = this.percentage[1];
 					this.dragged = 1;
-				} else if (this.dragged === 1 && this.percentage[0] > percentage) {
+				} else if (this.dragged == 1 && this.percentage[0] > percentage) {
 					this.percentage[1] = this.percentage[0];
 					this.dragged = 0;
 				}
@@ -359,7 +359,7 @@
 		return this.each(function () {
 			var $this = $(this),
 				data = $this.data('slider'),
-				options = typeof option === 'object' && option;
+				options = typeof option == 'object' && option;
 			if (!data)  {
 				$this.data('slider', (data = new Slider(this, $.extend({}, $.fn.slider.defaults,options))));
 			}

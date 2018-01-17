@@ -123,7 +123,7 @@
 			if ($input.data('placeholder-password')) {
 				$input = $input.hide().next().show().attr('id', $input.removeAttr('id').data('placeholder-id'));
 				// If `clearPlaceholder` was called from `$.valHooks.input.set`
-				if (event === true) {
+				if (event == true) {
 					return $input[0].value = value;
 				}
 				$input.focus();

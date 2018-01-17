@@ -158,7 +158,7 @@ browser, but needs to redraw with canvas text when exporting as an image.
 
 			// If the font is a font-spec object, generate a CSS definition
 
-			if (typeof font === "object") {
+			if (typeof font == "object") {
 				textStyle = font.style + " " + font.variant + " " + font.weight + " " + font.size + "px " + font.family;
 			} else {
 				textStyle = font;
@@ -191,7 +191,7 @@ browser, but needs to redraw with canvas text when exporting as an image.
 
 					var element = $("<div>&nbsp;</div>")
 						.css("position", "absolute")
-						.addClass(typeof font === "string" ? font : null)
+						.addClass(typeof font == "string" ? font : null)
 						.appendTo(this.getTextLayer(layer));
 
 					font = {

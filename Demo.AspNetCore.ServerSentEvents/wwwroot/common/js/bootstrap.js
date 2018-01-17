@@ -4,12 +4,12 @@
  * Licensed under http://www.apache.org/licenses/LICENSE-2.0
  */
 
-if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }
+if (typeof jQuery == "undefined") { throw new Error("Bootstrap requires jQuery") }
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: transition.js v3.0.3
  * http://getbootstrap.com/javascript/#transitions
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,13 +23,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
-  // ============================================================
+  // ========================================
 
   function transitionEnd() {
     var el = document.createElement('bootstrap')
@@ -63,10 +63,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: alert.js v3.0.3
  * http://getbootstrap.com/javascript/#alerts
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -80,13 +80,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // ALERT CLASS DEFINITION
-  // ======================
+  // ===============
 
   var dismiss = '[data-dismiss="alert"]'
   var Alert   = function (el) {
@@ -129,7 +129,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // ALERT PLUGIN DEFINITION
-  // =======================
+  // ================
 
   var old = $.fn.alert
 
@@ -147,7 +147,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // ALERT NO CONFLICT
-  // =================
+  // ============
 
   $.fn.alert.noConflict = function () {
     $.fn.alert = old
@@ -156,16 +156,16 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // ALERT DATA-API
-  // ==============
+  // ==========
 
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: button.js v3.0.3
  * http://getbootstrap.com/javascript/#buttons
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -179,13 +179,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // BUTTON PUBLIC CLASS DEFINITION
-  // ==============================
+  // ====================
 
   var Button = function (element, options) {
     this.$element = $(element)
@@ -222,7 +222,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
     if ($parent.length) {
       var $input = this.$element.find('input')
-      if ($input.prop('type') === 'radio') {
+      if ($input.prop('type') == 'radio') {
         // see if clicking on current one
         if ($input.prop('checked') && this.$element.hasClass('active'))
           changed = false
@@ -237,7 +237,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // BUTTON PLUGIN DEFINITION
-  // ========================
+  // ================
 
   var old = $.fn.button
 
@@ -258,7 +258,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // BUTTON NO CONFLICT
-  // ==================
+  // ============
 
   $.fn.button.noConflict = function () {
     $.fn.button = old
@@ -267,7 +267,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // BUTTON DATA-API
-  // ===============
+  // ==========
 
   $(document).on('click.bs.button.data-api', '[data-toggle^=button]', function (e) {
     var $btn = $(e.target)
@@ -278,10 +278,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: carousel.js v3.0.3
  * http://getbootstrap.com/javascript/#carousel
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -295,13 +295,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // CAROUSEL CLASS DEFINITION
-  // =========================
+  // =================
 
   var Carousel = function (element, options) {
     this.$element    = $(element)
@@ -438,7 +438,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // CAROUSEL PLUGIN DEFINITION
-  // ==========================
+  // ==================
 
   var old = $.fn.carousel
 
@@ -460,7 +460,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // CAROUSEL NO CONFLICT
-  // ====================
+  // ==============
 
   $.fn.carousel.noConflict = function () {
     $.fn.carousel = old
@@ -469,7 +469,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // CAROUSEL DATA-API
-  // =================
+  // ============
 
   $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
     var $this   = $(this), href
@@ -496,10 +496,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: collapse.js v3.0.3
  * http://getbootstrap.com/javascript/#collapse
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -513,13 +513,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // COLLAPSE PUBLIC CLASS DEFINITION
-  // ================================
+  // ======================
 
   var Collapse = function (element, options) {
     this.$element      = $(element)
@@ -625,7 +625,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // COLLAPSE PLUGIN DEFINITION
-  // ==========================
+  // ==================
 
   var old = $.fn.collapse
 
@@ -644,7 +644,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // COLLAPSE NO CONFLICT
-  // ====================
+  // ==============
 
   $.fn.collapse.noConflict = function () {
     $.fn.collapse = old
@@ -653,7 +653,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // COLLAPSE DATA-API
-  // =================
+  // ============
 
   $(document).on('click.bs.collapse.data-api', '[data-toggle=collapse]', function (e) {
     var $this   = $(this), href
@@ -676,10 +676,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: dropdown.js v3.0.3
  * http://getbootstrap.com/javascript/#dropdowns
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -693,13 +693,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // DROPDOWN CLASS DEFINITION
-  // =========================
+  // =================
 
   var backdrop = '.dropdown-backdrop'
   var toggle   = '[data-toggle=dropdown]'
@@ -794,7 +794,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // DROPDOWN PLUGIN DEFINITION
-  // ==========================
+  // ==================
 
   var old = $.fn.dropdown
 
@@ -812,7 +812,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // DROPDOWN NO CONFLICT
-  // ====================
+  // ==============
 
   $.fn.dropdown.noConflict = function () {
     $.fn.dropdown = old
@@ -821,7 +821,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // APPLY TO STANDARD DROPDOWN ELEMENTS
-  // ===================================
+  // ========================
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
@@ -831,10 +831,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: modal.js v3.0.3
  * http://getbootstrap.com/javascript/#modals
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -848,13 +848,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // MODAL CLASS DEFINITION
-  // ======================
+  // ===============
 
   var Modal = function (element, options) {
     this.options   = options
@@ -1026,7 +1026,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // MODAL PLUGIN DEFINITION
-  // =======================
+  // ================
 
   var old = $.fn.modal
 
@@ -1046,7 +1046,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // MODAL NO CONFLICT
-  // =================
+  // ============
 
   $.fn.modal.noConflict = function () {
     $.fn.modal = old
@@ -1055,7 +1055,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // MODAL DATA-API
-  // ==============
+  // ==========
 
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this)
@@ -1078,11 +1078,11 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: tooltip.js v3.0.3
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1096,13 +1096,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // TOOLTIP PUBLIC CLASS DEFINITION
-  // ===============================
+  // =====================
 
   var Tooltip = function (element, options) {
     this.type       =
@@ -1437,7 +1437,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // TOOLTIP PLUGIN DEFINITION
-  // =========================
+  // =================
 
   var old = $.fn.tooltip
 
@@ -1456,7 +1456,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // TOOLTIP NO CONFLICT
-  // ===================
+  // =============
 
   $.fn.tooltip.noConflict = function () {
     $.fn.tooltip = old
@@ -1465,10 +1465,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: popover.js v3.0.3
  * http://getbootstrap.com/javascript/#popovers
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1482,13 +1482,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // POPOVER PUBLIC CLASS DEFINITION
-  // ===============================
+  // =====================
 
   var Popover = function (element, options) {
     this.init('popover', element, options)
@@ -1505,7 +1505,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // NOTE: POPOVER EXTENDS tooltip.js
-  // ================================
+  // ======================
 
   Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
 
@@ -1555,7 +1555,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // POPOVER PLUGIN DEFINITION
-  // =========================
+  // =================
 
   var old = $.fn.popover
 
@@ -1574,7 +1574,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // POPOVER NO CONFLICT
-  // ===================
+  // =============
 
   $.fn.popover.noConflict = function () {
     $.fn.popover = old
@@ -1583,10 +1583,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: scrollspy.js v3.0.3
  * http://getbootstrap.com/javascript/#scrollspy
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1600,13 +1600,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // SCROLLSPY CLASS DEFINITION
-  // ==========================
+  // ==================
 
   function ScrollSpy(element, options) {
     var href
@@ -1703,7 +1703,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // SCROLLSPY PLUGIN DEFINITION
-  // ===========================
+  // ==================
 
   var old = $.fn.scrollspy
 
@@ -1722,7 +1722,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // SCROLLSPY NO CONFLICT
-  // =====================
+  // ==============
 
   $.fn.scrollspy.noConflict = function () {
     $.fn.scrollspy = old
@@ -1731,7 +1731,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // SCROLLSPY DATA-API
-  // ==================
+  // ============
 
   $(window).on('load', function () {
     $('[data-spy="scroll"]').each(function () {
@@ -1742,10 +1742,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: tab.js v3.0.3
  * http://getbootstrap.com/javascript/#tabs
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1759,13 +1759,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // TAB CLASS DEFINITION
-  // ====================
+  // ==============
 
   var Tab = function (element) {
     this.element = $(element)
@@ -1842,7 +1842,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // TAB PLUGIN DEFINITION
-  // =====================
+  // ==============
 
   var old = $.fn.tab
 
@@ -1860,7 +1860,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // TAB NO CONFLICT
-  // ===============
+  // ==========
 
   $.fn.tab.noConflict = function () {
     $.fn.tab = old
@@ -1869,7 +1869,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // TAB DATA-API
-  // ============
+  // ========
 
   $(document).on('click.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
     e.preventDefault()
@@ -1878,10 +1878,10 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
-/* ========================================================================
+/* ================================================
  * Bootstrap: affix.js v3.0.3
  * http://getbootstrap.com/javascript/#affix
- * ========================================================================
+ * ================================================
  * Copyright 2013 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1895,13 +1895,13 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ======================================================================== */
+ * ================================================ */
 
 
 +function ($) { "use strict";
 
   // AFFIX CLASS DEFINITION
-  // ======================
+  // ===============
 
   var Affix = function (element, options) {
     this.options = $.extend({}, Affix.DEFAULTS, options)
@@ -1944,7 +1944,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
                 offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ? 'bottom' :
                 offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
 
-    if (this.affixed === affix) return
+    if (this.affixed == affix) return
     if (this.unpin) this.$element.css('top', '')
 
     this.affixed = affix
@@ -1959,7 +1959,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // AFFIX PLUGIN DEFINITION
-  // =======================
+  // ================
 
   var old = $.fn.affix
 
@@ -1978,7 +1978,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // AFFIX NO CONFLICT
-  // =================
+  // ============
 
   $.fn.affix.noConflict = function () {
     $.fn.affix = old
@@ -1987,7 +1987,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 
   // AFFIX DATA-API
-  // ==============
+  // ==========
 
   $(window).on('load', function () {
     $('[data-spy="affix"]').each(function () {
