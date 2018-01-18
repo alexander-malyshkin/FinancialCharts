@@ -14,6 +14,18 @@ namespace FinancialCharts.Model
         public decimal[] Strike { get; set; }
         public decimal[] Volatility { get; set; }
         public string Name { get; set; }
+
+        public DataSeries(int id, int assetId, int dateId, int seriesId,
+            decimal[] strike, decimal[] volatility, string name)
+        {
+            Id = id;
+            AssetId = assetId;
+            ExpirationDateId = dateId;
+            IndividualSeriesId = seriesId;
+            Strike = strike;
+            Volatility = volatility;
+            Name = name;
+        }
     }
 
     public static class DataSeriesHelper

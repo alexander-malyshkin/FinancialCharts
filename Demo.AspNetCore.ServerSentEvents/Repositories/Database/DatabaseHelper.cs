@@ -78,7 +78,12 @@ namespace FinancialCharts.Repositories.Database
                                             assetList.Add(asset);
                                             break;
                                         case Entity.DataSeries:
-                                            throw new NotImplementedException();
+                                            int seriesId = dataReader.GetInt32(0);
+                                            int serisAssetId = dataReader.GetInt32(1);
+                                            int seriesdateId = dataReader.GetInt32(2);
+                                            int indSeriesId = dataReader.GetInt32(3);
+                                            var dataSeries = new DataSeries(
+                                                );
                                             break;
                                         case Entity.ExpirationDate:
                                             int dateId = dataReader.GetInt32(0);
