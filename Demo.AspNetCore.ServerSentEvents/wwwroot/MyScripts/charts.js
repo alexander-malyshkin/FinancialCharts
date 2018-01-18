@@ -1,7 +1,24 @@
 var source = new EventSource("/sse-financial");
 source.onopen = function () { console.log('-- CONNECTION ESTABLISHED --'); };
 source.onerror = function () { console.log('-- CONNECTION FAILED --'); };
-source.onmessage = handleDateSeries(e);
+source.onmessage = function(event) {
+    alert('financial data received');
+    var seriesInput = JSON.parse(event.data);
+
+    var chartDivs = document.querySelector('div[role="chart"]');
+    for (var i = 0; i < chartDivs.length; i++) {
+
+        var chartId = chartDivs[i];
+
+
+        fillChartWithData(chartId, seriesInput);
+    }
+
+
+    if (event.id === "CLOSE") {
+        source.close();
+    }
+};
 
 //var chartTitleHandle = document.getElementById("ChartTitle");
 
@@ -14,24 +31,6 @@ source.onmessage = handleDateSeries(e);
 //    el.innerHTML = data;
 //};
 
-function handleDateSeries(event) {
-
-    var seriesInput = JSON.parse(event.data);
-
-    var chartDivs = document.querySelector('div[role="chart"]');
-    for (var i = 0; i < chartDivs.length; i++) {
-        
-        var chartId = chartDivs[i];
-        
-
-        fillChartWithData(chartId, seriesInput);
-    }
-
-    
-    if (event.id === "CLOSE") {
-        source.close();
-    }
-}
 
 function fillChartWithData(chartId, seriesInput) {
 

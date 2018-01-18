@@ -1,7 +1,8 @@
-﻿var tabTitle = $("#tab_title"),
-    tabContent = $("#tab_content"),
-    tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
-    tabCounter = 2;
+﻿var //tabTitle = $("#tab_title"),
+    //tabContent = $("#tab_content"),
+    tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>"
+    //,tabCounter = 2
+    ;
 
 var tabs = $("#tabs").tabs();
 
@@ -56,7 +57,6 @@ function constructTabPanel(assetId, expDatesList) {
                 + '" onchange="toggleChart(this, ' + singleDate.Id + ',' + assetId + ')"> ' + singleDate.DateString + '  </input>';
         }
 
-        createChart(singleDate.Id, assetId);
     });
     return tabPanelHtml;
 }
@@ -86,7 +86,16 @@ function createChart(dateId, assetId) {
     //return chartId;
 }
 
-
+function createCharts(assetId, expDatesList) {
+    [].forEach.call(expDatesList,
+        function (singleDate) {
+            if (parseInt(singleDate.AssetId) == assetId) {
+                var dateId = singleDate.Id;
+                createChart(dateId, assetId);
+            }
+        }
+    );
+}
 
 function OnAssetSelected(datesList) {
 
@@ -102,8 +111,7 @@ function OnAssetSelected(datesList) {
         + tabId + '"]');
     if (tab == null) {
         addTab(assetId, assetName, datesList);
-        //tab = tabPanel.querySelector('li[aria-controls="'
-        //    + tabId + '"]');
+        createCharts(assetId, datesList);
     }
 
     // put focus on tab corresponding to selected asset
