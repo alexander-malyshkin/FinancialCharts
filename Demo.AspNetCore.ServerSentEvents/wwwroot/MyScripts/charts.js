@@ -24,7 +24,7 @@ function handleDateSeries(event) {
         var chartId = chartDivs[i];
         
 
-        fillChartWithData(chartId);
+        fillChartWithData(chartId, seriesInput);
     }
 
     
@@ -33,7 +33,7 @@ function handleDateSeries(event) {
     }
 }
 
-function fillChartWithData(chartId) {
+function fillChartWithData(chartId, seriesInput) {
 
     var chartDiv = document.querySelector('#' + chartId);
     var assetId = chartDiv.getAttribute("assetId");
@@ -47,8 +47,8 @@ function fillChartWithData(chartId) {
 
     // find date string from checkboxes on the tab
     var tabId = getTabId(assetId);
-    var tab = document.querySelector('#' + tabId);
-    var dateString = tab.querySelector('input[dateId=' + dateId + ']').text;
+    // var tab = document.querySelector('#' + tabId);
+    var dateString = document.querySelector('input[dateid="' + dateId + '"][type="checkbox"]');
 
     var partialSeries = seriesInput.filter(function (d) {
         return d.id == dateId;

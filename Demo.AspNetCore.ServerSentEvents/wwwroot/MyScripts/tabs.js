@@ -50,10 +50,13 @@ function constructTabPanel(assetId, expDatesList) {
         
         if ( parseInt(singleDate.AssetId) == assetId) {
             tabPanelHtml += '  <input type="checkbox" id="' + getDateCheckboxId(singleDate.Id)
-                + '" assetId="' + assetId
-                + '" dateId="' + singleDate.Id
+                + '" assetid="' + assetId
+                + '" dateid="' + singleDate.Id
+                + '" datestring="' + singleDate.DateString
                 + '" onchange="toggleChart(this, ' + singleDate.Id + ',' + assetId + ')"> ' + singleDate.DateString + '  </input>';
         }
+
+        createChart(singleDate.Id, assetId);
     });
     return tabPanelHtml;
 }
@@ -61,18 +64,11 @@ function constructTabPanel(assetId, expDatesList) {
 function toggleChart(checkBox, dateId, assetId) {
     var chartId = getChartId(assetId, dateId);
     var chart = document.querySelector('#' + chartId);
-    if (checkBox.checked == true) {
-        if (chart == null) {
-            var chartId = createChart(dateId, assetId);
-            fillChartWithData(chartId);
-        } else {
+    if (checkBox.checked == true && chart != null) {
             chart.style.visibility = 'visible';
-        }
     }
-    else {
-        if (chart != null) {
+    else if (chart != null){
             chart.style.visibility = 'hidden';
-        }
     }
 }
 
@@ -87,7 +83,7 @@ function createChart(dateId, assetId) {
     chartDiv.setAttribute("assetId", assetId);
     chartDiv.setAttribute("dateId", dateId);
     tabPanel.appendChild(chartDiv);
-    return chartId;
+    //return chartId;
 }
 
 
