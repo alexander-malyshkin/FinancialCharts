@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinancialCharts.Repositories.Database;
 
 namespace FinancialCharts.Model
 {
@@ -21,25 +22,34 @@ namespace FinancialCharts.Model
             IndividualSeriesId = seriesId;
             AssetId = assetId;
             ExpirationDateId = dateId;
+            Name = name;
             Strike = strikes;
             Volatility = vols;
-            Name = name;
+            
         }
 
-        public DataSeries(int seriesId, int assetId, int dateId, 
-            string strikeList, string volatList, string name)
+        public DataSeries(int seriesId, int assetId, int dateId, string name)
         {
             IndividualSeriesId = seriesId;
             AssetId = assetId;
             ExpirationDateId = dateId;
-            Strike = ParseDecimalsList(strikeList);
-            Volatility = ParseDecimalsList(volatList);
             Name = name;
+            var _connString = DatabaseHelper.GetConnStringAndProvider()["connString"];
+            Strike = GetStrikeList(seriesId, _connString);
+            Volatility = GetVolatilityList(seriesId, _connString);
+            
         }
 
-        private decimal[] ParseDecimalsList(string decimalsList)
+        private decimal[] GetVolatilityList(int seriesId, string connString)
         {
-            throw new NotImplementedException();
+            var volatList = (List<decimal>) DatabaseHelper.GetDatabaseEntities(connString, Entity.Volatility, "where IndividualSeriesId = " + seriesId);
+            return volatList.ToArray();
+        }
+
+        private decimal[] GetStrikeList(int seriesId, string connString)
+        {
+            var strikeList = (List<decimal>)DatabaseHelper.GetDatabaseEntities(connString, Entity.Strike, "where IndividualSeriesId = " + seriesId);
+            return strikeList.ToArray();
         }
     }
 

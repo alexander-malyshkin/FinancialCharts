@@ -23,7 +23,7 @@ namespace FinancialCharts.Repositories.Database
 			return dict;
 		}
 
-		internal static object GetDatabaseEntities(string connString, Entity entityName)
+		internal static object GetDatabaseEntities(string connString, Entity entityName, string queryPredicate = "")
 		{
 			object res = null;
 			string query = "";
@@ -31,7 +31,8 @@ namespace FinancialCharts.Repositories.Database
 			List<Asset> assetList = null;
 			List<DataSeries> seriesList = null;
 			List<ExpirationDate> datesList = null;
-			
+			List<decimal> strikeList = null;
+			List<decimal> volatList = null;
 
 			switch (entityName)
 			{
@@ -41,25 +42,26 @@ namespace FinancialCharts.Repositories.Database
 					assetList = new List<Asset>();
 					break;
 				case Entity.DataSeries:
-					query = @"with temp
-							as
-							(
-							select V.AssetId, V.ExpirationDateId, V.IndividualSeriesId, 
-							  cast(Strike as nvarchar(50)) as StrikeString, 
-							  cast(Volatility as nvarchar(50)) as VolatilityString, 
-							  I.Name
-							from IndividualSeries as I
-							inner join VolatilityStrike as V
-								on I.Id = V.IndividualSeriesId
-							--where IndividualSeriesId = 1
-							)
-							select AssetId, ExpirationDateId, IndividualSeriesId, 
-								STRING_AGG(StrikeString, CHAR(13)) as Strikes,
-								STRING_AGG(VolatilityString, CHAR(13)) as Vols,
-								Name
-							from temp
-							group by AssetId, ExpirationDateId, IndividualSeriesId, Name";
+					query = @"select distinct V.AssetId, V.ExpirationDateId, V.IndividualSeriesId, 
+							I.Name
+						from IndividualSeries as I
+						inner join VolatilityStrike as V
+							on I.Id = V.IndividualSeriesId";
 					seriesList = new List<DataSeries>();
+					break;
+				case Entity.Strike:
+					query = @"select Strike
+					  from VolatilityStrike
+					  " + queryPredicate + @"
+					  order by Strike";
+					strikeList = new List<decimal>();
+					break;
+				case Entity.Volatility:
+					query = @"select Volatility
+					  from VolatilityStrike
+					  " + queryPredicate + @"
+					  order by Strike";
+					volatList = new List<decimal>();
 					break;
 				case Entity.ExpirationDate:
 					query = @"select Id, Date, AssetId from dbo.ExpirationDate";
@@ -91,11 +93,20 @@ namespace FinancialCharts.Repositories.Database
 											assetList.Add(asset);
 											break;
 										case Entity.DataSeries:
-											int seriesId = dataReader.GetInt32(0);
-											int seriesAssetId = dataReader.GetInt32(1);
-											int seriesdateId = dataReader.GetInt32(2);
-											int indSeriesId = dataReader.GetInt32(3);
-											var dataSeries = new DataSeries(seriesId, seriesAssetId, seriesdateId, );
+											int seriesAssetId = dataReader.GetInt32(0);
+											int seriesdateId = dataReader.GetInt32(1);
+											int seriesId = dataReader.GetInt32(2);
+											string seriesName = dataReader.GetValue(3).ToString();
+											var dataSeries = new DataSeries(seriesId, seriesAssetId, seriesdateId, seriesName);
+											seriesList.Add(dataSeries);
+											break;
+										case Entity.Strike:
+											decimal strike = dataReader.GetDecimal(0);
+											strikeList.Add(strike);
+											break;
+										case Entity.Volatility:
+											decimal vol = dataReader.GetDecimal(0);
+											volatList.Add(vol);
 											break;
 										case Entity.ExpirationDate:
 											int dateId = dataReader.GetInt32(0);
@@ -128,6 +139,12 @@ namespace FinancialCharts.Repositories.Database
 					break;
 				case Entity.DataSeries:
 					res = seriesList;
+					break;
+				case Entity.Strike:
+					res = strikeList;
+					break;
+				case Entity.Volatility:
+					res = volatList;
 					break;
 				case Entity.ExpirationDate:
 					res = datesList;

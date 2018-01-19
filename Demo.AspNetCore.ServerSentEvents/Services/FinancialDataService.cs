@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FinancialCharts.Model;
+using FinancialCharts.Repositories.Database;
 using Lib.AspNetCore.ServerSentEvents;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -66,7 +67,8 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                _finDataList = DataSeriesHelper.GenerateDummySeries(_seriesAmount, _seriesLength);
+                var seriesRepo = new DatabaseReadonlySeriesRepository();
+                _finDataList = seriesRepo.GetSeriesList().ToList();
                 string jsonDataString = JsonConvert.SerializeObject(_finDataList);
                 await _serverSentEventsService.SendEventAsync(jsonDataString);
 

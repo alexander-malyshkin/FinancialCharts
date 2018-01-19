@@ -19,7 +19,6 @@ namespace FinancialCharts.Repositories.Database
             _provider = DatabaseHelper.GetConnStringAndProvider()["provider"];
 
             seriesList = (List<DataSeries>)DatabaseHelper.GetDatabaseEntities(_connString, Entity.DataSeries);
-            seriesList.Sort();
         }
 
         public IEnumerable<DataSeries> GetSeriesList() => seriesList;

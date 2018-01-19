@@ -9,6 +9,8 @@ namespace FinancialCharts.Model
     {
         Asset,
         DataSeries,
-        ExpirationDate
+        ExpirationDate,
+        Strike,
+        Volatility
     }
 }

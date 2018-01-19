@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FinancialCharts.Model;
 using FinancialCharts.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace FinancialCharts.Controllers
             var assetDbRepo = new DatabaseReadonlyAssetRepository();
             var datesDbRepo = new DatabaseReadonlyExpDatesRepository();
             var dates = datesDbRepo.GetDates();
-            assetModel.AssetList = assetDbRepo.Assets;
+            assetModel.AssetList = assetDbRepo.GetAssets().ToList();
             datesModel.ExpDatesList = JsonConvert.SerializeObject(dates);
 
             var compositeModel = new Tuple<AssetModel, ExpDatesModel>(assetModel, datesModel);
