@@ -7,45 +7,41 @@ namespace FinancialCharts.Model
 {
     public class DataSeries
     {
-        public int Id { get; }
+        public static readonly string ListSeparator = ";";
+        public int IndividualSeriesId { get; }
         public int AssetId { get; }
         public int ExpirationDateId { get; }
-        public int IndividualSeriesId { get; }
         public decimal[] Strike { get; set; }
         public decimal[] Volatility { get; set; }
         public string Name { get; set; }
 
-        public DataSeries(int id, int assetId, int dateId, int seriesId,
-            decimal[] strike, decimal[] volatility, string name)
+        public DataSeries(int seriesId, int assetId, int dateId,
+            decimal[] strikes, decimal[] vols, string name)
         {
-            Id = id;
+            IndividualSeriesId = seriesId;
             AssetId = assetId;
             ExpirationDateId = dateId;
-            IndividualSeriesId = seriesId;
-            Strike = strike;
-            Volatility = volatility;
+            Strike = strikes;
+            Volatility = vols;
             Name = name;
         }
-    }
 
-    public static class DataSeriesHelper
-    {
-        public static List<DataSeries> GenerateDummySeries(int seriesAmount, int seriesLength)
+        public DataSeries(int seriesId, int assetId, int dateId, 
+            string strikeList, string volatList, string name)
         {
-            List<DataSeries> res = new List<DataSeries>();
-            for (int i = 0; i < seriesAmount; i++)
-            {
-                string name = "Series " + i;
-                decimal[] volatility = new decimal[seriesLength];
-                for (int j = 0; j < seriesLength; j++)
-                {
-                    volatility[j] = (decimal)(new Random()).NextDouble();
-                }
+            IndividualSeriesId = seriesId;
+            AssetId = assetId;
+            ExpirationDateId = dateId;
+            Strike = ParseDecimalsList(strikeList);
+            Volatility = ParseDecimalsList(volatList);
+            Name = name;
+        }
 
-                DataSeries dt = new DataSeries(){Name=name,Volatility=volatility};
-                res.Add(dt);
-            }
-            return res;
+        private decimal[] ParseDecimalsList(string decimalsList)
+        {
+            throw new NotImplementedException();
         }
     }
+
+    
 }

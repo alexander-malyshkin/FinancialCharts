@@ -24,7 +24,7 @@ namespace FinancialCharts.Repositories.Database
 
         public IEnumerable<DataSeries> GetSeriesList() => seriesList;
 
-        public DataSeries GetSeriesById(int id) => seriesList.FirstOrDefault(s => s.Id == id);
+        public DataSeries GetSeriesById(int id) => seriesList.FirstOrDefault(s => s.IndividualSeriesId == id);
         
     }
 }

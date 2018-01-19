@@ -16,7 +16,7 @@ namespace FinancialCharts.Repositories
         private string _connString;
         private string _provider;
         
-        public List<Asset> Assets { get; }
+        private List<Asset> Assets { get; }
 
         
 
