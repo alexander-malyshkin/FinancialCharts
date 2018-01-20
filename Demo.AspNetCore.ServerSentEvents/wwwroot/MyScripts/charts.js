@@ -6,13 +6,14 @@ source.onmessage = function(event) {
     console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
     var seriesInput = JSON.parse(event.data);
 
-    var chartDivs = document.querySelector('div[role="chart"]');
+    var chartDivs = document.querySelectorAll('div[role="chart"]');
     for (var i = 0; i < chartDivs.length; i++) {
 
-        var chartId = chartDivs[i];
+        var chartDiv = chartDivs[i];
 
-
-        fillChartWithData(chartId, seriesInput);
+        if (chartDiv.style.visibility == "visible") {
+            fillChartWithData(chartDiv, seriesInput);
+        }
     }
 
 
@@ -32,10 +33,38 @@ source.onmessage = function(event) {
 //    el.innerHTML = data;
 //};
 
+function getPartialSeries(assetId, dateId, seriesInput) {
+    var partialSeries = [];
+    for (var i = 0; i < seriesInput.length; i++) {
+        var seriesItem = seriesInput[i];
+        var seriesItemToPush = {};
+        var strikeVolatData = [];
 
-function fillChartWithData(chartId, seriesInput) {
+        if (seriesItem.ExpirationDateId == dateId && seriesItem.AssetId == assetId) {
+            for (var j = 0; j < seriesItem.Volatility.length; j++) {
+                var strikeVolatItem = [seriesItem.Strike[j], seriesItem.Volatility[j] ];
+                strikeVolatData.push(strikeVolatItem);
+            }
+            seriesItemToPush = { name: seriesItem.Name, data: strikeVolatData };
+            partialSeries.push(seriesItemToPush);
+        }
+    }
+    return partialSeries;
+}
 
-    var chartDiv = document.querySelector('#' + chartId);
+function formatTime(dateTime) {
+    var hoursNum = dateTime.getHours();
+    var minNum = dateTime.getMinutes();
+    var secNum = dateTime.getSeconds();
+    var hours = hoursNum < 10 ? '0' + hoursNum : hoursNum;
+    var mins = minNum < 10 ? '0' + minNum : minNum;
+    var sec = secNum < 10 ? '0' + secNum : secNum;
+    return hours + ':' + mins + ':' + sec;
+}
+
+function fillChartWithData(chartDiv, seriesInput) {
+
+    //var chartDiv = document.querySelector('#' + chartId);
     var assetId = chartDiv.getAttribute("assetId");
     var dateId = chartDiv.getAttribute("dateId");
 
@@ -48,21 +77,20 @@ function fillChartWithData(chartId, seriesInput) {
     // find date string from checkboxes on the tab
     var tabId = getTabId(assetId);
     // var tab = document.querySelector('#' + tabId);
-    var dateString = document.querySelector('input[dateid="' + dateId + '"][type="checkbox"]');
+    var dateCheckbox = document.querySelector('input[dateid="' + dateId + '"][type="checkbox"]');
+    var dateString = dateCheckbox.getAttribute("datestring");
 
-    var partialSeries = seriesInput.filter(function (d) {
-        return d.id == dateId;
-    });
+    var partialSeries = getPartialSeries(assetId, dateId, seriesInput);
 
-
+    var chartId = chartDiv.getAttribute("id");
     Highcharts.chart(chartId, {
 
         title: {
-            text: assetName
+            text: 'Expiration date ' + dateString
         },
 
         subtitle: {
-            text: dateString
+            text: 'Last updated at ' + formatTime(new Date())
         },
 
         yAxis: {
@@ -80,13 +108,22 @@ function fillChartWithData(chartId, seriesInput) {
             series: {
                 label: {
                     connectorAllowed: false
-                },
-                pointStart: 100
+                }
+                //,pointStart: 2010
             }
         },
 
         series: partialSeries,
-
+        //series: [
+        //    {
+        //        name: "Sberbank Dec 3 - 1",
+        //        data: [8, 7, 6, 7]
+        //    },
+        //    {
+        //        name: "Sberbank Dec 3 - 2",
+        //        data: [7, 6, 4, 5]
+        //    }
+        //],
 
         responsive: {
             rules: [{

@@ -18,7 +18,7 @@ namespace FinancialCharts.Controllers
             var datesModel = new ExpDatesModel();
             var assetDbRepo = new DatabaseReadonlyAssetRepository();
             var datesDbRepo = new DatabaseReadonlyExpDatesRepository();
-            var dates = datesDbRepo.GetDates();
+            var dates = datesDbRepo.GetDates().ToList();
             assetModel.AssetList = assetDbRepo.GetAssets().ToList();
             datesModel.ExpDatesList = JsonConvert.SerializeObject(dates);
 
