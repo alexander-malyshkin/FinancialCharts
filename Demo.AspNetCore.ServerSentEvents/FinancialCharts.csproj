@@ -8,6 +8,7 @@
     <PackageId>Demo.AspNetCore.ServerSentEvents</PackageId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="fluorinefx" Version="1.2.4" />
     <PackageReference Include="jQWidgets.AspNetCore.Mvc.TagHelpers" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
@@ -22,6 +23,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta1" />
     <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
     <PackageReference Include="Lib.AspNetCore.ServerSentEvents" Version="1.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DB.Layer\DB.Layer.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Views\**\*;wwwroot\**\*">

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DB.Layer;
 
 namespace FinancialCharts.Model
 {
@@ -11,10 +12,5 @@ namespace FinancialCharts.Model
         public List<Asset> AssetList { get; set; }
     }
 
-    public class Asset
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-    }
+    
 }
