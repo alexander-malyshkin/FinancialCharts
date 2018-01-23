@@ -1,0 +1,4 @@
+C:\C# projects\FinancialCharts\OtherRepositories\obj\Debug\netcoreapp2.0\OtherRepositories.csprojResolveAssemblyReference.cache
+C:\C# projects\FinancialCharts\OtherRepositories\obj\Debug\netcoreapp2.0\OtherRepositories.csproj.CoreCompileInputs.cache
+C:\C# projects\FinancialCharts\OtherRepositories\obj\Debug\netcoreapp2.0\OtherRepositories.AssemblyInfoInputs.cache
+C:\C# projects\FinancialCharts\OtherRepositories\obj\Debug\netcoreapp2.0\OtherRepositories.AssemblyInfo.cs

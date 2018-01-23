@@ -11,9 +11,9 @@ source.onmessage = function(event) {
 
         var chartDiv = chartDivs[i];
 
-        if (chartDiv.style.visibility == "visible") {
+        //if (chartDiv.style.visibility == "visible") {
             fillChartWithData(chartDiv, seriesInput);
-        }
+        //}
     }
 
 
