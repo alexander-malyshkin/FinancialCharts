@@ -50,7 +50,7 @@ function constructTabPanel(assetId, optionsList) {
     [].forEach.call(optionsList, function (singleOption) {
         var chkId = getDateCheckboxId(singleOption.Id);
         if (parseInt(singleOption.BaseAssetId) == assetId
-            && tabPanelHtml.contains('id="' + chkId + '"')) {
+            && !tabPanelHtml.contains('id="' + chkId + '"')) {
             tabPanelHtml += '  <input type="checkbox" id="' + chkId
                 + '" assetid="' + assetId
                 //+ '" dateid="' + singleOption.Id
