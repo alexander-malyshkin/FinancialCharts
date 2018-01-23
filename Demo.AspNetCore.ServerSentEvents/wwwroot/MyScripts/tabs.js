@@ -32,37 +32,38 @@ var form = dialog.find("form").on("submit", function (event) {
 });
 
 // Actual addTab function: adds new tab using the input from the form above
-function addTab(assetId, assetName, datesList) {
+function addTab(assetId, assetName, optionsList) {
     var label = assetName,
         //id = "tabs-" + assetId,
         id = getTabId(assetId);
         li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
 
     tabs.find(".ui-tabs-nav").append(li);
-    var tabPanelContentHtml = constructTabPanel(assetId, datesList);
+    var tabPanelContentHtml = constructTabPanel(assetId, optionsList);
     tabs.append("<div id='" + id + "'>" + tabPanelContentHtml + "</div>");
     tabs.tabs("refresh");
     //tabCounter++;
 }
 
-function constructTabPanel(assetId, expDatesList) {
+function constructTabPanel(assetId, optionsList) {
     var tabPanelHtml = '';
-    [].forEach.call(expDatesList, function (singleDate) {
-        
-        if ( parseInt(singleDate.AssetId) == assetId) {
-            tabPanelHtml += '  <input type="checkbox" id="' + getDateCheckboxId(singleDate.Id)
+    [].forEach.call(optionsList, function (singleOption) {
+        var chkId = getDateCheckboxId(singleOption.Id);
+        if (parseInt(singleOption.BaseAssetId) == assetId
+            && tabPanelHtml.contains('id="' + chkId + '"')) {
+            tabPanelHtml += '  <input type="checkbox" id="' + chkId
                 + '" assetid="' + assetId
-                + '" dateid="' + singleDate.Id
-                + '" datestring="' + singleDate.DateString
-                + '" onchange="toggleChart(this, ' + singleDate.Id + ',' + assetId + ')"> ' + singleDate.DateString + '  </input>';
+                //+ '" dateid="' + singleOption.Id
+                + '" datestring="' + singleOption.DateString
+                + '" onchange="toggleChart(this, ' + singleOption.Id + ',' + assetId + ')"> ' + singleOption.DateString + '  </input>';
         }
 
     });
     return tabPanelHtml;
 }
 
-function toggleChart(checkBox, dateId, assetId) {
-    var chartId = getChartId(assetId, dateId);
+function toggleChart(checkBox, optionId, assetId) {
+    var chartId = getChartId(assetId, optionId);
     var chart = document.querySelector('#' + chartId);
     if (checkBox.checked == true && chart != null) {
             chart.style.visibility = 'visible';
@@ -72,8 +73,8 @@ function toggleChart(checkBox, dateId, assetId) {
     }
 }
 
-function createChart(dateId, assetId) {
-    var chartId = getChartId(assetId, dateId);
+function createChart(optionId, assetId) {
+    var chartId = getChartId(assetId, optionId);
     var tabId = getTabId(assetId);
     var tabPanel = document.querySelector('#' + tabId);
     //var chartDivHtml = '<div id="' + chartId + '">' + '</div>';
@@ -81,7 +82,7 @@ function createChart(dateId, assetId) {
     chartDiv.setAttribute("id", chartId);
     chartDiv.setAttribute("role", "chart");
     chartDiv.setAttribute("assetId", assetId);
-    chartDiv.setAttribute("dateId", dateId);
+    //chartDiv.setAttribute("dateId", optionId);
     tabPanel.appendChild(chartDiv);
     //return chartId;
 }
@@ -97,7 +98,7 @@ function createCharts(assetId, expDatesList) {
     );
 }
 
-function OnAssetSelected(datesList) {
+function OnAssetSelected(optionsList) {
 
 
     var assetsMenu = document.getElementById("AssetsMenu");
@@ -110,8 +111,8 @@ function OnAssetSelected(datesList) {
     var tab = tabPanel.querySelector('li[aria-controls="'
         + tabId + '"]');
     if (tab == null) {
-        addTab(assetId, assetName, datesList);
-        createCharts(assetId, datesList);
+        addTab(assetId, assetName, optionsList);
+        createCharts(assetId, optionsList);
     }
 
     // put focus on tab corresponding to selected asset

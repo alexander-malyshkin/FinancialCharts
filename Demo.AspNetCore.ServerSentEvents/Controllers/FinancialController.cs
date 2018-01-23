@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using FinancialCharts.Model;
-using FinancialCharts.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -14,15 +13,15 @@ namespace FinancialCharts.Controllers
         // GET: /<controller>/
         public IActionResult Chart()
         {
-            var assetModel = new AssetModel();
-            var datesModel = new ExpDatesModel();
-            var assetDbRepo = new DatabaseReadonlyAssetRepository();
-            var datesDbRepo = new DatabaseReadonlyExpDatesRepository();
-            var dates = datesDbRepo.GetDates().ToList();
-            assetModel.AssetList = assetDbRepo.GetAssets().ToList();
-            datesModel.ExpDatesList = JsonConvert.SerializeObject(dates);
+            //var assetModel = new AssetModel();
+            //var datesModel = new OptionModel();
+            //var assetDbRepo = new DatabaseReadonlyAssetRepository();
+            //var datesDbRepo = new DatabaseReadonlyExpDatesRepository();
+            //var dates = datesDbRepo.GetDates().ToList();
+            //assetModel.AssetList = assetDbRepo.GetAssets().ToList();
+            //datesModel.ExpDatesList = JsonConvert.SerializeObject(dates);
 
-            var compositeModel = new Tuple<AssetModel, ExpDatesModel>(assetModel, datesModel);
+            var compositeModel = new CompositeModel();
 
             return View(compositeModel);
         }

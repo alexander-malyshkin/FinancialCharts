@@ -4,8 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using FinancialCharts.Model;
-using FinancialCharts.Repositories.Database;
+using DB.Layer;
 using Lib.AspNetCore.ServerSentEvents;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -19,7 +18,7 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         private const int _seriesAmount = 4;
         private const int _seriesLength = 10;
 
-        private List<DataSeries> _finDataList;
+        private Dictionary<int, decimal> _finOptionsData;
         private readonly IServerSentEventsService _serverSentEventsService;
         private Task _finDataTask;
         private CancellationTokenSource _cancellationTokenSource;
@@ -31,13 +30,13 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         public FinancialDataService(IServerSentEventsService service)
         {
             _serverSentEventsService = service;
-            //_finDataList = DataSeriesHelper.GenerateDummySeries(_seriesAmount, _seriesLength);
+            //_finOptionsData = DataSeriesHelper.GenerateDummySeries(_seriesAmount, _seriesLength);
         }
 
-        public FinancialDataService(IServerSentEventsService service, List<DataSeries> dataSeries)
+        public FinancialDataService(IServerSentEventsService service, Dictionary<int, decimal> optionsData)
         {
             _serverSentEventsService = service;
-            _finDataList = dataSeries;
+            _finOptionsData = optionsData;
         }
         #endregion
 
@@ -67,9 +66,14 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                var seriesRepo = new DatabaseReadonlySeriesRepository();
-                _finDataList = seriesRepo.GetSeriesList().ToList();
-                string jsonDataString = JsonConvert.SerializeObject(_finDataList);
+                int[] optionIds = _finOptionsData.Keys.ToArray();
+                for (int i = 0; i < optionIds.Length; i++)
+                {
+                    var optionId = optionIds[i];
+                    var vol = VolatilityHelper.GetVolatility(optionId);
+                    _finOptionsData[optionId] = vol;
+                }
+                string jsonDataString = JsonConvert.SerializeObject(_finOptionsData);
                 await _serverSentEventsService.SendEventAsync(jsonDataString);
 
                 await Task.Delay(TimeSpan.FromSeconds(_interval), cancellationToken);

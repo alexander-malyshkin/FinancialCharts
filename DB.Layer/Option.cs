@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace DB.Layer
 {
@@ -13,5 +14,15 @@ namespace DB.Layer
         public bool Type { get; set; }
 
         public Asset BaseAsset { get; set; }
+
+        public string DateString
+        {
+            get
+            {
+                CultureInfo cltr = new CultureInfo("ru-RU");
+                return ExpDate.ToString("D", cltr);
+            }
+        }
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Tuple<AssetModel,ExpDatesModel>
+﻿@model CompositeModel
 @*@model AssetModel*@
 
 <!DOCTYPE html>
@@ -122,9 +122,9 @@
                         </a>
 
 
-                        <select id="AssetsMenu" asp-for="Item1.AssetList" class="sidebar-menu"
-                                asp-items="@(new SelectList(Model.Item1.AssetList, "Id", "Name"))"
-                                onclick="OnAssetSelected(@Model.Item2.ExpDatesList)"></select>
+                        <select id="AssetsMenu" asp-for="assetModel.AssetList" class="sidebar-menu"
+                                asp-items="@(new SelectList(Model.assetModel.AssetList, "Id", "Name"))"
+                                onclick="OnAssetSelected(@Model.optionsModel.OptionsJsonString)"></select>
                         
 
 

@@ -8,8 +8,16 @@ namespace FinancialCharts.Model
 {
     public class AssetModel
     {
-        public int AssetId { get; set; }
         public List<Asset> AssetList { get; set; }
+
+        public AssetModel()
+        {
+            //AssetList = new List<Asset>();
+            using (var context = new FinancialChartsContext())
+            {
+                AssetList = context.Asset.ToList();
+            }
+        }
     }
 
     

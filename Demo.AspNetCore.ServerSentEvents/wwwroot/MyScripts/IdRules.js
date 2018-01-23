@@ -2,10 +2,10 @@
     return 'tabs-' + assetId;
 }
 
-function getChartId(assetId, dateId) {
-    return 'chart-' + assetId + '-' + dateId;
+function getChartId(assetId, optionId) {
+    return 'chart-' + assetId + '-' + optionId;
 }
 
-function getDateCheckboxId(dateId) {
-    return 'chk-' + dateId;
+function getDateCheckboxId(optionId) {
+    return 'chk-' + optionId;
 }
