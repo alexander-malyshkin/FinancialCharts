@@ -15,14 +15,6 @@ namespace DB.Layer
 
         public Asset BaseAsset { get; set; }
 
-        public string DateString
-        {
-            get
-            {
-                CultureInfo cltr = new CultureInfo("ru-RU");
-                return ExpDate.ToString("D", cltr);
-            }
-        }
-        
+        public string DateString => ExpDate.ToString("dd.MM.yyyy");
     }
 }

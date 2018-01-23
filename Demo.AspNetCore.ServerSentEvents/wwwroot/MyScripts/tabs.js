@@ -48,33 +48,36 @@ function addTab(assetId, assetName, optionsList) {
 function constructTabPanel(assetId, optionsList) {
     var tabPanelHtml = '';
     [].forEach.call(optionsList, function (singleOption) {
-        var chkId = getDateCheckboxId(singleOption.Id);
+        var chkId = getDateCheckboxId(singleOption.DateString);
         if (parseInt(singleOption.BaseAssetId) == assetId
-            && !tabPanelHtml.contains('id="' + chkId + '"')) {
+            && !(tabPanelHtml.includes(singleOption.DateString)) ) {
             tabPanelHtml += '  <input type="checkbox" id="' + chkId
                 + '" assetid="' + assetId
                 //+ '" dateid="' + singleOption.Id
                 + '" datestring="' + singleOption.DateString
-                + '" onchange="toggleChart(this, ' + singleOption.Id + ',' + assetId + ')"> ' + singleOption.DateString + '  </input>';
+                + '" onchange="toggleChart(this, \'' + singleOption.DateString + '\',' + assetId + ')"> ' + singleOption.DateString + '  </input>';
         }
 
     });
     return tabPanelHtml;
 }
 
-function toggleChart(checkBox, optionId, assetId) {
-    var chartId = getChartId(assetId, optionId);
-    var chart = document.querySelector('#' + chartId);
+function toggleChart(checkBox, dateString, assetId) {
+    var chartId = getChartId(assetId, dateString);
+    var chart = document.getElementById(chartId);
     if (checkBox.checked == true && chart != null) {
             chart.style.visibility = 'visible';
+    }
+    else if (chart == null) {
+        createChart(dateString, assetId);
     }
     else if (chart != null){
             chart.style.visibility = 'hidden';
     }
 }
 
-function createChart(optionId, assetId) {
-    var chartId = getChartId(assetId, optionId);
+function createChart(dateString, assetId) {
+    var chartId = getChartId(assetId, dateString);
     var tabId = getTabId(assetId);
     var tabPanel = document.querySelector('#' + tabId);
     //var chartDivHtml = '<div id="' + chartId + '">' + '</div>';
@@ -112,7 +115,7 @@ function OnAssetSelected(optionsList) {
         + tabId + '"]');
     if (tab == null) {
         addTab(assetId, assetName, optionsList);
-        createCharts(assetId, optionsList);
+        //createCharts(assetId, optionsList);
     }
 
     // put focus on tab corresponding to selected asset

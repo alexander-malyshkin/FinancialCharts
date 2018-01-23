@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v2.0": {
       "FinancialChartsSolution/1.0.0": {
         "dependencies": {
+          "DB.Layer": "1.0.0",
           "EntityFramework": "6.2.0",
           "Lib.AspNetCore.ServerSentEvents": "1.2.0",
           "Microsoft.AspNetCore": "2.0.1",
@@ -2814,6 +2815,19 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
+      "DB.Layer/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
+          "Microsoft.Extensions.Configuration": "2.0.0"
+        },
+        "runtime": {
+          "DB.Layer.dll": {}
+        },
+        "compile": {
+          "DB.Layer.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
@@ -4579,6 +4593,11 @@
       "sha512": "sha512-jw9oHHEIVW53mHY9PgrQa98Xo2IZ0ZjrpdOTmtvk+Rvg4tq7dydmxdNqUvJ5YwjDqhn75mBXWttWjiKhWP53LQ==",
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
+    },
+    "DB.Layer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.NETCore.App/2.0.0": {
       "type": "package",
