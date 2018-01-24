@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using DB.Layer;
+using FinancialCharts.Services;
 using Lib.AspNetCore.ServerSentEvents;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -18,7 +19,7 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         private const int _seriesAmount = 4;
         private const int _seriesLength = 10;
 
-        private Dictionary<int, decimal> _finOptionsData;
+        private FinancialData _finOptionsData;
         private readonly IServerSentEventsService _serverSentEventsService;
         private Task _finDataTask;
         private CancellationTokenSource _cancellationTokenSource;
@@ -33,7 +34,7 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
             //_finOptionsData = DataSeriesHelper.GenerateDummySeries(_seriesAmount, _seriesLength);
         }
 
-        public FinancialDataService(IServerSentEventsService service, Dictionary<int, decimal> optionsData)
+        public FinancialDataService(IServerSentEventsService service, FinancialData optionsData)
         {
             _serverSentEventsService = service;
             _finOptionsData = optionsData;
@@ -66,13 +67,9 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                int[] optionIds = _finOptionsData.Keys.ToArray();
-                for (int i = 0; i < optionIds.Length; i++)
-                {
-                    var optionId = optionIds[i];
-                    var vol = VolatilityHelper.GetVolatility(optionId);
-                    _finOptionsData[optionId] = vol;
-                }
+                _finOptionsData = new FinancialData();
+
+
                 string jsonDataString = JsonConvert.SerializeObject(_finOptionsData);
                 await _serverSentEventsService.SendEventAsync(jsonDataString);
 

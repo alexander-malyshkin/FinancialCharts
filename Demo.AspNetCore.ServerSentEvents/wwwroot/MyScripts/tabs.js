@@ -85,7 +85,7 @@ function createChart(dateString, assetId) {
     chartDiv.setAttribute("id", chartId);
     chartDiv.setAttribute("role", "chart");
     chartDiv.setAttribute("assetId", assetId);
-    //chartDiv.setAttribute("dateId", optionId);
+    chartDiv.setAttribute("date", dateString);
     tabPanel.appendChild(chartDiv);
     //return chartId;
 }

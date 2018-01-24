@@ -66,21 +66,21 @@ function fillChartWithData(chartDiv, seriesInput) {
 
     //var chartDiv = document.querySelector('#' + chartId);
     var assetId = chartDiv.getAttribute("assetId");
-    var dateId = chartDiv.getAttribute("dateId");
+    var dateString = chartDiv.getAttribute("date");
 
 
 
     // find asset name from select list
-    var assetItems = document.querySelector('#AssetsMenu');
-    var assetName = assetItems.querySelector('option[value="' + assetId + '"]').text;
+    //var assetItems = document.querySelector('#AssetsMenu');
+    //var assetName = assetItems.querySelector('option[value="' + assetId + '"]').text;
 
     // find date string from checkboxes on the tab
-    var tabId = getTabId(assetId);
+    //var tabId = getTabId(assetId);
     // var tab = document.querySelector('#' + tabId);
-    var dateCheckbox = document.querySelector('input[dateid="' + dateId + '"][type="checkbox"]');
-    var dateString = dateCheckbox.getAttribute("datestring");
+    //var dateCheckbox = document.querySelector('input[dateid="' + dateString + '"][type="checkbox"]');
+    //var dateString = dateCheckbox.getAttribute("datestring");
 
-    var partialSeries = getPartialSeries(assetId, dateId, seriesInput);
+    var partialSeries = getPartialSeries(assetId, dateString, seriesInput);
 
     var chartId = chartDiv.getAttribute("id");
     Highcharts.chart(chartId, {
