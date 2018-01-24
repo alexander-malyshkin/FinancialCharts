@@ -33,22 +33,20 @@ source.onmessage = function(event) {
 //    el.innerHTML = data;
 //};
 
-function getPartialSeries(assetId, dateId, seriesInput) {
+function getPartialData(assetId, dateString, seriesInput) {
     var partialSeries = [];
     for (var i = 0; i < seriesInput.length; i++) {
         var seriesItem = seriesInput[i];
-        var seriesItemToPush = {};
+        //var seriesItemToPush = {};
         var strikeVolatData = [];
 
-        if (seriesItem.ExpirationDateId == dateId && seriesItem.AssetId == assetId) {
-            for (var j = 0; j < seriesItem.Volatility.length; j++) {
-                var strikeVolatItem = [seriesItem.Strike[j], seriesItem.Volatility[j] ];
-                strikeVolatData.push(strikeVolatItem);
-            }
-            seriesItemToPush = { name: seriesItem.Name, data: strikeVolatData };
-            partialSeries.push(seriesItemToPush);
+        if (seriesItem.Option.DateString == dateString && seriesItem.Option.BaseAssetId == parseInt(assetId) ) {
+            strikeVolatData = [seriesItem.Option.Strike, seriesItem.Volatility];
+            //seriesItemToPush = { name: seriesItem.Name, data: strikeVolatData };
+            partialSeries.push(strikeVolatData);
         }
     }
+
     return partialSeries;
 }
 
@@ -67,8 +65,8 @@ function fillChartWithData(chartDiv, seriesInput) {
     //var chartDiv = document.querySelector('#' + chartId);
     var assetId = chartDiv.getAttribute("assetId");
     var dateString = chartDiv.getAttribute("date");
-
-
+    var assetsMenu = document.getElementById("AssetsMenu");
+    var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
 
     // find asset name from select list
     //var assetItems = document.querySelector('#AssetsMenu');
@@ -80,7 +78,7 @@ function fillChartWithData(chartDiv, seriesInput) {
     //var dateCheckbox = document.querySelector('input[dateid="' + dateString + '"][type="checkbox"]');
     //var dateString = dateCheckbox.getAttribute("datestring");
 
-    var partialSeries = getPartialSeries(assetId, dateString, seriesInput);
+    var partialData = getPartialData(assetId, dateString, seriesInput);
 
     var chartId = chartDiv.getAttribute("id");
     Highcharts.chart(chartId, {
@@ -113,17 +111,13 @@ function fillChartWithData(chartDiv, seriesInput) {
             }
         },
 
-        series: partialSeries,
-        //series: [
-        //    {
-        //        name: "Sberbank Dec 3 - 1",
-        //        data: [8, 7, 6, 7]
-        //    },
-        //    {
-        //        name: "Sberbank Dec 3 - 2",
-        //        data: [7, 6, 4, 5]
-        //    }
-        //],
+        //series: partialData,
+        series: [
+            {
+                name: assetName,
+                data: partialData
+            }
+        ],
 
         responsive: {
             rules: [{

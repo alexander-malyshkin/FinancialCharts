@@ -19,7 +19,7 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         private const int _seriesAmount = 4;
         private const int _seriesLength = 10;
 
-        private FinancialData _finOptionsData;
+        private List<OptionData> _finOptionsData;
         private readonly IServerSentEventsService _serverSentEventsService;
         private Task _finDataTask;
         private CancellationTokenSource _cancellationTokenSource;
@@ -34,7 +34,7 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
             //_finOptionsData = DataSeriesHelper.GenerateDummySeries(_seriesAmount, _seriesLength);
         }
 
-        public FinancialDataService(IServerSentEventsService service, FinancialData optionsData)
+        public FinancialDataService(IServerSentEventsService service, List<OptionData> optionsData)
         {
             _serverSentEventsService = service;
             _finOptionsData = optionsData;
@@ -67,8 +67,19 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                _finOptionsData = new FinancialData();
+                _finOptionsData = new List<OptionData>();
+                List<Option> options = null;
 
+                using (var ctx = new FinancialChartsContext())
+                {
+                    options = ctx.Option.ToList();
+                }
+
+                foreach (var opt in options)
+                {
+                    var optionData = new OptionData(opt);
+                    _finOptionsData.Add(optionData);
+                }
 
                 string jsonDataString = JsonConvert.SerializeObject(_finOptionsData);
                 await _serverSentEventsService.SendEventAsync(jsonDataString);
