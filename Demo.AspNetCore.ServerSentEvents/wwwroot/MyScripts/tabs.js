@@ -80,12 +80,28 @@ function createChart(dateString, assetId) {
     var chartId = getChartId(assetId, dateString);
     var tabId = getTabId(assetId);
     var tabPanel = document.querySelector('#' + tabId);
-    //var chartDivHtml = '<div id="' + chartId + '">' + '</div>';
+    tabPanel.innerHTML += "<br/>";
+
+    var chartBtn = document.createElement("button");
+    chartBtn.setAttribute("type", "button");
+    chartBtn.setAttribute("class", "btn btn-info");
+    chartBtn.setAttribute("data-toggle", "collapse");
+    chartBtn.setAttribute("data-target", "#" + chartId);
+    chartBtn.setAttribute("aria-expanded", "true");
+    var assetsMenu = document.getElementById("AssetsMenu");
+    var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
+    chartBtn.innerHTML = "Chart for " + assetName;
+    tabPanel.appendChild(chartBtn);
+    tabPanel.innerHTML += "<br/>";
+    //<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Chart for Sberbank (collapse/expand)</button>
+    
     var chartDiv = document.createElement("div");
     chartDiv.setAttribute("id", chartId);
     chartDiv.setAttribute("role", "chart");
     chartDiv.setAttribute("assetId", assetId);
     chartDiv.setAttribute("date", dateString);
+    chartDiv.setAttribute("class", "collapse in");
+    chartDiv.setAttribute("aria-expanded", "true");
     tabPanel.appendChild(chartDiv);
     //return chartId;
 }

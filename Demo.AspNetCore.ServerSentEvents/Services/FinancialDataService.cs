@@ -15,7 +15,7 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
     internal class FinancialDataService : IHostedService
     {
         #region fields
-        private const int  _interval = 1;
+        private const int  _interval = 10;
         private const int _seriesAmount = 4;
         private const int _seriesLength = 10;
 
