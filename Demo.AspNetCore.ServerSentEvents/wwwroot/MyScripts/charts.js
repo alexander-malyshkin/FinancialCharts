@@ -114,6 +114,8 @@ function fillChartWithData(chartDiv, seriesInput) {
         //series: partialData,
         series: [
             {
+                type: "line",
+                animation: { duration: 0 },
                 name: assetName,
                 data: partialData
             }

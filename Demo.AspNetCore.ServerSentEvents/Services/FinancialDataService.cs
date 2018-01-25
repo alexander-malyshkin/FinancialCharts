@@ -15,7 +15,7 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
     internal class FinancialDataService : IHostedService
     {
         #region fields
-        private const int  _interval = 7;
+        private const int  _interval = 1;
         private const int _seriesAmount = 4;
         private const int _seriesLength = 10;
 
@@ -70,10 +70,14 @@ namespace Demo.AspNetCore.ServerSentEvents.Services
                 _finOptionsData = new List<OptionData>();
                 List<Option> options = null;
 
+                // retrieve option list from database
                 using (var ctx = new FinancialChartsContext())
                 {
                     options = ctx.Option.ToList();
                 }
+                // sort the options by Strike values
+                var strikeComparer = new OptionComparer();
+                options.Sort(strikeComparer);
 
                 foreach (var opt in options)
                 {
