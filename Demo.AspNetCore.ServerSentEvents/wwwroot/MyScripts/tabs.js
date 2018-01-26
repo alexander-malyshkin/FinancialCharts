@@ -1,4 +1,5 @@
-﻿var //tabTitle = $("#tab_title"),
+﻿const datesPanelRation = 20;
+var //tabTitle = $("#tab_title"),
     //tabContent = $("#tab_content"),
     tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>"
     //,tabCounter = 2
@@ -46,13 +47,13 @@ function addTab(assetId, assetName, optionsList) {
 
 function constructTabPanelTable(assetId, optionsList) {
     var dateCheckboxesPanel = constructDatesPanel(assetId, optionsList);
+    var chartsPanelWidthRatio = 100 - datesPanelRation;
     var chartsPanelId = getAssetTabChartsPanelId(assetId);
     var tabPanelHtml = '<table style="width:100%"> ' +
         '<tr> ' +
-        '<th VALIGN=TOP> <div id="' +
-        chartsPanelId +
-        '"></div> </th> ' +
-        '<th VALIGN=TOP style="width:120px">' +
+        '<th VALIGN=TOP style="width:' + chartsPanelWidthRatio + '%"> <div id="' +
+        chartsPanelId + '"></div> </th> ' +
+        '<th VALIGN=TOP style="width:' + datesPanelRation + '%">' +
         dateCheckboxesPanel +
         '</th> ' +
         '</tr> ' +
@@ -75,7 +76,8 @@ function constructDatesPanel(assetId, optionsList) {
         }
 
     });
-    return tabPanelHtml;
+    var datesPanelId = getDatesPanelId(assetId);
+    return '<div id="' + datesPanelId + '">' + tabPanelHtml + '</div>';
 }
 
 function toggleChart(checkBox, dateString, assetId) {

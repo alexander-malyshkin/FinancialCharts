@@ -17,3 +17,7 @@ function getChartBtnId(assetId, dateString) {
 function getAssetTabChartsPanelId(assetId) {
     return 'chartsPanel-' + assetId;
 }
+
+function getDatesPanelId(assetId) {
+    return 'dates-' + assetId;
+}
