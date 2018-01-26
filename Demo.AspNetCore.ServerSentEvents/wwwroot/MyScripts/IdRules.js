@@ -9,3 +9,11 @@ function getChartId(assetId, dateString) {
 function getDateCheckboxId(dateString) {
     return 'chk-' + dateString;
 }
+
+function getChartBtnId(assetId, dateString) {
+    return 'btn-' + assetId + '-' + dateString;
+}
+
+function getAssetTabChartsPanelId(assetId) {
+    return 'chartsPanel-' + assetId;
+}

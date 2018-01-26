@@ -39,23 +39,39 @@ function addTab(assetId, assetName, optionsList) {
         li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
 
     tabs.find(".ui-tabs-nav").append(li);
-    var tabPanelContentHtml = constructTabPanel(assetId, optionsList);
+    var tabPanelContentHtml = constructTabPanelTable(assetId, optionsList);
     tabs.append("<div id='" + id + "'>" + tabPanelContentHtml + "</div>");
     tabs.tabs("refresh");
-    //tabCounter++;
 }
 
-function constructTabPanel(assetId, optionsList) {
+function constructTabPanelTable(assetId, optionsList) {
+    var dateCheckboxesPanel = constructDatesPanel(assetId, optionsList);
+    var chartsPanelId = getAssetTabChartsPanelId(assetId);
+    var tabPanelHtml = '<table style="width:100%"> ' +
+        '<tr> ' +
+        '<th VALIGN=TOP> <div id="' +
+        chartsPanelId +
+        '"></div> </th> ' +
+        '<th VALIGN=TOP style="width:120px">' +
+        dateCheckboxesPanel +
+        '</th> ' +
+        '</tr> ' +
+        '</table>';
+    return tabPanelHtml;
+}
+
+function constructDatesPanel(assetId, optionsList) {
     var tabPanelHtml = '';
     [].forEach.call(optionsList, function (singleOption) {
         var chkId = getDateCheckboxId(singleOption.DateString);
         if (parseInt(singleOption.BaseAssetId) == assetId
             && !(tabPanelHtml.includes(singleOption.DateString)) ) {
-            tabPanelHtml += '  <input type="checkbox" id="' + chkId
+            tabPanelHtml += '<input type="checkbox" id="' + chkId
                 + '" assetid="' + assetId
                 //+ '" dateid="' + singleOption.Id
                 + '" datestring="' + singleOption.DateString
-                + '" onchange="toggleChart(this, \'' + singleOption.DateString + '\',' + assetId + ')"> ' + singleOption.DateString + '  </input>';
+                + '" onchange="toggleChart(this, \'' + singleOption.DateString
+                + '\',' + assetId + ')"> ' + singleOption.DateString + '  </input> <br/>';
         }
 
     });
@@ -76,45 +92,17 @@ function toggleChart(checkBox, dateString, assetId) {
     }
 }
 
-function createChart(dateString, assetId) {
-    var chartId = getChartId(assetId, dateString);
-    var tabId = getTabId(assetId);
-    var tabPanel = document.querySelector('#' + tabId);
-    tabPanel.innerHTML += "<br/>";
+function collapseExpandChart(chartId)
+{
+    var chartDiv = document.getElementById(chartId);
 
-    var chartBtn = document.createElement("button");
-    chartBtn.setAttribute("type", "button");
-    chartBtn.setAttribute("class", "btn btn-info");
-    chartBtn.setAttribute("data-toggle", "collapse");
-    chartBtn.setAttribute("data-target", "#" + chartId);
-    chartBtn.setAttribute("aria-expanded", "true");
-    var assetsMenu = document.getElementById("AssetsMenu");
-    var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
-    chartBtn.innerHTML = "Chart for " + assetName;
-    tabPanel.appendChild(chartBtn);
-    tabPanel.innerHTML += "<br/>";
-    //<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Chart for Sberbank (collapse/expand)</button>
-    
-    var chartDiv = document.createElement("div");
-    chartDiv.setAttribute("id", chartId);
-    chartDiv.setAttribute("role", "chart");
-    chartDiv.setAttribute("assetId", assetId);
-    chartDiv.setAttribute("date", dateString);
-    chartDiv.setAttribute("class", "collapse in");
-    chartDiv.setAttribute("aria-expanded", "true");
-    tabPanel.appendChild(chartDiv);
-    //return chartId;
-}
-
-function createCharts(assetId, expDatesList) {
-    [].forEach.call(expDatesList,
-        function (singleDate) {
-            if (parseInt(singleDate.AssetId) == assetId) {
-                var dateId = singleDate.Id;
-                createChart(dateId, assetId);
-            }
-        }
-    );
+    if (chartDiv.classList.contains('in')) {
+        chartDiv.classList.remove('in');
+        chartDiv.setAttribute("aria-expanded", "false");
+    } else {
+        chartDiv.classList.add('in');
+        chartDiv.setAttribute("aria-expanded", "true");
+    }
 }
 
 function OnAssetSelected(optionsList) {
@@ -131,31 +119,33 @@ function OnAssetSelected(optionsList) {
         + tabId + '"]');
     if (tab == null) {
         addTab(assetId, assetName, optionsList);
-        //createCharts(assetId, optionsList);
+        var tab = tabPanel.querySelector('li[aria-controls="'
+            + tabId + '"]');
     }
 
     // put focus on tab corresponding to selected asset
-    //PutFocusOnTab(tabId, tab, tabPanel);
+    PutFocusOnTab(tabId, tab, tabPanel);
 }
 
-//function PutFocusOnTab(tabId, tab, tabPanel) {
-//    tab.setAttribute("aria-selected", "true");
-//    tab.setAttribute("aria-expanded", "true");
-//    tab.setAttribute("aria-hidden", "false");
-//    tab.classList.add("ui-tabs-active");
-//    tab.classList.add("ui-state-active");
+function PutFocusOnTab(tabId, tab, tabPanel) {
+    tab.setAttribute("aria-selected", "true");
+    tab.setAttribute("aria-expanded", "true");
+    tab.setAttribute("aria-hidden", "false");
+    tab.classList.add("ui-tabs-active");
+    tab.classList.add("ui-state-active");
 
-//    // in the panel there is a separate div with id equal to tabId
-//    var tabBlock = document.getElementById(tabId);
-//    tabBlock.setAttribute("style", "display: block");
-//    tabBlock.setAttribute("aria-hidden", "false");
+    // in the panel there is a separate div with id equal to tabId
+    var tabBlock = document.getElementById(tabId);
+    tabBlock.setAttribute("style", "display: block");
+    tabBlock.setAttribute("aria-hidden", "false");
 
-//    var otherTabs = tabPanel.querySelectorAll('li:not([aria-controls="' + tabId + '"])');
-//    [].forEach.call(otherTabs, function(otherTab) {
-//        RemoveFocusFromTab(otherTab, tabPanel);
-//    });
+    var otherTabs = tabPanel.querySelectorAll('li:not([aria-controls="' + tabId + '"])');
+    for(var i = 0; i < otherTabs.length; i++) {
+        var otherTab = otherTabs[i];
+        RemoveFocusFromTab(otherTab, tabPanel);
+    };
     
-//}
+}
 
 function RemoveFocusFromTab(tab, tabPanel) {
     tab.setAttribute("aria-selected", "false");

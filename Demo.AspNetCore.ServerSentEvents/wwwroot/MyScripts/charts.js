@@ -84,7 +84,7 @@ function fillChartWithData(chartDiv, seriesInput) {
     Highcharts.chart(chartId, {
 
         title: {
-            text: 'Expiration date ' + dateString
+            text: ''
         },
 
         subtitle: {
@@ -140,6 +140,56 @@ function fillChartWithData(chartDiv, seriesInput) {
 }
 
 
+function createChart(dateString, assetId) {
+    var chartId = getChartId(assetId, dateString);
+    var tabChartsDivId = getAssetTabChartsPanelId(assetId);
+    var tabChartsPanel = document.querySelector('#' + tabChartsDivId);
+    tabChartsPanel.innerHTML += "<br/>";
+
+    var dateCheckboxId = getDateCheckboxId(dateString);
+    var dateCheckbox = document.getElementById(dateCheckboxId);
+    dateCheckbox.checked = true;
+
+    var chartBtn = document.createElement("button");
+    var chartBtnId = getChartBtnId(assetId, dateString);
+    chartBtn.setAttribute("id", chartBtnId);
+    chartBtn.setAttribute("type", "button");
+    chartBtn.setAttribute("class", "btn btn-info");
+    chartBtn.setAttribute("data-toggle", "collapse");
+    chartBtn.setAttribute("data-target", "#" + chartId);
+    chartBtn.setAttribute("aria-expanded", "true");
+    chartBtn.setAttribute("onclick", "collapseExpandChart('" + chartId +"')");
+    var assetsMenu = document.getElementById("AssetsMenu");
+    var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
+    chartBtn.innerHTML = dateString;
+    tabChartsPanel.appendChild(chartBtn);
+    tabChartsPanel.innerHTML += "<br/>";
+    //<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Chart for Sberbank (collapse/expand)</button>
+
+    var chartDiv = document.createElement("div");
+    chartDiv.setAttribute("id", chartId);
+    chartDiv.setAttribute("role", "chart");
+    chartDiv.setAttribute("assetId", assetId);
+    chartDiv.setAttribute("date", dateString);
+    chartDiv.setAttribute("class", "collapse in");
+    chartDiv.setAttribute("aria-expanded", "true");
+    tabChartsPanel.appendChild(chartDiv);
+    //return chartId;
+}
+
+function createCharts(assetId, expDatesList) {
+    [].forEach.call(expDatesList,
+        function (singleDate) {
+            if (parseInt(singleDate.AssetId) == assetId) {
+                var dateId = singleDate.Id;
+                createChart(dateId, assetId);
+            }
+        }
+    );
+}
 
 
+window.onresize = function (event) {
+    var tabDivs = document.querySelectorAll('div[role="tab"]');
 
+};
