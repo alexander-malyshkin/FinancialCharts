@@ -18,6 +18,10 @@ function getAssetTabChartsPanelId(assetId) {
     return 'chartsPanel-' + assetId;
 }
 
+function getChartWidgetId(assetId, dateString) {
+    return 'chartWidget-' + assetId + '-' + dateString;
+}
+
 function getDatesPanelId(assetId) {
     return 'dates-' + assetId;
 }

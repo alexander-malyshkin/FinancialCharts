@@ -144,7 +144,13 @@ function createChart(dateString, assetId) {
     var chartId = getChartId(assetId, dateString);
     var tabChartsDivId = getAssetTabChartsPanelId(assetId);
     var tabChartsPanel = document.querySelector('#' + tabChartsDivId);
-    tabChartsPanel.innerHTML += "<br/>";
+
+    var chartWidgetId = getChartWidgetId(assetId, dateString);
+    var chartWidget = document.createElement("div");
+    chartWidget.setAttribute("id", chartWidgetId);
+    chartWidget.setAttribute("role", "chart-widget");
+
+    tabChartsPanel.appendChild(chartWidget);
 
     var dateCheckboxId = getDateCheckboxId(dateString);
     var dateCheckbox = document.getElementById(dateCheckboxId);
@@ -162,8 +168,8 @@ function createChart(dateString, assetId) {
     var assetsMenu = document.getElementById("AssetsMenu");
     var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
     chartBtn.innerHTML = dateString;
-    tabChartsPanel.appendChild(chartBtn);
-    tabChartsPanel.innerHTML += "<br/>";
+    chartWidget.appendChild(chartBtn);
+    chartWidget.innerHTML += "<br/>";
     //<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Chart for Sberbank (collapse/expand)</button>
 
     var chartDiv = document.createElement("div");
@@ -173,7 +179,7 @@ function createChart(dateString, assetId) {
     chartDiv.setAttribute("date", dateString);
     chartDiv.setAttribute("class", "collapse in");
     chartDiv.setAttribute("aria-expanded", "true");
-    tabChartsPanel.appendChild(chartDiv);
+    chartWidget.appendChild(chartDiv);
     //return chartId;
 }
 
