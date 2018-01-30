@@ -156,20 +156,20 @@ function createChart(dateString, assetId) {
     var dateCheckbox = document.getElementById(dateCheckboxId);
     dateCheckbox.checked = true;
 
-    var chartBtn = document.createElement("button");
-    var chartBtnId = getChartBtnId(assetId, dateString);
-    chartBtn.setAttribute("id", chartBtnId);
-    chartBtn.setAttribute("type", "button");
-    chartBtn.setAttribute("class", "btn btn-info");
-    chartBtn.setAttribute("data-toggle", "collapse");
-    chartBtn.setAttribute("data-target", "#" + chartId);
-    chartBtn.setAttribute("aria-expanded", "true");
-    chartBtn.setAttribute("onclick", "collapseExpandChart('" + chartId +"')");
-    var assetsMenu = document.getElementById("AssetsMenu");
-    var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
-    chartBtn.innerHTML = dateString;
-    chartWidget.appendChild(chartBtn);
-    chartWidget.innerHTML += "<br/>";
+    //var chartBtn = document.createElement("button");
+    //var chartBtnId = getChartBtnId(assetId, dateString);
+    //chartBtn.setAttribute("id", chartBtnId);
+    //chartBtn.setAttribute("type", "button");
+    //chartBtn.setAttribute("class", "btn btn-info");
+    //chartBtn.setAttribute("data-toggle", "collapse");
+    //chartBtn.setAttribute("data-target", "#" + chartId);
+    //chartBtn.setAttribute("aria-expanded", "true");
+    //chartBtn.setAttribute("onclick", "collapseExpandChart('" + chartId +"')");
+    //var assetsMenu = document.getElementById("AssetsMenu");
+    //var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
+    //chartBtn.innerHTML = dateString;
+    //chartWidget.appendChild(chartBtn);
+    //chartWidget.innerHTML += "<br/>";
     //<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Chart for Sberbank (collapse/expand)</button>
 
     var chartDiv = document.createElement("div");
@@ -180,6 +180,8 @@ function createChart(dateString, assetId) {
     chartDiv.setAttribute("class", "collapse in");
     chartDiv.setAttribute("aria-expanded", "true");
     chartWidget.appendChild(chartDiv);
+
+    insertWidget(chartDiv, dateString, dateCheckbox);
     //return chartId;
 }
 

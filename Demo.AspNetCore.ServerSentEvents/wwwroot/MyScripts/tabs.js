@@ -1,4 +1,4 @@
-﻿const datesPanelRation = 20;
+﻿const datesPanelRatio = 20;
 var //tabTitle = $("#tab_title"),
     //tabContent = $("#tab_content"),
     tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>"
@@ -47,13 +47,13 @@ function addTab(assetId, assetName, optionsList) {
 
 function constructTabPanelTable(assetId, optionsList) {
     var dateCheckboxesPanel = constructDatesPanel(assetId, optionsList);
-    var chartsPanelWidthRatio = 100 - datesPanelRation;
+    var chartsPanelWidthRatio = 100 - datesPanelRatio;
     var chartsPanelId = getAssetTabChartsPanelId(assetId);
     var tabPanelHtml = '<table style="width:100%"> ' +
         '<tr> ' +
         '<th VALIGN=TOP style="width:' + chartsPanelWidthRatio + '%"> <div id="' +
         chartsPanelId + '"></div> </th> ' +
-        '<th VALIGN=TOP style="width:' + datesPanelRation + '%">' +
+        '<th VALIGN=TOP style="width:' + datesPanelRatio + '%">' +
         dateCheckboxesPanel +
         '</th> ' +
         '</tr> ' +
