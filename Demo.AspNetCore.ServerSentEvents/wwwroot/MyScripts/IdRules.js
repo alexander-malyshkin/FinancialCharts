@@ -3,15 +3,18 @@
 }
 
 function getChartId(assetId, dateString) {
-    return 'chart-' + assetId + '-' + dateString;
+    var preparedDate = prepareDateString(dateString);
+    return 'chart-' + assetId + '-' + preparedDate;
 }
 
 function getDateCheckboxId(dateString) {
-    return 'chk-' + dateString;
+    var preparedDate = prepareDateString(dateString);
+    return 'chk-' + preparedDate;
 }
 
 function getChartBtnId(assetId, dateString) {
-    return 'btn-' + assetId + '-' + dateString;
+    var preparedDate = prepareDateString(dateString);
+    return 'btn-' + assetId + '-' + preparedDate;
 }
 
 function getAssetTabChartsPanelId(assetId) {
@@ -19,9 +22,15 @@ function getAssetTabChartsPanelId(assetId) {
 }
 
 function getChartWidgetId(assetId, dateString) {
-    return 'chartWidget-' + assetId + '-' + dateString;
+    var preparedDate = prepareDateString(dateString);
+    return 'chartWidget-' + assetId + '-' + preparedDate;
 }
 
 function getDatesPanelId(assetId) {
     return 'dates-' + assetId;
+}
+
+function prepareDateString(dateString) {
+    //return dateString.replace(new RegExp('.', 'g'), ';;');;
+    return dateString;
 }
