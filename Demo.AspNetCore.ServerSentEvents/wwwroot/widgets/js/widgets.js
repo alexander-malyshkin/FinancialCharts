@@ -8,7 +8,7 @@ function insertWidget(chartDiv, widgetTitle, dateCheckbox) {
     var myWinFnInit = $('#' + myWinId);
 
     function onClose() {
-        //undo.fadeIn();
+        dateCheckbox.checked = false;
     }
 
     myWinFnInit.kendoWindow({
@@ -18,12 +18,12 @@ function insertWidget(chartDiv, widgetTitle, dateCheckbox) {
         visible: false,
         actions: [
             //"Pin",
-            "Minimize",
-            "Maximize",
-            "Close"
+            "Minimize"
+            //,"Maximize"
+            //,"Close"
         ],
         close: onClose
     }).data("kendoWindow").open();
 
-    dateCheckbox.checked = true;
+    
 }

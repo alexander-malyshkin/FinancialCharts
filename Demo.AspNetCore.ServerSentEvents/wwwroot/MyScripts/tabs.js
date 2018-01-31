@@ -84,13 +84,19 @@ function toggleChart(checkBox, dateString, assetId) {
     var chartId = getChartId(assetId, dateString);
     var chart = document.getElementById(chartId);
     if (checkBox.checked == true && chart != null) {
-            chart.style.visibility = 'visible';
+        var chartWidget = chart.parentNode;
+        chartWidget.style.display = "block";
+        chartWidget.style.transform = "scale(1)";
+        chart.style.visibility = 'visible';
     }
     else if (chart == null) {
         createChart(dateString, assetId);
     }
-    else if (chart != null){
-            chart.style.visibility = 'hidden';
+    else if (chart != null && checkBox.checked == false){
+        chart.style.visibility = 'hidden';
+        var chartWidget = chart.parentNode;
+        chartWidget.style.display = "none";
+        chartWidget.style.transform = "scale(0.7)";
     }
 }
 

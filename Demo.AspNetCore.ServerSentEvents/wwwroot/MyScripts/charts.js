@@ -1,3 +1,5 @@
+var chartDivs = [];
+
 var source = new EventSource("/sse-financial");
 source.onopen = function () { console.log('-- CONNECTION ESTABLISHED --'); };
 source.onerror = function () { console.log('-- CONNECTION FAILED --'); };
@@ -6,7 +8,7 @@ source.onmessage = function(event) {
     console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
     var seriesInput = JSON.parse(event.data);
 
-    var chartDivs = document.querySelectorAll('div[role="chart"]');
+    //var chartDivs = document.querySelectorAll('div[role="chart"]');
     for (var i = 0; i < chartDivs.length; i++) {
 
         var chartDiv = chartDivs[i];
@@ -154,7 +156,7 @@ function createChart(dateString, assetId) {
 
     var dateCheckboxId = getDateCheckboxId(dateString);
     var dateCheckbox = document.getElementById(dateCheckboxId);
-    dateCheckbox.checked = true;
+    //dateCheckbox.checked = true;
 
     //var chartBtn = document.createElement("button");
     //var chartBtnId = getChartBtnId(assetId, dateString);
@@ -180,6 +182,7 @@ function createChart(dateString, assetId) {
     chartDiv.setAttribute("class", "collapse in");
     chartDiv.setAttribute("aria-expanded", "true");
     chartWidget.appendChild(chartDiv);
+    chartDivs.push(chartDiv);
 
     insertWidget(chartDiv, dateString, dateCheckbox);
     //return chartId;
