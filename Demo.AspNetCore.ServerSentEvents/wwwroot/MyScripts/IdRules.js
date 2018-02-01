@@ -31,6 +31,8 @@ function getDatesPanelId(assetId) {
 }
 
 function prepareDateString(dateString) {
-    //return dateString.replace(new RegExp('.', 'g'), ';;');;
-    return dateString;
+    dateString = dateString.replace('.', '');
+    return dateString.replace('.', '');
+
+    //return dateString;
 }

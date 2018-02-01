@@ -53,7 +53,7 @@ function constructTabPanelTable(assetId, optionsList) {
         '<tr> ' +
         '<th VALIGN=TOP style="width:' + chartsPanelWidthRatio + '%"> <div id="' +
         chartsPanelId + '"></div> </th> ' +
-        '<th VALIGN=TOP style="width:' + datesPanelRatio + '%">' +
+        '<th VALIGN=TOP align=RIGHT style="width:' + datesPanelRatio + '%">' +
         dateCheckboxesPanel +
         '</th> ' +
         '</tr> ' +

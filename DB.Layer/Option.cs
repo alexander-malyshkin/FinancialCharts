@@ -15,6 +15,6 @@ namespace DB.Layer
 
         public Asset BaseAsset { get; set; }
 
-        public string DateString => ExpDate.ToString("ddMMyyyy");
+        public string DateString => ExpDate.ToString("dd.MM.yyyy");
     }
 }
