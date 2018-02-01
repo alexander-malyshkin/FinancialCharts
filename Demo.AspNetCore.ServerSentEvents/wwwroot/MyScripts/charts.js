@@ -67,8 +67,8 @@ function fillChartWithData(chartDiv, seriesInput) {
     //var chartDiv = document.querySelector('#' + chartId);
     var assetId = chartDiv.getAttribute("assetId");
     var dateString = chartDiv.getAttribute("date");
-    var assetsMenu = document.getElementById("AssetsMenu");
-    var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
+    //var assetsMenu = document.getElementById("AssetsMenu");
+    //var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
 
     // find asset name from select list
     //var assetItems = document.querySelector('#AssetsMenu');
@@ -86,12 +86,16 @@ function fillChartWithData(chartDiv, seriesInput) {
     Highcharts.chart(chartId, {
 
         title: {
-            text: ''
+            align: "right",
+            text: 'Last updated at ' + formatTime(new Date()),
+            style: {
+                "fontSize": "10px"
+            }
         },
 
-        subtitle: {
-            text: 'Last updated at ' + formatTime(new Date())
-        },
+        //subtitle: {
+        //    text: 'Last updated at ' + formatTime(new Date())
+        //},
 
         yAxis: {
             title: {
@@ -99,9 +103,24 @@ function fillChartWithData(chartDiv, seriesInput) {
             }
         },
         legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
+            //layout: 'vertical',
+            //align: 'right',
+            //verticalAlign: 'middle'
+            enabled: false
+        },
+
+        credits: {
+            enabled: false
+            //href: "",
+            //position: {
+            //    align: "right",
+            //    verticalAlign: "top"
+            //},
+            //style: {
+            //    color: "#999999",
+            //    fontSize: "10px"
+            //},
+            //text: 'Last updated at ' + formatTime(new Date())
         },
 
         plotOptions: {
@@ -118,7 +137,7 @@ function fillChartWithData(chartDiv, seriesInput) {
             {
                 type: "line",
                 animation: { duration: 0 },
-                name: assetName,
+                name: ' ',
                 data: partialData
             }
         ],
@@ -127,14 +146,15 @@ function fillChartWithData(chartDiv, seriesInput) {
             rules: [{
                 condition: {
                     maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
                 }
+                //,
+                //chartOptions: {
+                //    legend: {
+                //        layout: 'horizontal',
+                //        align: 'center',
+                //        verticalAlign: 'bottom'
+                //    }
+                //}
             }]
         }
 
@@ -185,6 +205,8 @@ function createChart(dateString, assetId) {
     chartDivs.push(chartDiv);
 
     insertWidget(chartDiv, dateString, dateCheckbox);
+
+    chartDiv.parentNode.style.position = "relative";
     //return chartId;
 }
 

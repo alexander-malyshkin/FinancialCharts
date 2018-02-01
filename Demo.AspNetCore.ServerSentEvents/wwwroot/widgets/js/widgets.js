@@ -14,6 +14,7 @@ function insertWidget(chartDiv, widgetTitle, dateCheckbox) {
     myWinFnInit.kendoWindow({
         appendTo: "div#" + parentDivId,
         width: "600px",
+        //position: relative,
         title: widgetTitle,
         visible: false,
         actions: [
