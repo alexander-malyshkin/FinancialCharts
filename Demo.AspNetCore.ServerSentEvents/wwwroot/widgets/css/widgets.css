@@ -1,13 +1,15 @@
-﻿
-.k-window-content a {
-    color: #BBB;
+﻿.draggable {
+    position: relative;
+    z-index: 9;
+    background-color: #f1f1f1;
+    text-align: center;
+    border: 1px solid #d3d3d3;
 }
-.k-window-content p {
-    margin-bottom: 1em;
-}
-                
-@media screen and (max-width: 1023px) {
-    div.k-window {
-        display: none !important;
-    }
+
+.draggable-header {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
 }
