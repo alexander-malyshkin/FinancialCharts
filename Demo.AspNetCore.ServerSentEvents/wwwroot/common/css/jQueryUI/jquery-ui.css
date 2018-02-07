@@ -898,7 +898,7 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-	border: 1px solid #c5c5c5;
+	border: 0px solid #c5c5c5;
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;
@@ -909,8 +909,8 @@ body .ui-tooltip {
 	color: #333333;
 }
 .ui-widget-header {
-	border: 1px solid #dddddd;
-	background: #e9e9e9;
+	/*border: 1px solid #dddddd;
+	background: #e9e9e9;*/
 	color: #333333;
 	font-weight: bold;
 }
@@ -981,7 +981,7 @@ a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
 	border: 1px solid #003eff;
-	background: #007fff;
+	background: #519dea;
 	font-weight: normal;
 	color: #ffffff;
 }

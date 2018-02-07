@@ -36,3 +36,7 @@ function prepareDateString(dateString) {
 
     //return dateString;
 }
+
+function getDateCheckboxLabelId(dateCheckboxId) {
+    return 'label-' + dateCheckboxId;
+}

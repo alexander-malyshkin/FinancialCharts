@@ -1,4 +1,5 @@
 var chartDivs = [];
+var seriesInput;
 
 var source = new EventSource("/sse-financial");
 source.onopen = function () { console.log('-- CONNECTION ESTABLISHED --'); };
@@ -6,7 +7,7 @@ source.onerror = function () { console.log('-- CONNECTION FAILED --'); };
 source.onmessage = function(event) {
     var time = new Date();
     console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
-    var seriesInput = JSON.parse(event.data);
+    seriesInput = JSON.parse(event.data);
 
     //var chartDivs = document.querySelectorAll('div[role="chart"]');
     for (var i = 0; i < chartDivs.length; i++) {
@@ -67,6 +68,8 @@ function fillChartWithData(chartDiv, seriesInput) {
     //var chartDiv = document.querySelector('#' + chartId);
     var assetId = chartDiv.getAttribute("assetId");
     var dateString = chartDiv.getAttribute("date");
+
+    //darkUnika();
     //var assetsMenu = document.getElementById("AssetsMenu");
     //var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
 
@@ -84,22 +87,35 @@ function fillChartWithData(chartDiv, seriesInput) {
 
     var chartId = chartDiv.getAttribute("id");
     Highcharts.chart(chartId, {
-
+        chart: {
+            type: 'spline'
+        },
         title: {
-            align: "right",
+            align: "left",
+            text: dateString,
+            style: {
+                "fontSize": "12px"
+            }
+        },
+        subtitle: {
+            align: "left",
             text: 'Last updated at ' + formatTime(new Date()),
             style: {
                 "fontSize": "10px"
             }
         },
-
-        //subtitle: {
-        //    text: 'Last updated at ' + formatTime(new Date())
-        //},
-
-        yAxis: {
+        xAxis: {
             title: {
-                text: 'VOL'
+                text: 'Strike'
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 1,
+            //endOnTick: false,
+            tickInterval: 0.2,
+            title: {
+                text: 'Volatility'
             }
         },
         legend: {
@@ -108,7 +124,19 @@ function fillChartWithData(chartDiv, seriesInput) {
             //verticalAlign: 'middle'
             enabled: false
         },
-
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                }
+            }
+        },
         credits: {
             enabled: false
             //href: "",
@@ -122,42 +150,14 @@ function fillChartWithData(chartDiv, seriesInput) {
             //},
             //text: 'Last updated at ' + formatTime(new Date())
         },
-
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                }
-                //,pointStart: 2010
-            }
-        },
-
-        //series: partialData,
         series: [
             {
-                type: "line",
+                //type: "line",
                 animation: { duration: 0 },
                 name: ' ',
                 data: partialData
             }
-        ],
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                }
-                //,
-                //chartOptions: {
-                //    legend: {
-                //        layout: 'horizontal',
-                //        align: 'center',
-                //        verticalAlign: 'bottom'
-                //    }
-                //}
-            }]
-        }
-
+        ]
     });
 }
 
@@ -171,28 +171,13 @@ function createChart(dateString, assetId) {
     var chartWidget = document.createElement("div");
     chartWidget.setAttribute("id", chartWidgetId);
     chartWidget.setAttribute("role", "chart-widget");
+    chartWidget.setAttribute("class", "col-xs-6");
 
     tabChartsPanel.appendChild(chartWidget);
 
     var dateCheckboxId = getDateCheckboxId(dateString);
     var dateCheckbox = document.getElementById(dateCheckboxId);
-    //dateCheckbox.checked = true;
-
-    //var chartBtn = document.createElement("button");
-    //var chartBtnId = getChartBtnId(assetId, dateString);
-    //chartBtn.setAttribute("id", chartBtnId);
-    //chartBtn.setAttribute("type", "button");
-    //chartBtn.setAttribute("class", "btn btn-info");
-    //chartBtn.setAttribute("data-toggle", "collapse");
-    //chartBtn.setAttribute("data-target", "#" + chartId);
-    //chartBtn.setAttribute("aria-expanded", "true");
-    //chartBtn.setAttribute("onclick", "collapseExpandChart('" + chartId +"')");
-    //var assetsMenu = document.getElementById("AssetsMenu");
-    //var assetName = assetsMenu.querySelector('option[value="' + assetId + '"]').text;
-    //chartBtn.innerHTML = dateString;
-    //chartWidget.appendChild(chartBtn);
-    //chartWidget.innerHTML += "<br/>";
-    //<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Chart for Sberbank (collapse/expand)</button>
+    
 
     var chartDiv = document.createElement("div");
     chartDiv.setAttribute("id", chartId);
@@ -204,9 +189,9 @@ function createChart(dateString, assetId) {
     chartWidget.appendChild(chartDiv);
     chartDivs.push(chartDiv);
 
-    insertWidget(chartDiv, dateString, dateCheckbox);
-
-    chartDiv.parentNode.style.position = "relative";
+    //insertWidget(chartDiv, dateString, dateCheckbox);
+    fillChartWithData(chartDiv, seriesInput);
+    //chartDiv.parentNode.style.position = "relative";
     //return chartId;
 }
 

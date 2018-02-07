@@ -1,4 +1,4 @@
-﻿const datesPanelRatio = 20;
+﻿const datesPanelRatio = 10;
 var //tabTitle = $("#tab_title"),
     //tabContent = $("#tab_content"),
     tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>"
@@ -52,7 +52,9 @@ function constructTabPanelTable(assetId, optionsList) {
     var tabPanelHtml = '<table style="width:100%"> ' +
         '<tr> ' +
         '<th VALIGN=TOP style="width:' + chartsPanelWidthRatio + '%"> <div id="' +
-        chartsPanelId + '"></div> </th> ' +
+        chartsPanelId + '" class="col-xs-12">'
+        
+        + '</div> </th> ' +
         '<th VALIGN=TOP align=RIGHT style="width:' + datesPanelRatio + '%">' +
         dateCheckboxesPanel +
         '</th> ' +
@@ -62,25 +64,35 @@ function constructTabPanelTable(assetId, optionsList) {
 }
 
 function constructDatesPanel(assetId, optionsList) {
-    var tabPanelHtml = '';
+    var tabPanelHtml = '<fieldset>'
+        + '<legend>Expiration Date: </legend>';
     [].forEach.call(optionsList, function (singleOption) {
         var chkId = getDateCheckboxId(singleOption.DateString);
+        var labelId = getDateCheckboxLabelId(chkId);
         if (parseInt(singleOption.BaseAssetId) == assetId
             && !(tabPanelHtml.includes(singleOption.DateString)) ) {
-            tabPanelHtml += '<input type="checkbox" id="' + chkId
-                + '" assetid="' + assetId
+            tabPanelHtml += '<label id="' + labelId + '" for="' + chkId + '" class="ui-checkboxradio-label ui-corner-all ui-button ui-widget">'
+                + singleOption.DateString
+                + '<input type="checkbox" id="' + chkId
+                + '" class="ui-checkboxradio ui-helper-hidden-accessible"'
+                + ' assetid="' + assetId
                 //+ '" dateid="' + singleOption.Id
                 + '" datestring="' + singleOption.DateString
                 + '" onchange="toggleChart(this, \'' + singleOption.DateString
-                + '\',' + assetId + ')"> ' + singleOption.DateString + '  </input> <br/>';
+                + '\',' + assetId + ')">'
+                +'</label><br/>';
         }
 
     });
+    tabPanelHtml += '</fieldset>';
     var datesPanelId = getDatesPanelId(assetId);
-    return '<div id="' + datesPanelId + '">' + tabPanelHtml + '</div>';
+    return '<div id="' + datesPanelId + '" class="dates-panel">' + tabPanelHtml + '</div>';
 }
 
 function toggleChart(checkBox, dateString, assetId) {
+    var dateCheckboxId = checkBox.getAttribute("id");
+    updateDateCheckboxStyle(dateCheckboxId);
+
     var chartId = getChartId(assetId, dateString);
     var chart = document.getElementById(chartId);
     if (checkBox.checked == true && chart != null) {
@@ -189,3 +201,17 @@ tabs.on("keyup", function (event) {
         tabs.tabs("refresh");
     }
 });
+
+function updateDateCheckboxStyle(dateCheckboxId) {
+    var dateLabelId = getDateCheckboxLabelId(dateCheckboxId);
+    var label = document.getElementById(dateLabelId);
+    var checkbox = document.getElementById(dateCheckboxId);
+
+    if (checkbox.checked) {
+        label.classList.add("ui-checkboxradio-checked");
+        label.classList.add("ui-state-active");
+    } else {
+        label.classList.remove("ui-checkboxradio-checked");
+        label.classList.remove("ui-state-active");
+    }
+};
