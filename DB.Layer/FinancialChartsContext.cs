@@ -7,10 +7,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DB.Layer
 {
-    public partial class FinancialChartsContext : IdentityDbContext<IdentityUser>
+    public class FinancialChartsContext : IdentityDbContext<IdentityUser>
     {
-        public virtual DbSet<Asset> Asset { get; set; }
-        public virtual DbSet<Option> Option { get; set; }
+        public DbSet<Asset> Asset { get; set; }
+        public DbSet<Option> Option { get; set; }
+
+        public DbSet<UserPreference> UserPreferences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

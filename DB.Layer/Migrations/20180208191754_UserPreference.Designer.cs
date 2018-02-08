@@ -11,9 +11,10 @@ using System;
 namespace DB.Layer.Migrations
 {
     [DbContext(typeof(FinancialChartsContext))]
-    partial class FinancialChartsContextModelSnapshot : ModelSnapshot
+    [Migration("20180208191754_UserPreference")]
+    partial class UserPreference
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

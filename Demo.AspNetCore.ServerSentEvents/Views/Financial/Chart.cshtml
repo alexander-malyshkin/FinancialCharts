@@ -6,25 +6,16 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    <!-- hidden form for persisting user preferences to database -->
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h2>
             <i class="fa fa-bar-chart-o"></i> Volatility Strike by Asset:
         </h2>
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-
-
-
-
-
         <select id="AssetsMenu" class="sidebar-menu"
                 asp-items="@(new SelectList(Model.assetModel.AssetList, "Id", "Name"))"
                 onclick="OnAssetSelected(@Model.optionsModel.OptionsJsonString)"></select>
-
-
-
-
-
 
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -35,23 +26,18 @@
     </section>
     <!-- Main content -->
     <section class="content">
-
-        @*<button id="add_tab">Add Tab</button>*@
         <div id="tabs">
-            <ul>
-                <!--<li><a href="#tabs-1">tab 1</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
-                -->
-            </ul>
-
+            <ul></ul>
         </div>
-
     </section>
     <!-- /.content -->
 }
 else
 {
-    <h3>To use this web site resources, 
-        <a id="loginLink" asp-controller="Account" asp-action="Login">log in</a> 
-        or 
-        <a id="registerLink" asp-controller="Account" asp-action="Register">register</a></h3>
+    <h3>
+        To use this web site resources,
+        <a id="loginLink" asp-controller="Account" asp-action="Login">log in</a>
+        or
+        <a id="registerLink" asp-controller="Account" asp-action="Register">register</a>
+    </h3>
 }

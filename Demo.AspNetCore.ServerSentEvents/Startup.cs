@@ -48,7 +48,7 @@ namespace FinancialCharts
 
             services.AddServerSentEvents();
             services.AddSingleton<IHostedService, FinancialDataService>();
-            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
