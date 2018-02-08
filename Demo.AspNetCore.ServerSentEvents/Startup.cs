@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
+using DB.Layer;
 using Demo.AspNetCore.ServerSentEvents.Services;
 using Lib.AspNetCore.ServerSentEvents;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,19 +30,25 @@ namespace FinancialCharts
         #region Methods
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<FinancialChartsContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("FinancialDatabase")));
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                    options.Password.RequiredLength = 8;
+                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequireUppercase = true;
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddEntityFrameworkStores<FinancialChartsContext>();
+
             services.AddResponseCompression(options =>
             {
                 options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "text/event-stream" });
             });
 
             services.AddServerSentEvents();
-            //services.AddSingleton<IHostedService, HeartbeatService>();
             services.AddSingleton<IHostedService, FinancialDataService>();
-            /*
-            services.AddServerSentEvents<INotificationsServerSentEventsService, NotificationsServerSentEventsService>();
-            services.AddNotificationsService(Configuration);
-            */
-            services.AddMvc();
+            services.AddMvc().AddSessionStateTempDataProvider();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
@@ -50,14 +59,13 @@ namespace FinancialCharts
             }
             
             app.UseResponseCompression()
-                //.MapServerSentEvents("/see-heartbeat")
+
                 .MapServerSentEvents("/sse-financial")
-                //.MapServerSentEvents("/sse-notifications", serviceProvider.GetService<NotificationsServerSentEventsService>())
                 .UseStaticFiles()
+                .UseAuthentication()
                 .UseMvc(routes =>
                 {
                     routes.MapRoute(name: "default", template: "{controller=Financial}/{action=Chart}");
-                    //routes.MapRoute(Name: "normal", template: "{controller}/{action}");
                 });
         }
         #endregion
