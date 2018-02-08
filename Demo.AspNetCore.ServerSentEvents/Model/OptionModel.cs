@@ -13,10 +13,15 @@ namespace FinancialCharts.Model
 
         public OptionModel()
         {
-            using (var ctx = new FinancialChartsContext())
+            try
             {
-                OptionList = ctx.Option.ToList();
+                using (var ctx = new FinancialChartsContext())
+                {
+                    OptionList = ctx.Option.ToList();
+                }
             }
+            catch
+            { }
         }
 
         public string OptionsJsonString => JsonConvert.SerializeObject(OptionList);

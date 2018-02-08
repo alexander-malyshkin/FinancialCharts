@@ -20,49 +20,49 @@ namespace DB.Layer
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Asset>(entity =>
-            {
-                entity.Property(e => e.CreateDate).HasColumnType("datetime");
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Asset>(entity =>
+        //    {
+        //        entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+        //        entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(100);
-            });
+        //        entity.Property(e => e.Name)
+        //            .IsRequired()
+        //            .HasMaxLength(100);
+        //    });
 
-            modelBuilder.Entity<Option>(entity =>
-            {
-                entity.ToTable("option");
+        //    modelBuilder.Entity<Option>(entity =>
+        //    {
+        //        entity.ToTable("option");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+        //        entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.BaseAssetId).HasColumnName("base_asset_id");
+        //        entity.Property(e => e.BaseAssetId).HasColumnName("base_asset_id");
 
-                entity.Property(e => e.ExpDate)
-                    .HasColumnName("exp_date")
-                    .HasColumnType("datetime2(0)");
+        //        entity.Property(e => e.ExpDate)
+        //            .HasColumnName("exp_date")
+        //            .HasColumnType("datetime2(0)");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnName("name")
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+        //        entity.Property(e => e.Name)
+        //            .IsRequired()
+        //            .HasColumnName("name")
+        //            .HasMaxLength(100)
+        //            .IsUnicode(false);
 
-                entity.Property(e => e.Strike)
-                    .HasColumnName("strike")
-                    .HasColumnType("decimal(20, 5)");
+        //        entity.Property(e => e.Strike)
+        //            .HasColumnName("strike")
+        //            .HasColumnType("decimal(20, 5)");
 
-                entity.Property(e => e.Type).HasColumnName("type");
+        //        entity.Property(e => e.Type).HasColumnName("type");
 
-                entity.HasOne(d => d.BaseAsset)
-                    .WithMany(p => p.Option)
-                    .HasForeignKey(d => d.BaseAssetId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__option__base_ass__47DBAE45");
-            });
-        }
+        //        entity.HasOne(d => d.BaseAsset)
+        //            .WithMany(p => p.Option)
+        //            .HasForeignKey(d => d.BaseAssetId)
+        //            .OnDelete(DeleteBehavior.ClientSetNull)
+        //            .HasConstraintName("FK__option__base_ass__47DBAE45");
+        //    });
+        //}
     }
 }

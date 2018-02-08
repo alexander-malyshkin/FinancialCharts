@@ -13,9 +13,15 @@ namespace FinancialCharts.Model
         public AssetModel()
         {
             //AssetList = new List<Asset>();
-            using (var context = new FinancialChartsContext())
+            try
             {
-                AssetList = context.Asset.ToList();
+                using (var context = new FinancialChartsContext())
+                {
+                    AssetList = context.Asset.ToList();
+                }
+            }
+            catch
+            {
             }
         }
     }
