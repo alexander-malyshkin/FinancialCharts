@@ -171,7 +171,7 @@ function createChart(dateString, assetId) {
     var chartWidget = document.createElement("div");
     chartWidget.setAttribute("id", chartWidgetId);
     chartWidget.setAttribute("role", "chart-widget");
-    //chartWidget.setAttribute("class", "col-xs-6");
+    
 
     tabChartsPanel.appendChild(chartWidget);
 
@@ -190,10 +190,10 @@ function createChart(dateString, assetId) {
     $('#' + chartWidgetId).draggable();
     chartDivs.push(chartDiv);
 
-    //insertWidget(chartDiv, dateString, dateCheckbox);
+    
     fillChartWithData(chartDiv, seriesInput);
-    //chartDiv.parentNode.style.position = "relative";
-    //return chartId;
+
+    chartDiv.style.height = chartDiv.offsetHeight + "px";
 }
 
 function createCharts(assetId, expDatesList) {
