@@ -5,8 +5,8 @@ var source = new EventSource("/sse-financial");
 source.onopen = function () { console.log('-- CONNECTION ESTABLISHED --'); };
 source.onerror = function () { console.log('-- CONNECTION FAILED --'); };
 source.onmessage = function(event) {
-    var time = new Date();
-    console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
+    //var time = new Date();
+    //console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
     seriesInput = JSON.parse(event.data);
 
     //var chartDivs = document.querySelectorAll('div[role="chart"]');

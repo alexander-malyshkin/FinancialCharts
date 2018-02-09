@@ -144,26 +144,33 @@ function OnAssetSelected(optionsList) {
     }
 
     // put focus on tab corresponding to selected asset
-    PutFocusOnTab(tabId, tab, tabPanel);
+    //PutFocusOnTab(tabId, tab, tabPanel);
+    tab.querySelector('a').click();
 }
 
 function PutFocusOnTab(tabId, tab, tabPanel) {
+    // remove focus from the rest of the tabs
+    var otherTabs = tabPanel.querySelectorAll('li:not([aria-controls="' + tabId + '"])');
+    for (var i = 0; i < otherTabs.length; i++) {
+        var otherTab = otherTabs[i];
+        RemoveFocusFromTab(otherTab, tabPanel);
+    };
+
+    // put focus to the selected tab
     tab.setAttribute("aria-selected", "true");
     tab.setAttribute("aria-expanded", "true");
     tab.setAttribute("aria-hidden", "false");
+    tab.setAttribute("tabindex", "0");
     tab.classList.add("ui-tabs-active");
     tab.classList.add("ui-state-active");
+    tab.classList.add("ui-state-focus");
 
     // in the panel there is a separate div with id equal to tabId
     var tabBlock = document.getElementById(tabId);
     tabBlock.setAttribute("style", "display: block");
     tabBlock.setAttribute("aria-hidden", "false");
 
-    var otherTabs = tabPanel.querySelectorAll('li:not([aria-controls="' + tabId + '"])');
-    for(var i = 0; i < otherTabs.length; i++) {
-        var otherTab = otherTabs[i];
-        RemoveFocusFromTab(otherTab, tabPanel);
-    };
+    
     
 }
 
@@ -171,8 +178,10 @@ function RemoveFocusFromTab(tab, tabPanel) {
     tab.setAttribute("aria-selected", "false");
     tab.setAttribute("aria-expanded", "false");
     tab.setAttribute("aria-hidden", "true");
+    tab.setAttribute("tabindex", "-1");
     tab.classList.remove("ui-tabs-active");
     tab.classList.remove("ui-state-active");
+    tab.classList.remove("ui-state-focus");
 
     var tabId = tab.getAttribute("aria-controls");
     var tabBlock = document.getElementById(tabId);
